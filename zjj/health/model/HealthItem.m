@@ -146,6 +146,37 @@
     }
     return nil;
 }
+-(double)getFatWeightPoorWithItem:(HealthItem*)item
+{
+    float currFatWeight = item.fatWeight;
+    if ([UserModel shareInstance].gender ==1) {
+        float standardMinWeight = 0.16*item.standardWeight;
+        float standardMaxWeight = 0.2*item.standardWeight;
+        if (currFatWeight<standardMinWeight) {
+            return standardMinWeight-currFatWeight;
+        }
+        else if (currFatWeight>standardMaxWeight)
+        {
+            return standardMaxWeight-currFatWeight;
+        }else{
+            return 0;
+        }
+    }else{
+        float standardMinWeight = 0.18*item.standardWeight;
+        float standardMaxWeight = 0.22*item.standardWeight;
+        
+        if (currFatWeight<standardMinWeight) {
+            return standardMinWeight-currFatWeight;
+        }
+        else if (currFatWeight>standardMaxWeight)
+        {
+            return standardMaxWeight-currFatWeight;
+        }else{
+            return 0;
+        }
+    }
+    
+}
 
 
 

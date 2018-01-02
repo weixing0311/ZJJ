@@ -17,10 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *bodylb;
 @property (weak, nonatomic) IBOutlet UILabel *agelb;
 @property (weak, nonatomic) IBOutlet UILabel *bodyAgelb;
-@property (weak, nonatomic) IBOutlet UILabel *scorelb;
-@property (weak, nonatomic) IBOutlet UILabel *weightlb;
-@property (weak, nonatomic) IBOutlet UILabel *contentlb;
-@property (weak, nonatomic) IBOutlet UILabel *bglb;
 @property (weak, nonatomic) IBOutlet UILabel *tclb;
 @property (weak, nonatomic) IBOutlet UILabel *value1lb;
 @property (weak, nonatomic) IBOutlet UILabel *value2lb;
@@ -41,6 +37,27 @@
 @property (weak, nonatomic) IBOutlet UILabel *status7lb;
 @property (weak, nonatomic) IBOutlet UILabel *status8lb;
 @property (weak, nonatomic) IBOutlet UILabel *status9lb;
+@property (weak, nonatomic) IBOutlet UIImageView *sexImg;
+
+
+@property (weak, nonatomic) IBOutlet UILabel * value1Label;
+@property (weak, nonatomic) IBOutlet UILabel * value2Label;
+@property (weak, nonatomic) IBOutlet UILabel * value3Label;
+@property (weak, nonatomic) IBOutlet UILabel * value4Label;
+
+@property (weak, nonatomic) IBOutlet UILabel *target1label;
+@property (weak, nonatomic) IBOutlet UILabel *target2label;
+@property (weak, nonatomic) IBOutlet UILabel *target3label;
+@property (weak, nonatomic) IBOutlet UILabel *target4label;
+
+@property (weak, nonatomic) IBOutlet UILabel *my1Label;
+@property (weak, nonatomic) IBOutlet UILabel *my2Label;
+@property (weak, nonatomic) IBOutlet UILabel *my3Label;
+@property (weak, nonatomic) IBOutlet UILabel *my4Label;
+
+@property (weak, nonatomic) IBOutlet UILabel *statusFatLabel;
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *recodeImageView;
 -(void)setInfoWithItem:(HealthDetailsItem *)item;
 

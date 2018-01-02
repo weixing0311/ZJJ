@@ -88,6 +88,7 @@
     
     self.date2Label.text = [item2.createTime yyyymmdd];
     
+    self.sexImg.image = [UserModel shareInstance].gender==1?getImage(@"man_"):getImage(@"woman_");
     
     
     

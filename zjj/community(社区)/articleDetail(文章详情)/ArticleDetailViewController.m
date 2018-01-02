@@ -19,7 +19,8 @@
 #import "ArtcleZanViewController.h"
 #import "GuanzModel.h"
 #import "NewMineHomePageViewController.h"
-@interface ArticleDetailViewController ()<UITableViewDelegate,UITableViewDataSource,commentViewDelegate,ArtcleDetailCommentDelegate,UIPickerViewDelegate,UIPickerViewDataSource,PublicArticleCellDelegate,BigImageArticleCellDelegate>
+#import "JbView.h"
+@interface ArticleDetailViewController ()<UITableViewDelegate,UITableViewDataSource,commentViewDelegate,ArtcleDetailCommentDelegate,UIPickerViewDelegate,UIPickerViewDataSource,PublicArticleCellDelegate,BigImageArticleCellDelegate,ArtcleDetailNumCellDelegate>
 @property (nonatomic,strong) UITableView *tableview;
 @property (nonatomic,strong) NSMutableArray * dataArray;
 @property (nonatomic,strong) NSMutableArray * commentArray;
@@ -36,6 +37,8 @@
     int pageSize;
     CommunityCell * PlayingCell;
     NSString * gzStatus;
+    JbView * jbv;
+
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -341,13 +344,19 @@
         if (!cell) {
             cell = [self getXibCellWithTitle:identifer];
         }
-        
+        cell.delegate = self;
         cell.firstLb.text = [NSString stringWithFormat:@"评论 %@",[_infoDict safeObjectForKey:@"commentnum"]?[_infoDict safeObjectForKey:@"commentnum"]:@"0"];
         
         
         NSString * ZanName ;
         int zanCount = [[_infoDict safeObjectForKey:@"greatnum"]intValue];
 
+        if ([_infoDict safeObjectForKey:@"isFabulous"]&&[[_infoDict safeObjectForKey:@"isFabulous"]isEqualToString:@"1"]) {
+            cell.didZanBtn.selected =YES;
+        }else{
+            cell.didZanBtn.selected = NO;
+        }
+        
         if (self.zanCountArray.count<1||!self.zanCountArray) {
             ZanName = @"暂时还没有人点赞";
             cell.zanLabel.text = [NSString stringWithFormat:@"%@",ZanName];
@@ -363,13 +372,12 @@
             GuanzModel * model1 = [self.zanCountArray objectAtIndex:0];
             GuanzModel * model2 = [self.zanCountArray objectAtIndex:1];
             GuanzModel * model3 = [self.zanCountArray objectAtIndex:2];
-            GuanzModel * model4 = [self.zanCountArray objectAtIndex:2];
+            GuanzModel * model4 = [self.zanCountArray objectAtIndex:3];
 
             ZanName =[NSString stringWithFormat:@"%@、%@、%@、%@...",model1.nickname,model2.nickname,model3.nickname,model4.nickname];
             cell.zanLabel.text = [NSString stringWithFormat:@"%@",ZanName];
 
         }
-
         
         if (zanCount<4) {
             cell.zanCountLb.text = @"";
@@ -381,7 +389,8 @@
         [cell.zanBtn addTarget:self action:@selector(showZanPersons) forControlEvents:UIControlEventTouchUpInside];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
-    }else
+    }
+    else
     {
         static NSString * identifer = @"ArtcleDetailCommentCell";
         ArtcleDetailCommentCell * cell = [tableView dequeueReusableCellWithIdentifier:identifer];
@@ -404,6 +413,14 @@
         }else{
             cell.zanImageView.image = getImage(@"praise");
         }
+        
+        if ([[dict safeObjectForKey:@"isVip"] isEqualToString:@"1"]) {
+            cell.vipImg.hidden = NO;
+        }else{
+            cell.vipImg.hidden = YES;
+        }
+
+        
         return cell;
   
     }
@@ -420,7 +437,7 @@
     NSString * videoPath = [_infoDict safeObjectForKey:@"videoPath"];
         //销毁播放器
         [_playerView destroyPlayer];
-        CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0,0, (JFA_SCREEN_WIDTH-40), (JFA_SCREEN_WIDTH-40)*0.6)];
+        CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0,0, (JFA_SCREEN_WIDTH-20), (JFA_SCREEN_WIDTH-20)*0.6)];
         _playerView = playerView;
     [cell.playerBgView addSubview:_playerView];
     [cell.playerBgView bringSubviewToFront:_playerView];
@@ -505,6 +522,58 @@
     self.currentTasks = [[BaseSservice sharedManager]post1:@"app/userGreat/updateIsFabulous.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
         [[UserModel shareInstance]showSuccessWithStatus:@""];
         [self refreshZanInfoWithCell:cell];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)enterUserPageWithCell:(ArtcleDetailCommentCell*)cell
+{
+    NSMutableDictionary * dic =[_commentArray objectAtIndex:cell.tag];
+    NewMineHomePageViewController * mine = [[NewMineHomePageViewController alloc]init];
+    mine.userId = [dic safeObjectForKey:@"userId"];
+    [self.navigationController pushViewController:mine animated:YES];
+}
+-(void)didZanWithCell:(ArtcleDetailNumCell*)cell
+{
+    
+    NSMutableDictionary * params = [NSMutableDictionary dictionary];
+    [params safeSetObject:@"" forKey:@"commentId"];
+    [params safeSetObject:[_infoDict safeObjectForKey:@"id"] forKey:@"articleId"];
+    if ([_infoDict safeObjectForKey:@"isFabulous"]&&[[_infoDict safeObjectForKey:@"isFabulous"]isEqualToString:@"1"]) {
+        [params safeSetObject:@"0" forKey:@"isFabulous"];//1是点赞 0取消
+    }else{
+        [params safeSetObject:@"1" forKey:@"isFabulous"];//1是点赞 0取消
+    }
+    [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
+    
+    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/userGreat/updateIsFabulous.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
+        if ([_infoDict safeObjectForKey:@"isFabulous"]&&[[_infoDict safeObjectForKey:@"isFabulous"] isEqualToString:@"1"]) {
+            [[UserModel shareInstance]showSuccessWithStatus:@"取消点赞成功"];
+            [_infoDict safeSetObject:@"0" forKey:@"isFabulous"];
+            [_infoDict safeSetObject:@([[_infoDict safeObjectForKey:@"greatnum"]intValue]-1) forKey:@"greatnum"];
+            //遍历数据，清除已经取消关注的model
+            [self.zanCountArray enumerateObjectsUsingBlock:^(id key, NSUInteger value, BOOL *stop) {
+                GuanzModel  * model = key;
+                if ([model.nickname isEqualToString:[UserModel shareInstance].nickName]) {
+                    *stop =YES;
+                    if (*stop ==YES) {
+                        [self.zanCountArray removeObject:model];
+                    }
+                }
+            }];
+
+        }else{
+            [[UserModel shareInstance]showSuccessWithStatus:@"点赞成功"];
+            [_infoDict safeSetObject:@"1" forKey:@"isFabulous"];
+            [_infoDict safeSetObject:@([[_infoDict safeObjectForKey:@"greatnum"]intValue]+1) forKey:@"greatnum"];
+
+            GuanzModel  * model = [[GuanzModel alloc]init];
+            model.userId =[UserModel shareInstance].userId;
+            model.nickname =[UserModel shareInstance].nickName;
+            model.headImgUrl = [UserModel shareInstance].headUrl ;
+            [self.zanCountArray insertObject:model atIndex:0];
+        }
+        [self.tableview reloadData];
     } failure:^(NSError *error) {
         
     }];
@@ -665,30 +734,11 @@
     }
     else
     {
-        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"" message:@"希望您能正确对待社群内容，不要随意举报他人，请确认该用户发表不良信息再进行举报。" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            
-        }];
-        [alert addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-        [alert addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSString *strUrl = [alert.textFields.firstObject.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-            
-            if (strUrl.length<5) {
-                [[UserModel shareInstance]showInfoWithStatus:@"举报内容不能小于5个字。"];
-                return ;
-            }
-            NSMutableDictionary * params = [NSMutableDictionary dictionary];
-            [params safeSetObject:model.uid forKey:@"articleId"];
-            [params safeSetObject:alert.textFields.firstObject.text forKey:@"reportContent"];
-            [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
-            self.currentTasks =[[BaseSservice sharedManager]post1:@"app/reportArticle/updateIsreported.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
-                [[UserModel shareInstance]showSuccessWithStatus:@"您已成功举报"];
-            } failure:^(NSError *error) {
-                
-            }];
-            
-        }]];
-        [self presentViewController:alert animated:YES completion:nil];
+        jbv = [[JbView alloc]initWithFrame:CGRectMake(0, 64, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT-110)];
+        jbv.articleId = model.uid;
+        [self.view addSubview:jbv];
+        [self.view bringSubviewToFront:jbv];
+
     }
 }
 -(void)didTapHeadImageViewWithBigCell:(CommunityCell *)cell

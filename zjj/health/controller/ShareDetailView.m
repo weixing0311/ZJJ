@@ -80,44 +80,22 @@
             self.headImageView.image = getImage(@"head_default");
         }
     }];
-    
-    
-    
-    
-    
+    self.sexImg.image = [UserModel shareInstance].gender==1?getImage(@"man_"):getImage(@"woman_");
+
     
     self.nicknamelb.text = [SubUserItem shareInstance].nickname;
     
     self.heightlb.text =[NSString stringWithFormat:@"身高:%d",item.height];
     self.agelb.text =[NSString stringWithFormat:@"年龄:%d",item.age];
-    
-    self.bodylb.text = [NSString stringWithFormat:@"体型:%@",[self getBodyStatusWithLevel:item.weightLevel]];
-    
-    self.bodyAgelb.text = [NSString stringWithFormat:@"%d",item.bodyAge];
-    
-    if (item.weightLevel==1||item.weightLevel==3||item.weightLevel==4) {
-        self.bodylb.textColor = warningColor;
-        
-    }else if (item.weightLevel==2)
-    {
-        self.bodylb.textColor = normalColor;
-    }
-    else if (item.weightLevel==5||item.weightLevel==6)
-    {
-        self.bodylb.textColor = seriousColor;
-    }
+    self.bodylb.text = [NSString stringWithFormat:@"基础代谢:%.1f",item.bmr];
     self.bodyAgelb.text = [NSString stringWithFormat:@"身体年龄:%d",item.bodyAge];
 
-    self.weightlb.text = [NSString stringWithFormat:@"体重:%.1fkg",item.weight];
-    self.contentlb.text = [NSString stringWithFormat:@"在社群中排名第%d位，已超过社群%.0f%%的用户",item.ranking,item.percent];
     
     
     NSString * scoreStr =[NSString stringWithFormat:@"%.1f分",item.myScore];
     NSMutableAttributedString * scoreSStr = [[NSMutableAttributedString alloc]initWithString:scoreStr];
     [scoreSStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(scoreSStr.length-1, 1)];
 
-    self.scorelb.attributedText = scoreSStr;
-    self.scorelb.adjustsFontSizeToFitWidth = YES;
     
     NSString * tisStr = [NSString stringWithFormat:@"本次%d项检查中有%d项预警%d项警告%d项正常",item.normal+item.serious+item.warn,item.warn,item.serious,item.normal];
     
@@ -173,7 +151,6 @@
     lenght+=normalLenght;
     [tisString addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:NSMakeRange(tisStr.length-3, 3)];
     self.tclb.attributedText = tisString;
-    self.bglb.text = [self getContentWithItem:item];
     [self setCurrInfo:item];
     
 }
@@ -207,35 +184,35 @@
 
 -(void)setCurrInfo:(HealthDetailsItem *)item
 {
-        self.value1lb.text = [NSString stringWithFormat:@"%.1f",item.bmi];
-        self.status1lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_BMI item:item];
+    self.value1lb.text = [NSString stringWithFormat:@"%.1f%%",item.fatPercentage];
+    self.status1lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_FATPERCENT item:item];
+    
+    self.value2lb.text = [NSString stringWithFormat:@"%.1fkg",item.fatWeight];
+    self.status2lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_FAT item:item];
+    
+    self.value3lb.text = [NSString stringWithFormat:@"%.1f",item.visceralFatPercentage];
+    self.status3lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_VISCERALFAT item:item];
+    self.value4lb.text = [NSString stringWithFormat:@"%.1fkg",item.muscleWeight];
+    self.status4lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_MUSCLE item:item];
+    
+    
+    self.value5lb.text = [NSString stringWithFormat:@"%.1fkg",item.proteinWeight];
+    self.status5lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_PROTEIN item:item];
+    
+    self.value6lb.text = [NSString stringWithFormat:@"%.1fkg",item.boneWeight];
+    self.status6lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_BONE item:item];
+    
+    self.value7lb.text = [NSString stringWithFormat:@"%.1f",item.bmi];
+    self.status7lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_BMI item:item];
+    self.value8lb.text = [NSString stringWithFormat:@"%.1fkg",item.boneMuscleWeight];
+    self.status8lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_BONEMUSCLE item:item];
+    
+    
+    self.value9lb.text = [NSString stringWithFormat:@"%.1fkg",item.waterWeight];
+    self.status9lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_WATER item:item];
+
         
-        self.value2lb.text = [NSString stringWithFormat:@"%.1fkg",item.fatWeight];
-        self.status2lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_FAT item:item];
         
-        self.value3lb.text = [NSString stringWithFormat:@"%.1f%%",item.fatPercentage];
-        self.status3lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_FATPERCENT item:item];
-        
-        
-        self.value4lb.text = [NSString stringWithFormat:@"%.1fkg",item.proteinWeight];
-        self.status4lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_PROTEIN item:item];
-        
-        self.value5lb.text = [NSString stringWithFormat:@"%.1fkg",item.boneWeight];
-        self.status5lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_BONE item:item];
-        
-        self.value6lb.text = [NSString stringWithFormat:@"%.1fkg",item.waterWeight];
-        self.status6lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_WATER item:item];
-        
-        
-        
-        self.value7lb.text = [NSString stringWithFormat:@"%.1fkg",item.muscleWeight];
-        self.status7lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_MUSCLE item:item];
-        
-        self.value8lb.text = [NSString stringWithFormat:@"%.1f",item.bmr];
-        self.status8lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_WATER item:item];
-        
-        self.value9lb.text = [NSString stringWithFormat:@"%.1f",item.visceralFatPercentage];
-        self.status9lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_VISCERALFAT item:item];
     
     self.status1lb.backgroundColor = [self getColorWithString:self.status1lb.text];
     self.status2lb.backgroundColor = [self getColorWithString:self.status2lb.text];
@@ -247,6 +224,63 @@
     self.status8lb.backgroundColor = [self getColorWithString:self.status8lb.text];
     self.status9lb.backgroundColor = [self getColorWithString:self.status9lb.text];
 
+    float fatWeightV =0.0;
+    float visceral = 0.0;
+    int sex = [UserModel shareInstance].gender;
+    if (sex ==1) {
+        fatWeightV = 20.0f;
+        visceral = 8;
+    }else{
+        visceral = 6;
+        fatWeightV = 22.0f;
+    }
+
+    
+    float target1 = item.standardWeight-item.weight;
+    float target2 = [item getFatPercentagePoorWithItem:item];
+    float target3 = [item getFatWeightPoorWithItem:item];
+    float target4 = visceral -item.visceralFatPercentage;
+    
+    if (target2>0) {
+        self.statusFatLabel.text = @"增脂";
+    }else if (target2<0)
+    {
+        self.statusFatLabel.text = @"减脂";
+    }else
+    {
+        self.statusFatLabel.text = @"";
+    }
+    
+    
+    
+    
+    self.target1label.text =[NSString stringWithFormat:@"%@%.1fkg",target1>0?@"+":@"",target1];
+    self.target2label.text =[NSString stringWithFormat:@"%@%.1f%%",target2>0?@"+":@"",target2];
+    self.target3label.text =[NSString stringWithFormat:@"%@%.1fkg",target3>0?@"+":@"",target3];
+    self.target4label.text =[NSString stringWithFormat:@"%@%.1f",target4>0?@"+":@"",target4];
+    
+    self.my1Label.text = [NSString stringWithFormat:@"%.1fkg",item.weight];
+    self.my2Label.text = [NSString stringWithFormat:@"%.1f%%",item.fatPercentage];
+    self.my3Label.text = [NSString stringWithFormat:@"%.1fkg",item.fatWeight];
+    self.my4Label.text = [NSString stringWithFormat:@"%.1f",item.visceralFatPercentage];
+    
+    self.my1Label.textColor = [[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_WEIGHT item:item];
+    self.my2Label.textColor = [[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_FATPERCENT item:item];
+    self.my3Label.textColor = [[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_FAT item:item];
+    self.my4Label.textColor = [[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_VISCERALFAT item:item];
+    
+    
+    self.value1Label.text =[NSString stringWithFormat:@"%.1fkg",item.standardWeight];
+    self.value2Label.text =[NSString stringWithFormat:@"%.1f%%",fatWeightV];
+    self.value3Label.text =[NSString stringWithFormat:@"%.1fkg",item.standardWeight *fatWeightV/100];
+    self.value4Label.text =[NSString stringWithFormat:@"%.1f",visceral];
+
+    
+    
+    
+    
+    
+    
 }
 
 

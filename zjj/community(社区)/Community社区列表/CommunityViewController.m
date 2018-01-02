@@ -22,6 +22,15 @@
 #import "BeforeAfterContrastCell.h"
 #import "EditUserInfoImageCell.h"
 #import "EditUserInfoViewController.h"
+#import "ReducedFatStarViewController.h"
+#import "NewMineModel.h"
+#import "NewMineFatLineCell.h"
+#import "NewMineFatInterCell.h"
+#import "ReducedFatWebViewController.h"
+#import "ADCarouselView.h"
+#import "BannerItem.h"
+
+
 #import "JbView.h"
 
 #import "Yd7View.h"
@@ -29,10 +38,13 @@
 #import "Yd9View.h"
 
 
-@interface CommunityViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,PublicArticleCellDelegate,BigImageArticleCellDelegate,ArticleDetailDelegate,NewMineHomePageHeaderCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface CommunityViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,PublicArticleCellDelegate,BigImageArticleCellDelegate,ArticleDetailDelegate,NewMineHomePageHeaderCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ADCarouselViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic,strong)NSMutableArray * dataArray;
 @property (nonatomic,strong)NSMutableDictionary * infoDict;
+@property (nonatomic,strong)NSMutableArray * reducedFatLineArray;
+@property (nonatomic,strong)NSMutableArray * reducedFatQuestionArray;
+
 /**CLplayer*/
 @property (nonatomic, weak) CLPlayerView *playerView;
 
@@ -92,12 +104,15 @@
     [self setSegmentStyle];
     
     self.infoDict = [NSMutableDictionary dictionary];
-    
+    self.reducedFatQuestionArray = [NSMutableArray array];
+    self.reducedFatLineArray = [NSMutableArray array];
+
     if (_isMyMessagePage !=YES) {
         
     }
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
+    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self setExtraCellLineHiddenWithTb:self.tableview];
     [self setRefrshWithTableView:self.tableview];
     pageSize= 30;
@@ -122,10 +137,68 @@
     
     [self.segment setTitleTextAttributes:dics forState:UIControlStateNormal];
     [self.segment setTitleTextAttributes:dic forState:UIControlStateSelected];
-    
-    
 
 }
+-(void)buildHeadViewWithIndex:(NSInteger)index
+{
+    if (index==1&&self.isMyMessagePage !=YES) {
+        UIView * headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_WIDTH*0.4+100)];
+        self.tableview.tableHeaderView = headView;
+        
+    
+        headView.backgroundColor =[UIColor whiteColor];
+
+        UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_WIDTH*0.4)];
+        imageView.image = getImage(@"reducedFatBanner_1_");
+        [headView addSubview:imageView];
+        
+        
+//        ADCarouselView *carouselView = [ADCarouselView carouselViewWithFrame:CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_WIDTH/3)];
+//        carouselView.loop = YES;
+//        carouselView.delegate = self;
+//        carouselView.automaticallyScrollDuration = 5;
+//
+//        carouselView.imgs = @[@"reducedFatBanner_1_"];
+//        carouselView.placeholderImage = [UIImage imageNamed:@"zhanweifu"];
+//        [headView addSubview:carouselView];
+
+        
+        
+        UIButton * leftBtn = [[UIButton alloc]initWithFrame:CGRectMake(JFA_SCREEN_WIDTH/4-25, JFA_SCREEN_WIDTH*0.4+20, 50, 50)];
+        [leftBtn setBackgroundImage:getImage(@"fatStar_left_") forState:UIControlStateNormal];
+        [leftBtn addTarget:self action:@selector(showReducedFatStarVc) forControlEvents:UIControlEventTouchUpInside];
+        [headView addSubview:leftBtn];
+        
+        UIButton * rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(JFA_SCREEN_WIDTH/4*3-25, JFA_SCREEN_WIDTH*0.4+20, 50, 50)];
+        [rightBtn setBackgroundImage:getImage(@"fatStar_right_") forState:UIControlStateNormal];
+        [rightBtn addTarget:self action:@selector(showReducedFatInfo) forControlEvents:UIControlEventTouchUpInside];
+
+        [headView addSubview:rightBtn];
+
+        
+        UILabel * leftLb = [[UILabel alloc]initWithFrame:CGRectMake(JFA_SCREEN_WIDTH/4-25, JFA_SCREEN_WIDTH*0.4+72, 50, 15)];
+        leftLb.text =  @"减脂明星";
+        leftLb.textColor = HEXCOLOR(0x666666);
+        leftLb.font  =[UIFont systemFontOfSize:13];
+        leftLb.textAlignment = NSTextAlignmentCenter;
+        leftLb.adjustsFontSizeToFitWidth = YES;
+        [headView addSubview:leftLb];
+        
+        UILabel * rightLb = [[UILabel alloc]initWithFrame:CGRectMake(JFA_SCREEN_WIDTH/4*3-25, JFA_SCREEN_WIDTH*0.4+72, 50, 15)];
+        rightLb.text =  @"健康知识";
+        rightLb.textColor = HEXCOLOR(0x666666);
+        rightLb.font  =[UIFont systemFontOfSize:13];
+        rightLb.textAlignment = NSTextAlignmentCenter;
+        rightLb.adjustsFontSizeToFitWidth = YES;
+        [headView addSubview:rightLb];
+    }else{
+        UIView * view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0.5, 0.5)];
+        self.tableview.tableHeaderView = view;
+    }
+}
+
+
+
 -(void)refreshTableView
 {
     [self.tableview.mj_header beginRefreshing];
@@ -209,9 +282,26 @@
             self.tableview.mj_footer.hidden=YES;
         }
         
+        [self buildHeadViewWithIndex:self.segment.selectedSegmentIndex];
+        
+        NSArray * coursesArr = [self.infoDict safeObjectForKey:@"courses"];
+        for (NSDictionary * infoDict in coursesArr) {
+            ReducedLineModel * model = [[ReducedLineModel alloc]init];
+            [model setInfoWithDict:infoDict];
+            [self.reducedFatLineArray addObject:model];
+        }
+        
+        NSArray * interviewsArr = [self.infoDict safeObjectForKey:@"interviews"];
+        for (NSDictionary * infoDict in interviewsArr) {
+            ReducedFatAskResultModel * model = [[ReducedFatAskResultModel alloc]init];
+            [model setInfoWithDict:infoDict];
+            [self.reducedFatQuestionArray addObject:model];
+        }
+        
+        
+        
+        NSString * isVip = [self.infoDict safeObjectForKey:@"isVip"];
 
-        
-        
         
         for (NSMutableDictionary * infoDic in infoArr) {
             CommunityModel * item = [[CommunityModel alloc]init];
@@ -228,6 +318,7 @@
             [_dataArray removeAllObjects];
             [self.tableview reloadData];
         }
+        [self buildHeadViewWithIndex:self.segment.selectedSegmentIndex];
     }];
 }
 
@@ -238,47 +329,173 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (self.segment.selectedSegmentIndex==0) {
-        return 4;
-    }
+        return 6;
+    }else{
     return 1;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.segment.selectedSegmentIndex==0) {
-        if (section ==0) {
-            return 1;
-        }
-        else if(section ==1)
+        if (section==3)
         {
-            return 1;
-        }
-        else if(section==2)
+            return self.reducedFatLineArray.count;
+        }else if(section ==4)
         {
-            return 1;
+            return self.reducedFatQuestionArray.count;
+        }
+        else if (section ==5)
+        {
+            return self.dataArray.count;;
         }
         else
         {
-            return self.dataArray.count;
-            
+            return 1;
         }
     }
+    else
+    {
     return _dataArray.count;
+    }
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (self.segment.selectedSegmentIndex ==0) {
+        if (section ==1) {
+            return 1;
+        }
+        else if(section ==2)
+        {
+            return 40;
+        }
+        else if (section ==3)
+        {
+            return _reducedFatLineArray.count>0?40:0.01;
+        }
+        else if (section ==4)
+        {
+            return  _reducedFatLineArray.count>0?40:0.01;
+            
+        }
+        else if (section ==5)
+        {
+            return 40;
+        }
+
+    }
+    return 1;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (_segment.selectedSegmentIndex==0) {
+        switch (section) {
+            case 0:
+                return 5;
+                break;
+            case 1:
+                return 9;
+                break;
+            case 2:
+                return 9;
+                break;
+            case 3:
+                return _reducedFatLineArray.count>0?10:0.01;
+                break;
+            case 4:
+                return _reducedFatLineArray.count>0?10:0.01;
+                break;
+            case 5:
+                return 0.01;
+                break;
+                
+            default:
+                return 0.01;
+                break;
+        }
+        return 0.01;
+    }
+    return 0.01;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (self.segment.selectedSegmentIndex ==0) {
+        UIView * view =[[UIView alloc]init];
+        view.backgroundColor = [UIColor whiteColor];
+        UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 200, 30)];
+        label.font = [UIFont systemFontOfSize:17];
+        label.textColor = HEXCOLOR(0x666666);
+        [view addSubview:label];
+        
+        switch (section) {
+            case 0:
+                label.text = @"";
+                break;
+            case 1:
+                view.backgroundColor = HEXCOLOR(0xeeeeee);
+                label.text = @"";
+                break;
+            case 2:
+                label.text = @"减脂前后";
+                break;
+            case 3:
+                label.text = _reducedFatLineArray.count>0?@"减脂历程":@"";
+                break;
+            case 4:
+                label.text = _reducedFatQuestionArray.count>0?@"减脂访谈":@"";
+                break;
+            case 5:
+                label.text = @"最新动态";
+                break;
+                
+            default:
+                break;
+        }
+        return view;
+
+    }
+    return nil;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (_segment.selectedSegmentIndex==0) {
+        UIView * view =[[UIView alloc]init];
+        view.backgroundColor =HEXCOLOR(0xeeeeee);
+        return view;
+    }else{
+        return nil;
+    }
+}
+
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     if (self.segment.selectedSegmentIndex==0) {
         if (indexPath.section ==0) {
-            return JFA_SCREEN_WIDTH*0.56;
+            return JFA_SCREEN_WIDTH/2+110;
         }
         else if(indexPath.section ==1)
         {
-            return 130;
+            return 180;
         }
         else if(indexPath.section==2)
         {
-            return 250;
+            return JFA_SCREEN_WIDTH*0.7;
+        }
+        else if(indexPath.section ==3)
+        {
+            ReducedLineModel * model = _reducedFatLineArray[indexPath.row];
+            return model.height>200?model.height:200;
+        }
+        else if(indexPath.section ==4)
+        {
+            ReducedFatAskResultModel * model = _reducedFatQuestionArray[indexPath.row];
+            return model.height;
         }
         else
         {
@@ -286,10 +503,14 @@
             float rowheight = item.rowHieght;
             return rowheight;
         }
-    }else{
+    }
+    else
+    {
     
-    CommunityModel * item =[self.dataArray objectAtIndex:indexPath.row];
-    
+        CommunityModel * item =self.dataArray.count>0?[self.dataArray objectAtIndex:indexPath.row]:nil;
+        if (!item) {
+            return 0;
+        }
     float rowheight = item.rowHieght;
     return rowheight;
     }
@@ -297,7 +518,8 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.segment.selectedSegmentIndex ==0) {
+    if (self.segment.selectedSegmentIndex ==0)
+    {
         if (indexPath.section ==0) {
             static NSString * identifier = @"NewMineHomePageCell";
             NewMineHomePageCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -305,36 +527,8 @@
                 cell = [self getXibCellWithTitle:identifier];
             }
             cell.delegate = self;
-            cell.headImageView.layer.cornerRadius = cell.headImageView.frame.size.height/2;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            [cell.headImageView sd_setBackgroundImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"headimgurl"]] forState:UIControlStateNormal placeholderImage:getImage(@"defaultHead")
-             ];
-            
-            
-            [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"backGroundImg"]] placeholderImage:getImage(@"newMineBg_") completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                if (error) {
-                    return ;
-                }
-                cell.bgImageView.image = [self cutImage:image imgViewWidth:image.size.width imgViewHeight:image.size.width*0.56];
-            }];
-            
-            cell.nicknamelb.text = [_infoDict safeObjectForKey:@"nickName"];
-            NSString * introduction = [_infoDict safeObjectForKey:@"introduction"];
-            if (introduction.length<1) {
-                cell.jjlb.text = @"还没有编辑简介~";
-            }else{
-                cell.jjlb.text = [NSString stringWithFormat:@"简介：%@",introduction];
-            }
-            int  sex = [UserModel shareInstance].gender;
-            if (sex ==1) {
-                cell.sexImageView.image = getImage(@"man_");
-                
-            }else{
-                cell.sexImageView.image =getImage(@"woman_");
-            }
-            
-            cell.gzBtn.hidden = YES;
-            
+            [cell setUpCellWithDict:_infoDict userId:[UserModel shareInstance].userId];
             return cell;
         }
         
@@ -346,19 +540,7 @@
                 cell = [self getXibCellWithTitle:identifier];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.beforeWeightlb.text = [NSString stringWithFormat:@"%.1fkg",[[_infoDict safeObjectForKey:@"beforeWeight"] floatValue]];
-            cell.afterweightlb.text = [NSString stringWithFormat:@"%.1fkg",[[_infoDict safeObjectForKey:@"afterWeight"] floatValue]];
-            cell.continuousDatelb.text = [NSString stringWithFormat:@"%@",[_infoDict safeObjectForKey:@"registerDate"]?[_infoDict safeObjectForKey:@"registerDate"]:@"0"];
-            
-            float lossWeight  = [[_infoDict safeObjectForKey:@"beforeWeight"]floatValue]-[[_infoDict safeObjectForKey:@"afterWeight"]floatValue];
-            
-            if (lossWeight>0) {
-                cell.afterweightlb.textColor = [UIColor greenColor];
-            }else{
-                cell.afterweightlb.textColor = [UIColor orangeColor];
-            }
-            cell.lossWeightlb.text = [NSString stringWithFormat:@"%.1f",lossWeight>0?lossWeight:0];
-            
+            [cell setUpCellWithDict:_infoDict];
             return cell;
         }
         else if(indexPath.section ==2)
@@ -369,14 +551,53 @@
                 cell = [self getXibCellWithTitle:identifier];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell setInfoWithDict:_infoDict];
+
             
-            [cell.fatBeforeImageView sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"fatBefore"]] placeholderImage:getImage(@"fatBefore_") options:SDWebImageRetryFailed];
-            [cell.fatAfterImageView sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"fatAfter"]] placeholderImage:getImage(@"fatAfter_") options:SDWebImageRetryFailed];
             return cell;
+            
+        }
+        else if(indexPath.section ==3)
+        {
+            
+            ReducedLineModel  * model = [_reducedFatLineArray objectAtIndex:indexPath.row];
+            
+            static NSString * identifier = @"NewMineFatLineCell";
+            NewMineFatLineCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (!cell) {
+                cell = [self getXibCellWithTitle:identifier];
+            }
+            
+            [cell setViewHidden:indexPath.row];
+            cell.model = model;
+            cell.tag = indexPath.row;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+            
+        }
+        else if(indexPath.section ==4)
+        {
+            ReducedFatAskResultModel  * model = [_reducedFatQuestionArray objectAtIndex:indexPath.row];
+            
+            
+            static NSString * identifier = @"NewMineFatInterCell";
+            NewMineFatInterCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (!cell) {
+                cell = [self getXibCellWithTitle:identifier];
+            }
+            
+            cell.model = model;
+            cell.tag = indexPath.row;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            [cell.img2 sd_setImageWithURL:[NSURL URLWithString:[self.infoDict safeObjectForKey:@"headimgurl"]] placeholderImage:getImage(@"head_default")];
+            return cell;
+            
         }
         else
         {
             CommunityModel * item =[self.dataArray objectAtIndex:indexPath.row];
+            
             
             if (item.pictures.count==1||item.movieStr.length>5) {
                 static  NSString * identifier = @"CommunityCell";
@@ -388,11 +609,11 @@
                 cell.tag = indexPath.row;
                 [cell setInfoWithDict:item];
                 
-                if ([item.userId isEqualToString:[UserModel shareInstance].userId]) {
-                    cell.gzBtn.hidden = YES;
-                }else{
-                    cell.gzBtn.hidden = NO;
-                }
+                ////            if ([item.userId isEqualToString:[UserModel shareInstance].userId]) {
+                //                cell.gzBtn.hidden = YES;
+                //            }else{
+                cell.gzBtn.hidden = YES;
+                //            }
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 return cell;
                 
@@ -407,21 +628,22 @@
                 [cell setInfoWithDict:item];
                 [cell loadImagesWithItem:item];
                 
-                if ([item.userId isEqualToString:[UserModel shareInstance].userId]) {
-                    cell.gzBtn.hidden = YES;
-                }else{
-                    cell.gzBtn.hidden = NO;
-                }
+                //            if ([item.userId isEqualToString:[UserModel shareInstance].userId]) {
+                cell.gzBtn.hidden = YES;
+                //            }else{
+                //                cell.gzBtn.hidden = NO;
+                //            }
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 return cell;
                 
             }
+            
         }
+
     }
     else{
-    
-    CommunityModel * item =[self.dataArray objectAtIndex:indexPath.row];
-    
+        
+        CommunityModel * item =self.dataArray.count<1?nil:[self.dataArray objectAtIndex:indexPath.row];
     
     if (item.pictures.count==1||item.movieStr.length>5) {
         static  NSString * identifier = @"CommunityCell";
@@ -509,7 +731,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (self.segment.selectedSegmentIndex ==0) {
-        if(indexPath.section ==3){
+        if(indexPath.section ==5){
             CommunityModel * model = [_dataArray objectAtIndex:indexPath.row];
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             ArticleDetailViewController * ard =[[ArticleDetailViewController alloc]init];
@@ -530,6 +752,41 @@
 
 
 #pragma mark ---cell delegate
+-(void)didPlayVideoWithCell:(NewMineHomePageCell*)cell
+{
+    //销毁播放器
+    [_playerView destroyPlayer];
+    CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, (JFA_SCREEN_WIDTH), JFA_SCREEN_WIDTH*0.6)];
+    _playerView = playerView;
+    [cell.bgImageView addSubview:_playerView];
+    [cell.bgImageView bringSubviewToFront:_playerView];
+    //    _playerView.fillMode = ResizeAspectFill;
+    
+    //视频地址
+    _playerView.url = [NSURL URLWithString:[self.infoDict safeObjectForKey:@"videoPath"]];
+    //播放
+    [_playerView playVideo];
+    //返回按钮点击事件回调
+    [_playerView backButton:^(UIButton *button) {
+        NSLog(@"返回按钮被点击");
+        [_playerView destroyPlayer];
+        cell.videoPlayBtn.hidden =NO;
+        _playerView = nil;
+        PlayingCell = nil;
+        
+    }];
+    //播放完成回调
+    [_playerView endPlay:^{
+        //销毁播放器
+        [_playerView destroyPlayer];
+        cell.videoPlayBtn.hidden =NO;
+        _playerView = nil;
+        PlayingCell = nil;
+        
+        NSLog(@"播放完成");
+    }];
+    
+}
 
 -(void)didGzWithCell:(PublicArticleCell*)cell
 {
@@ -602,7 +859,7 @@
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     [params safeSetObject:@"" forKey:@"commentId"];
     [params safeSetObject:model.uid forKey:@"articleId"];
-    if (model.isFabulous) {
+    if (model.isFabulous&&[model.isFabulous isEqualToString:@"1"]) {
         [params safeSetObject:@"0" forKey:@"isFabulous"];//1是点赞 0取消
     }else{
         [params safeSetObject:@"1" forKey:@"isFabulous"];//1是点赞 0取消
@@ -612,10 +869,8 @@
     self.currentTasks = [[BaseSservice sharedManager]post1:@"app/userGreat/updateIsFabulous.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
         if (model.isFabulous&&[model.isFabulous isEqualToString:@"1"]) {
             [[UserModel shareInstance]showSuccessWithStatus:@"取消点赞成功"];
-            
         }else{
             [[UserModel shareInstance]showSuccessWithStatus:@"点赞成功"];
-            
         }
         [self refreshZanInfoWithCell:cell];
     } failure:^(NSError *error) {
@@ -682,7 +937,7 @@
     PlayingCell = cell;
     //销毁播放器
     [_playerView destroyPlayer];
-    CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, (JFA_SCREEN_WIDTH-40), (JFA_SCREEN_WIDTH-40)*0.6)];
+    CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, (JFA_SCREEN_WIDTH-20), (JFA_SCREEN_WIDTH-20)*0.6)];
     _playerView = playerView;
     [cell.playerBgView addSubview:_playerView];
     [cell.playerBgView bringSubviewToFront:_playerView];
@@ -786,7 +1041,7 @@
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     [params safeSetObject:@"" forKey:@"commentId"];
     [params safeSetObject:model.uid forKey:@"articleId"];
-    if (model.isFabulous) {
+    if (model.isFabulous&&[model.isFabulous isEqualToString:@"1"]) {
         [params safeSetObject:@"0" forKey:@"isFabulous"];//1是点赞 0取消
     }else{
         [params safeSetObject:@"1" forKey:@"isFabulous"];//1是点赞 0取消
@@ -884,9 +1139,6 @@
     //reportContent //举报原因
 
     CommunityModel * model = [_dataArray objectAtIndex:index];
-    
-
-    
     
     if ([model.userId isEqualToString:[UserModel shareInstance].userId]) {
 
@@ -1216,8 +1468,8 @@
 
 - (IBAction)didClickSegment:(UISegmentedControl *)sender {
     
-    jbv.hidden = YES;
-    [jbv removeFromSuperview];
+//    jbv.hidden = YES;
+//    [jbv removeFromSuperview];
     [self.tableview.mj_header beginRefreshing];
 }
 
@@ -1274,12 +1526,25 @@
         newSize.width = image.size.height * width / height;
         
         imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(fabs(image.size.width - newSize.width) / 2, 0, newSize.width, newSize.height));
-        
     }
-    
     return [UIImage imageWithCGImage:imageRef];
-    
 }
+
+-(void)showReducedFatStarVc
+{
+    ReducedFatStarViewController * reduceFat =[[ReducedFatStarViewController alloc]init];
+    reduceFat.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:reduceFat animated:YES];
+}
+-(void)showReducedFatInfo
+{
+    ReducedFatWebViewController * school = [[ReducedFatWebViewController alloc]init];
+    school.urlStr = [NSString stringWithFormat:@"%@%@",kMyBaseUrl,@"app/fatTeacher/health.html"];
+    school.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:school animated:YES];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

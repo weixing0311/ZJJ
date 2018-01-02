@@ -115,6 +115,11 @@
     cell.nicknamelb.text = model.nickname;
     cell.secondLb.text = model.introduction;
     cell.gzbtn.hidden = YES;
+    if ([model.vip isEqualToString:@"1"]) {
+        cell.vipImg.hidden = NO;
+    }else{
+        cell.vipImg.hidden = YES;
+    }
     return cell;
 }
 

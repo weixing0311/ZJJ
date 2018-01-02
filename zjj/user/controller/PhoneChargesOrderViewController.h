@@ -10,4 +10,5 @@
 
 @interface PhoneChargesOrderViewController : JFABaseTableViewController
 @property (nonatomic,strong)NSDictionary * infoDict;
+@property (nonatomic,copy) NSString * orderNo;
 @end

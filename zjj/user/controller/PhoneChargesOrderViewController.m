@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *orderNolb;
 @property (weak, nonatomic) IBOutlet UILabel *statuslb;
 @property (weak, nonatomic) IBOutlet UILabel *phonenumlb;
-@property (weak, nonatomic) IBOutlet UILabel *addresslb;
 @property (weak, nonatomic) IBOutlet UILabel *pricelb;
 @property (weak, nonatomic) IBOutlet UIButton *kfBtn;
 
@@ -39,37 +38,50 @@
     // Do any additional setup after loading the view from its nib.
     self.kfBtn.layer.borderWidth= 1;
     self.kfBtn.layer.borderColor = HEXCOLOR(0xeeeeee).CGColor;
-
+    
+    
+    [self getlistInfo_IS_CONSUMERS];
 }
-
-
--(void)setViewInfo
+-(void)getlistInfo_IS_CONSUMERS
 {
-    int status = [[self.infoDict objectForKey:@"status"]intValue];
-    if (status ==0) {
-        self.statuslb.text = @"已取消";
-        self.statuslb.textColor =HEXCOLOR(0x666666);
-    }else if (status ==10)
-    {
-        self.statuslb .text= @"已完成";
-        self.statuslb.textColor =HEXCOLOR(0x666666);
+    NSMutableDictionary * param =[NSMutableDictionary dictionary];
+    [param safeSetObject:[self.infoDict safeObjectForKey:@"orderNo"] forKey:@"orderNo"];
+    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/integral/orderInfo/queryIntegrationOrderItem.do" HiddenProgress:NO paramters:param success:^(NSDictionary *dic) {
+        DLog(@"dic");
+        _infoDict = [[dic safeObjectForKey:@"data"]safeObjectForKey:@"array"][0];
         
-    }else if(status ==1){
-        self.statuslb .text = @"待付款";
-        self.statuslb.textColor =[UIColor redColor];
+        int status = [[self.infoDict objectForKey:@"status"]intValue];
+        if (status ==0) {
+            self.statuslb.text = @"已取消";
+            self.statuslb.textColor =HEXCOLOR(0x666666);
+        }else if (status ==10)
+        {
+            self.statuslb .text= @"已完成";
+            self.statuslb.textColor =HEXCOLOR(0x666666);
+            
+        }else if(status ==1){
+            self.statuslb .text = @"待付款";
+            self.statuslb.textColor =[UIColor redColor];
+        }
+        else if (status ==3)
+        {
+            self.statuslb .text = @"待充值";
+            self.statuslb.textColor =[UIColor redColor];
+            
+        }
         
-    }
-    else if (status ==3)
-    {
-        self.statuslb .text = @"待收货";
-        self.statuslb.textColor =[UIColor redColor];
+        NSDictionary * itemDict =[_infoDict safeObjectForKey:@"itemJson"][0];
+        self.orderNolb.text = [self.infoDict safeObjectForKey:@"orderNo"];
+        self.phonenumlb.text = [self.infoDict safeObjectForKey:@"consigneePhone"];
+        self.pricelb.text = [itemDict safeObjectForKey:@"productName"];
         
-    }
-    NSDictionary * dic =[_infoDict safeObjectForKey:@"itemJson"];
-    self.orderNolb.text = [self.infoDict safeObjectForKey:@"orderNo"];
-    self.phonenumlb.text = [self.infoDict safeObjectForKey:@""];
-    self.pricelb.text = [dic safeObjectForKey:@"productName"];
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
 }
+
 
 - (IBAction)didClickcallKf:(id)sender {
     KfViewController *kv = [[KfViewController alloc]init];

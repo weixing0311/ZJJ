@@ -90,7 +90,7 @@
     [param safeSetObject:dateStr forKey:@"nowDate"];
     [param safeSetObject:[UserModel shareInstance].subId forKey:@"subUserId"];
     
-    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/evaluatData/queryEvaluatOneDay.do" HiddenProgress:NO paramters:param success:^(NSDictionary *dic) {
+    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/evaluatData/queryEvaluatOneDay.do" HiddenProgress:YES paramters:param success:^(NSDictionary *dic) {
         DLog(@"%@",dic);
         _infoDict = [dic safeObjectForKey:@"data"];
         _dataArray = [NSMutableArray arrayWithArray:[_infoDict safeObjectForKey:@"array"]];

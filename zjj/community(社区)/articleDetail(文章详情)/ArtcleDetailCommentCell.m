@@ -14,6 +14,11 @@
     [super awakeFromNib];
     // Initialization code
 }
+- (IBAction)enterUserPage:(id)sender {
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(enterUserPageWithCell:)]) {
+        [self.delegate enterUserPageWithCell:self];
+    }
+}
 
 - (IBAction)didClickHeadImg:(id)sender {
 }

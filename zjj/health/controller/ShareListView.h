@@ -21,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet UITableView * tableView;
 @property (weak, nonatomic) IBOutlet UIImageView * qrCodeImageView;
 @property (weak, nonatomic) IBOutlet UIImageView * headImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *sexImg;
+
+
+
 @property (nonatomic,strong) NSMutableArray * dataArray;
 @property (nonatomic,strong) NSMutableArray * infoArray;
 -(void)setInfoWithArr:(NSMutableArray *) arr;

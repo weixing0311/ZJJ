@@ -11,6 +11,7 @@
 @protocol UserListCellGZDelegate;
 @interface UserListCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *vipImg;
 @property (weak, nonatomic) IBOutlet UILabel *nicknamelb;
 @property (weak, nonatomic) IBOutlet UIImageView *headerimageView;
 @property (weak, nonatomic) IBOutlet UIButton *gzbtn;

@@ -35,22 +35,23 @@ static CommunityModel * imageModel;
     NSString * contentStr = [[dict safeObjectForKey:@"content"] stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     
-    self.content = [NSString stringWithFormat:@"%@",contentStr];
-    self.userId = [NSString stringWithFormat:@"%@",[dict safeObjectForKey:@"userId"]];
-    self.uid = [NSString stringWithFormat:@"%@",[dict safeObjectForKey:@"id"]];
-    self.title = [NSString stringWithFormat:@"%@",[dict safeObjectForKey:@"nickName"]];
-    self.movieStr = [dict safeObjectForKey:@"videoPath"];
+    self.content       = [NSString stringWithFormat:@"%@",contentStr];
+    self.userId        = [NSString stringWithFormat:@"%@",[dict safeObjectForKey:@"userId"]];
+    self.uid           = [NSString stringWithFormat:@"%@",[dict safeObjectForKey:@"id"]];
+    self.title         = [NSString stringWithFormat:@"%@",[dict safeObjectForKey:@"nickName"]];
+    self.movieStr      = [dict safeObjectForKey:@"videoPath"];
     self.movieImageStr = [dict safeObjectForKey:@"videoImg"];
-    self.isRelease = [NSString stringWithFormat:@"%@",[dict safeObjectForKey:@"isRelease"]];
-    self.shareNum = [NSString stringWithFormat:@"%@",[dict safeObjectForKey:@"shareNum"]];
-    self.isFollow  =[dict safeObjectForKey:@"isFollow"];
-    self.greatnum = [dict safeObjectForKey:@"greatnum"];
+    self.isRelease     = [NSString stringWithFormat:@"%@",[dict safeObjectForKey:@"isRelease"]];
+    self.shareNum      = [NSString stringWithFormat:@"%@",[dict safeObjectForKey:@"shareNum"]];
+    self.isFollow      =[dict safeObjectForKey:@"isFollow"];
+    self.greatnum      = [dict safeObjectForKey:@"greatnum"];
     self.forwardingnum = [dict safeObjectForKey:@"forwardingnum"];
-    self.commentnum = [dict safeObjectForKey:@"commentnum"];
-    self.isFabulous = [dict safeObjectForKey:@"isFabulous"];
-    self.level      = [dict safeObjectForKey:@"gradeId"];
-    self.topNum     = [dict safeObjectForKey:@"topNum"];
-    self.location   = [dict safeObjectForKey:@"location"];
+    self.commentnum    = [dict safeObjectForKey:@"commentnum"];
+    self.isFabulous    = [dict safeObjectForKey:@"isFabulous"];
+    self.level         = [dict safeObjectForKey:@"gradeId"];
+    self.topNum        = [dict safeObjectForKey:@"topNum"];
+    self.location      = [dict safeObjectForKey:@"location"];
+    self.vip           = [dict safeObjectForKey:@"isVip"];
     [self setInPictureWithDict:dict];
 
     self.rowHieght = [self CalculateCellHieghtWithContent:contentStr images:self.pictures];
@@ -87,7 +88,7 @@ static CommunityModel * imageModel;
     
     CGSize size;
     if (contentStr.length>0) {
-        size = [contentStr boundingRectWithSize:CGSizeMake(JFA_SCREEN_WIDTH-40, 500) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
+        size = [contentStr boundingRectWithSize:CGSizeMake(JFA_SCREEN_WIDTH-20, 500) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
     }else{
         size = CGSizeMake(0, 0);
     }
@@ -95,7 +96,7 @@ static CommunityModel * imageModel;
     float imageHeight = 0.0f;
     
     if (self.movieStr.length>5) {
-        imageHeight = (JFA_SCREEN_WIDTH-40)*0.6;
+        imageHeight = (JFA_SCREEN_WIDTH-20)*0.6;
     }
     else
     {
@@ -105,7 +106,7 @@ static CommunityModel * imageModel;
         }
         else if (images.count==1)
         {
-            imageHeight = (JFA_SCREEN_WIDTH-40)*0.6;
+            imageHeight = (JFA_SCREEN_WIDTH-20)*0.6;
         }
         else if (images.count>1&& images.count<=3)
         {

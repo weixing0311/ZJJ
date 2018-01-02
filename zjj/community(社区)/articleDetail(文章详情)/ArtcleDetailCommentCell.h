@@ -11,6 +11,8 @@
 
 @interface ArtcleDetailCommentCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *headImgBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *vipImg;
+
 @property (weak, nonatomic) IBOutlet UILabel *nicknamelb;
 @property (weak, nonatomic) IBOutlet UILabel *contentlb;
 @property (weak, nonatomic) IBOutlet UILabel *timelb;
@@ -26,4 +28,5 @@
 @end
 @protocol ArtcleDetailCommentDelegate <NSObject>
 -(void)didZanCommentWithCell:(ArtcleDetailCommentCell*)cell;
+-(void)enterUserPageWithCell:(ArtcleDetailCommentCell*)cell;
 @end

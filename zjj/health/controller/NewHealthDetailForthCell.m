@@ -20,20 +20,21 @@
     float visceral = 0.0;
     int sex = [UserModel shareInstance].gender;
     if (sex ==1) {
-        fatWeightV = 22.0f;
+        fatWeightV = 20.0f;
         visceral = 8;
     }else{
         visceral = 6;
-        fatWeightV = 24.0f;
+        fatWeightV = 22.0f;
     }
     
 
+    
+    
+    
+    
     float target1 = item.standardWeight-item.weight;
-
-    float target2 = fatWeightV-item.fatPercentage;
-
-    float target3 = (fatWeightV*item.standardWeight-item.fatPercentage*item.weight)/100;
-
+    float target2 = [item getFatPercentagePoorWithItem:item];
+    float target3 = [item getFatWeightPoorWithItem:item];
     float target4 = visceral -item.visceralFatPercentage;
     
     if (target2>0) {

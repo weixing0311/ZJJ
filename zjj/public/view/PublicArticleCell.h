@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 ///头像
 @property (weak, nonatomic) IBOutlet UIButton *headImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *vipImg;
+
+
 ///昵称
 @property (weak, nonatomic) IBOutlet UILabel *titleIb;
 ///发表时间

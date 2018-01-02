@@ -99,6 +99,11 @@
 @property (nonatomic,copy  ) NSString * grade;//体脂师等级
 
 /**
+ *   体脂师等级 图片
+ */
+@property (nonatomic,copy  ) NSString * gradeImg;//
+
+/**
  *  是否实名认证
  */
 @property (nonatomic,copy  ) NSString * isAttest;//是否认证

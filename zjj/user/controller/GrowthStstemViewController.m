@@ -25,14 +25,14 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.title = @"成长体系";
-    [self setTBRedColor];
+    self.title = @"成长积分";
+    [self setTBWhiteColor];
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem * rightitem =[[UIBarButtonItem alloc]initWithImage:getImage(@"Prompt.png") style:UIBarButtonItemStylePlain target:self action:@selector(enterRightPage)];
+    UIBarButtonItem * rightitem =[[UIBarButtonItem alloc]initWithImage:getImage(@"Prompt_") style:UIBarButtonItemStylePlain target:self action:@selector(enterRightPage)];
     self.navigationItem.rightBarButtonItem = rightitem;
     
     
@@ -68,7 +68,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section ==0) {
-        return 290 ;
+        return JFA_SCREEN_WIDTH*0.55<200?200:JFA_SCREEN_WIDTH*0.55 ;
     }else{
     return 60;
     }
@@ -93,10 +93,14 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section ==0) {
-        return 0;
+        return 0.01;
     }else{
-        return 45;
+        return 30;
     }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.01;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -123,17 +127,29 @@
             }
         }
         NSDictionary * currDic ;
+        NSDictionary * nextDict;
         DLog(@"bigArr--%@",bigArr);
         if (bigArr.count==0) {
             currDic = [arr lastObject];
+            nextDict = nil;
         }
         else if (bigArr.count ==arr.count) {
             currDic = bigArr[0];
+            nextDict = bigArr[1];
         }
         else{
             currDic = bigArr[0];
+            nextDict = bigArr[1];
         }
-        cell.levellb.text = [currDic objectForKey:@"gradeName"];;
+        cell.levellb.text = [currDic objectForKey:@"gradeName"];
+        cell.level1lb.text = [currDic objectForKey:@"gradeName"];
+        cell.level2lb.text = [nextDict objectForKey:@"gradeName"];
+        cell.lessIntrgrallb.text =[NSString stringWithFormat:@"距离下个等级还需%d积分",[[currDic objectForKey:@"integral"]intValue]-countIntegral];
+        double progress = countIntegral/[[currDic objectForKey:@"integral"]doubleValue];;
+        if (progress>0) {
+            cell.progressView.frame = CGRectMake(0, 0, (JFA_SCREEN_WIDTH-100)*progress, 5);
+            cell.progressImg.frame = CGRectMake(20+cell.progressView.frame.size.width-5, 5, 10, 10);
+        }
         
         //判断是否签到
         

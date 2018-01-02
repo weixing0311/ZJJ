@@ -39,6 +39,14 @@
     [self.didRodeImageView .layer removeAllAnimations];
     [[WWXBlueToothManager shareInstance]stop];
 }
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.currItem = [[HealthItem alloc]init];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     angle =1;
@@ -109,6 +117,20 @@
     } success:^(NSDictionary *dic) {
 //        self.statuslb.text = @"测量成功！开始上传...";
 
+        float nowWeight = [[dic safeObjectForKey:@"mWeight"]floatValue];
+        float firstWeight = self.currItem.weight;
+        float  nowWaterWeight = [[dic safeObjectForKey:@"mWater"]floatValue]/100*nowWeight;
+        float  firstWaterWeight = self.currItem.waterWeight;
+
+        if (fabsf(nowWaterWeight-firstWaterWeight)>1.5) {
+            [self showWaterErrorAlertWithDict:dic];
+            return;
+        }
+        if (fabsf(nowWeight-firstWeight)>5) {
+            [self showWeightErrorAlertWithDict:dic];
+            return;
+        }
+        
         [[HealthModel shareInstance]setLogInUpLoadString:@"上传成功"];
         [[HealthModel shareInstance]UpdateBlueToothInfo];
         
@@ -152,7 +174,6 @@
         self.statuslb.text = @"上传成功！";
         NSDictionary * dataDict= [dic safeObjectForKey:@"data"];
         
-        
         if (self.delegate &&[self.delegate respondsToSelector:@selector(weightingSuccessWithSubtractMaxWeight:dataId:shareDict:)]) {
             [self.delegate weightingSuccessWithSubtractMaxWeight:[dataDict safeObjectForKey:@"subtractMaxWeight"]dataId:[dataDict safeObjectForKey:@"DataId"]shareDict:dataDict];
         }
@@ -162,6 +183,10 @@
         
     } failure:^(NSError *error) {
         [[UserModel shareInstance] showErrorWithStatus:@"上传失败"];
+        self.measurementView.hidden = YES;
+        self.errorLabel.text = @"上传数据失败，请检查网络后重新体测";
+        self.WeighterrorView.hidden =NO;
+
         DLog(@"url-app/evaluatData/addEvaluatData.do  dic--%@",error);
         
     }];
@@ -176,6 +201,48 @@
 
     [self didUpdateinfo];
 }
+
+#pragma mark ---显示各种弹窗
+
+-(void)showWaterErrorAlertWithDict:(NSDictionary *)dict
+{
+    NSString * info = @"系统检测到您本次测量状况异常，请检查您的测量状态，按照正确的方法使用体脂秤。（体脂秤使用过程中忌穿鞋袜，请将体脂秤放在坚硬平整的地面上，周边不可有除手机外的电子产品。）";
+    UIAlertController * lr = [UIAlertController alertControllerWithTitle:@"" message:info preferredStyle:UIAlertControllerStyleAlert];
+    [lr addAction:[UIAlertAction actionWithTitle:@"这是真实数据" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self updataInfoWithDict:dict];
+            
+        }]];
+    [lr addAction:[UIAlertAction actionWithTitle:@"重新体测" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[WWXBlueToothManager shareInstance]stop];
+        self.measurementView.hidden = YES;
+        self.errorLabel.text = @"请重新体测";
+        self.WeighterrorView.hidden =NO;
+        
+    }]];
+    
+    [self presentViewController:lr animated:YES completion:nil];
+    
+}
+
+-(void)showWeightErrorAlertWithDict:(NSDictionary *)dict
+{
+    NSString * info = [NSString stringWithFormat:@"您的体重为%.1f斤，与上次测量相差过大，如果不是本人请添加子用户，设置符合自身条件的数据进行测量，如果是您本人请继续使用。",[[dict objectForKey:@"weight"]floatValue]];
+    NSString * title = [NSString stringWithFormat:@"您是%@本人吗？",[UserModel shareInstance].nickName];
+    UIAlertController * lr = [UIAlertController alertControllerWithTitle:title message:info preferredStyle:UIAlertControllerStyleAlert];
+    [lr addAction:[UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+        [self updataInfoWithDict:dict];
+
+    }]];
+    [lr addAction:[UIAlertAction actionWithTitle:@"去添加" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[WWXBlueToothManager shareInstance]stop];
+        [self dismissViewControllerAnimated:self completion:nil];
+    }]];
+    
+    [self presentViewController:lr animated:YES completion:nil];
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

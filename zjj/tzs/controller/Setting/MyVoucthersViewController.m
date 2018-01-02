@@ -140,8 +140,9 @@
     [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
     [params safeSetObject:self.productArr forKey:@"productArr"];
     
+    [SVProgressHUD showWithStatus:@"加载中..."];
     self.currentTasks = [[BaseSservice sharedManager]post1:@"app/coupon/queryMyCouponByProduct.do" HiddenProgress:YES paramters:params success:^(NSDictionary *dic) {
-        
+        [SVProgressHUD dismiss];
         NSMutableArray * dataArr =[[dic objectForKey:@"data"]objectForKey:@"array"];
         [dataArr enumerateObjectsUsingBlock:^(id key, NSUInteger value, BOOL *stop) {
             NSDictionary * dict = key;
@@ -172,6 +173,7 @@
         }
         [_tableview reloadData];
     } failure:^(NSError *error) {
+        [SVProgressHUD dismiss];
         [self showEmptyViewWithTitle:@"暂无优惠券"];
         [_tableview reloadData];
     }];

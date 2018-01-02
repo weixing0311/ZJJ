@@ -47,7 +47,8 @@
 		6C1B2BDE1EECED3A0092AAF0 /* JFANetWorkServiceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B2BDD1EECED3A0092AAF0 /* JFANetWorkServiceItem.m */; };
 		6C1B2BEC1EED25F00092AAF0 /* LoignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B2BEA1EED25F00092AAF0 /* LoignViewController.m */; };
 		6C1B2BED1EED25F00092AAF0 /* LoignViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C1B2BEB1EED25F00092AAF0 /* LoignViewController.xib */; };
-		6C1B2BFE1EED4FBF0092AAF0 /* HealthMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B2BFC1EED4FBF0092AAF0 /* HealthMainCell.m */; };
+		6C1C80581FE364D3005CCD16 /* ReducedFatWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1C80561FE364D3005CCD16 /* ReducedFatWebViewController.m */; };
+		6C1C80591FE364D3005CCD16 /* ReducedFatWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C1C80571FE364D3005CCD16 /* ReducedFatWebViewController.xib */; };
 		6C1DBD751F6634BD00F5B975 /* LoadedImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1DBD741F6634BD00F5B975 /* LoadedImageModel.m */; };
 		6C1DBD791F666B9900F5B975 /* AddressList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C1DBD781F666B9900F5B975 /* AddressList.plist */; };
 		6C1DBD861F67AF1D00F5B975 /* SuperiorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1DBD841F67AF1D00F5B975 /* SuperiorViewController.m */; };
@@ -361,6 +362,11 @@
 		6C8F54E41F12065200C7A275 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6C8F54AB1F12065200C7A275 /* README.txt */; };
 		6C8F54E61F12065200C7A275 /* ShareSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6C8F54B41F12065200C7A275 /* ShareSDK.bundle */; };
 		6C8F54E71F12065200C7A275 /* ShareSDKConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C8F54B51F12065200C7A275 /* ShareSDKConnector.framework */; };
+		6C934DE81FD915DF00D375AC /* ReducedFatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C934DE71FD915DF00D375AC /* ReducedFatModel.m */; };
+		6C934DEF1FD930BA00D375AC /* NewMineFatStarHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C934DED1FD930BA00D375AC /* NewMineFatStarHeadCell.m */; };
+		6C934DF01FD930BA00D375AC /* NewMineFatStarHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C934DEE1FD930BA00D375AC /* NewMineFatStarHeadCell.xib */; };
+		6C934DF31FD935EA00D375AC /* reducedFatInterviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C934DF21FD935EA00D375AC /* reducedFatInterviewTableViewCell.m */; };
+		6C934DF61FD9380400D375AC /* ReducedFatLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C934DF51FD9380400D375AC /* ReducedFatLineCell.m */; };
 		6C9980EF1F9EDCEC00FC57E8 /* WriteArtcleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9980EE1F9EDCEC00FC57E8 /* WriteArtcleViewController.m */; };
 		6C9980F31F9EDD4200FC57E8 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9980F11F9EDD4200FC57E8 /* TZTestCell.m */; };
 		6C9980F41F9EDD4200FC57E8 /* TZTestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C9980F21F9EDD4200FC57E8 /* TZTestCell.xib */; };
@@ -378,6 +384,12 @@
 		6CA024C81F19DBA100F54DF3 /* YMSocketUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA024C71F19DBA100F54DF3 /* YMSocketUtils.m */; };
 		6CA9C8391F78B49300E0941B /* IntegralOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA9C8371F78B49300E0941B /* IntegralOrderDetailViewController.m */; };
 		6CA9C83A1F78B49300E0941B /* IntegralOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CA9C8381F78B49300E0941B /* IntegralOrderDetailViewController.xib */; };
+		6CAC56371FD77FE000D47E04 /* HealthMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CAC56351FD77FE000D47E04 /* HealthMainCell.m */; };
+		6CAC56381FD77FE000D47E04 /* HealthMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CAC56361FD77FE000D47E04 /* HealthMainCell.xib */; };
+		6CAC563B1FD7839E00D47E04 /* ColorCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CAC56391FD7839C00D47E04 /* ColorCircleView.m */; };
+		6CAC56631FD7BA9C00D47E04 /* QQView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CAC56611FD7BA9B00D47E04 /* QQView.m */; };
+		6CAC56681FD90E5C00D47E04 /* ReducedFatStarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CAC56671FD90E5C00D47E04 /* ReducedFatStarViewController.m */; };
+		6CAC566B1FD90F4500D47E04 /* ReducedFatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CAC566A1FD90F4500D47E04 /* ReducedFatCell.m */; };
 		6CB7508C1F73942E007BAE04 /* NewMineHomePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB7508A1F73942E007BAE04 /* NewMineHomePageCell.m */; };
 		6CB7508D1F73942E007BAE04 /* NewMineHomePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB7508B1F73942E007BAE04 /* NewMineHomePageCell.xib */; };
 		6CB750921F749AC5007BAE04 /* CommunityShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB750901F749AC5007BAE04 /* CommunityShareViewController.m */; };
@@ -487,6 +499,11 @@
 		6CD19FAD1F74FB4700DF1289 /* GuanZViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD19FAB1F74FB4700DF1289 /* GuanZViewController.xib */; };
 		6CD19FB11F74FCB100DF1289 /* UserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD19FAF1F74FCB100DF1289 /* UserListCell.m */; };
 		6CD19FB21F74FCB100DF1289 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD19FB01F74FCB100DF1289 /* UserListCell.xib */; };
+		6CD5F1131FDA20A300C8C31E /* NewMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD5F1121FDA20A300C8C31E /* NewMineModel.m */; };
+		6CD5F1171FDA635E00C8C31E /* NewMineFatInterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD5F1151FDA635E00C8C31E /* NewMineFatInterCell.m */; };
+		6CD5F1181FDA635E00C8C31E /* NewMineFatInterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD5F1161FDA635E00C8C31E /* NewMineFatInterCell.xib */; };
+		6CD5F11C1FDA64E300C8C31E /* NewMineFatLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD5F11A1FDA64E300C8C31E /* NewMineFatLineCell.m */; };
+		6CD5F11D1FDA64E300C8C31E /* NewMineFatLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD5F11B1FDA64E300C8C31E /* NewMineFatLineCell.xib */; };
 		6CD92FCF1F0A223200D7989E /* UserCellCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD92FCD1F0A223200D7989E /* UserCellCell.m */; };
 		6CD92FD01F0A223200D7989E /* UserCellCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD92FCE1F0A223200D7989E /* UserCellCell.xib */; };
 		6CD92FD31F0A286500D7989E /* UserListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD92FD21F0A286500D7989E /* UserListView.m */; };
@@ -525,7 +542,6 @@
 		6CDE37F21EF0E935001F10DE /* HealthDetailNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE37F11EF0E935001F10DE /* HealthDetailNormalCell.m */; };
 		6CDE37F51EF0E941001F10DE /* HealthDetailSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE37F41EF0E941001F10DE /* HealthDetailSliderCell.m */; };
 		6CDE37F81EF0E94D001F10DE /* EvaluationDetailScroeDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE37F71EF0E94D001F10DE /* EvaluationDetailScroeDescriptionCell.m */; };
-		6CDE37FA1EF10FCF001F10DE /* HealthMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CDE37F91EF10FCF001F10DE /* HealthMainCell.xib */; };
 		6CDE37FD1EF113EE001F10DE /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE37FC1EF113EE001F10DE /* CustomLabel.m */; };
 		6CDE37FF1EF117B1001F10DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDE37FE1EF117B1001F10DE /* CoreText.framework */; };
 		6CDE38041EF11A86001F10DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDE38031EF11A86001F10DE /* CoreGraphics.framework */; };
@@ -802,8 +818,6 @@
 		6CFDECAC1F8B7DE8005D3971 /* praise@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB721F8B7DE7005D3971 /* praise@2x.png */; };
 		6CFDECAD1F8B7DE8005D3971 /* praise@3x_65.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB731F8B7DE7005D3971 /* praise@3x_65.png */; };
 		6CFDECAE1F8B7DE8005D3971 /* praise@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB741F8B7DE7005D3971 /* praise@3x.png */; };
-		6CFDECAF1F8B7DE8005D3971 /* Prompt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB751F8B7DE7005D3971 /* Prompt@2x.png */; };
-		6CFDECB01F8B7DE8005D3971 /* Prompt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB761F8B7DE7005D3971 /* Prompt@3x.png */; };
 		6CFDECB11F8B7DE8005D3971 /* putong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB771F8B7DE7005D3971 /* putong@2x.png */; };
 		6CFDECB21F8B7DE8005D3971 /* putong@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB781F8B7DE7005D3971 /* putong@3x.png */; };
 		6CFDECB31F8B7DE8005D3971 /* pwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB791F8B7DE7005D3971 /* pwd@2x.png */; };
@@ -950,8 +964,9 @@
 		6C1B2BEA1EED25F00092AAF0 /* LoignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoignViewController.m; sourceTree = "<group>"; };
 		6C1B2BEB1EED25F00092AAF0 /* LoignViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoignViewController.xib; sourceTree = "<group>"; };
 		6C1B2BEF1EED3B650092AAF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6C1B2BFB1EED4FBF0092AAF0 /* HealthMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthMainCell.h; sourceTree = "<group>"; };
-		6C1B2BFC1EED4FBF0092AAF0 /* HealthMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthMainCell.m; sourceTree = "<group>"; };
+		6C1C80551FE364D3005CCD16 /* ReducedFatWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReducedFatWebViewController.h; sourceTree = "<group>"; };
+		6C1C80561FE364D3005CCD16 /* ReducedFatWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReducedFatWebViewController.m; sourceTree = "<group>"; };
+		6C1C80571FE364D3005CCD16 /* ReducedFatWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReducedFatWebViewController.xib; sourceTree = "<group>"; };
 		6C1DBD731F6634BD00F5B975 /* LoadedImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadedImageModel.h; sourceTree = "<group>"; };
 		6C1DBD741F6634BD00F5B975 /* LoadedImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadedImageModel.m; sourceTree = "<group>"; };
 		6C1DBD781F666B9900F5B975 /* AddressList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AddressList.plist; sourceTree = "<group>"; };
@@ -1452,6 +1467,15 @@
 		6C8F54AE1F12065200C7A275 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		6C8F54B41F12065200C7A275 /* ShareSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDK.bundle; sourceTree = "<group>"; };
 		6C8F54B51F12065200C7A275 /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConnector.framework; sourceTree = "<group>"; };
+		6C934DE61FD915DF00D375AC /* ReducedFatModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReducedFatModel.h; sourceTree = "<group>"; };
+		6C934DE71FD915DF00D375AC /* ReducedFatModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReducedFatModel.m; sourceTree = "<group>"; };
+		6C934DEC1FD930BA00D375AC /* NewMineFatStarHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewMineFatStarHeadCell.h; sourceTree = "<group>"; };
+		6C934DED1FD930BA00D375AC /* NewMineFatStarHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewMineFatStarHeadCell.m; sourceTree = "<group>"; };
+		6C934DEE1FD930BA00D375AC /* NewMineFatStarHeadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMineFatStarHeadCell.xib; sourceTree = "<group>"; };
+		6C934DF11FD935EA00D375AC /* reducedFatInterviewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = reducedFatInterviewTableViewCell.h; sourceTree = "<group>"; };
+		6C934DF21FD935EA00D375AC /* reducedFatInterviewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = reducedFatInterviewTableViewCell.m; sourceTree = "<group>"; };
+		6C934DF41FD9380400D375AC /* ReducedFatLineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReducedFatLineCell.h; sourceTree = "<group>"; };
+		6C934DF51FD9380400D375AC /* ReducedFatLineCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReducedFatLineCell.m; sourceTree = "<group>"; };
 		6C9980ED1F9EDCEC00FC57E8 /* WriteArtcleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WriteArtcleViewController.h; sourceTree = "<group>"; };
 		6C9980EE1F9EDCEC00FC57E8 /* WriteArtcleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WriteArtcleViewController.m; sourceTree = "<group>"; };
 		6C9980F01F9EDD4200FC57E8 /* TZTestCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZTestCell.h; sourceTree = "<group>"; };
@@ -1479,6 +1503,17 @@
 		6CA9C8361F78B49300E0941B /* IntegralOrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralOrderDetailViewController.h; sourceTree = "<group>"; };
 		6CA9C8371F78B49300E0941B /* IntegralOrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralOrderDetailViewController.m; sourceTree = "<group>"; };
 		6CA9C8381F78B49300E0941B /* IntegralOrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntegralOrderDetailViewController.xib; sourceTree = "<group>"; };
+		6CAC56341FD77FE000D47E04 /* HealthMainCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthMainCell.h; sourceTree = "<group>"; };
+		6CAC56351FD77FE000D47E04 /* HealthMainCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthMainCell.m; sourceTree = "<group>"; };
+		6CAC56361FD77FE000D47E04 /* HealthMainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HealthMainCell.xib; sourceTree = "<group>"; };
+		6CAC56391FD7839C00D47E04 /* ColorCircleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorCircleView.m; sourceTree = "<group>"; };
+		6CAC563A1FD7839D00D47E04 /* ColorCircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCircleView.h; sourceTree = "<group>"; };
+		6CAC56611FD7BA9B00D47E04 /* QQView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQView.m; sourceTree = "<group>"; };
+		6CAC56621FD7BA9C00D47E04 /* QQView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQView.h; sourceTree = "<group>"; };
+		6CAC56661FD90E5C00D47E04 /* ReducedFatStarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReducedFatStarViewController.h; sourceTree = "<group>"; };
+		6CAC56671FD90E5C00D47E04 /* ReducedFatStarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReducedFatStarViewController.m; sourceTree = "<group>"; };
+		6CAC56691FD90F4500D47E04 /* ReducedFatCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReducedFatCell.h; sourceTree = "<group>"; };
+		6CAC566A1FD90F4500D47E04 /* ReducedFatCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReducedFatCell.m; sourceTree = "<group>"; };
 		6CB750891F73942E007BAE04 /* NewMineHomePageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewMineHomePageCell.h; sourceTree = "<group>"; };
 		6CB7508A1F73942E007BAE04 /* NewMineHomePageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewMineHomePageCell.m; sourceTree = "<group>"; };
 		6CB7508B1F73942E007BAE04 /* NewMineHomePageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMineHomePageCell.xib; sourceTree = "<group>"; };
@@ -1650,6 +1685,14 @@
 		6CD19FAE1F74FCB100DF1289 /* UserListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserListCell.h; sourceTree = "<group>"; };
 		6CD19FAF1F74FCB100DF1289 /* UserListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserListCell.m; sourceTree = "<group>"; };
 		6CD19FB01F74FCB100DF1289 /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
+		6CD5F1111FDA20A300C8C31E /* NewMineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewMineModel.h; sourceTree = "<group>"; };
+		6CD5F1121FDA20A300C8C31E /* NewMineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewMineModel.m; sourceTree = "<group>"; };
+		6CD5F1141FDA635E00C8C31E /* NewMineFatInterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewMineFatInterCell.h; sourceTree = "<group>"; };
+		6CD5F1151FDA635E00C8C31E /* NewMineFatInterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewMineFatInterCell.m; sourceTree = "<group>"; };
+		6CD5F1161FDA635E00C8C31E /* NewMineFatInterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMineFatInterCell.xib; sourceTree = "<group>"; };
+		6CD5F1191FDA64E300C8C31E /* NewMineFatLineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewMineFatLineCell.h; sourceTree = "<group>"; };
+		6CD5F11A1FDA64E300C8C31E /* NewMineFatLineCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewMineFatLineCell.m; sourceTree = "<group>"; };
+		6CD5F11B1FDA64E300C8C31E /* NewMineFatLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMineFatLineCell.xib; sourceTree = "<group>"; };
 		6CD92FCC1F0A223200D7989E /* UserCellCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCellCell.h; sourceTree = "<group>"; };
 		6CD92FCD1F0A223200D7989E /* UserCellCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCellCell.m; sourceTree = "<group>"; };
 		6CD92FCE1F0A223200D7989E /* UserCellCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCellCell.xib; sourceTree = "<group>"; };
@@ -1711,7 +1754,6 @@
 		6CDE37F41EF0E941001F10DE /* HealthDetailSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthDetailSliderCell.m; sourceTree = "<group>"; };
 		6CDE37F61EF0E94D001F10DE /* EvaluationDetailScroeDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationDetailScroeDescriptionCell.h; sourceTree = "<group>"; };
 		6CDE37F71EF0E94D001F10DE /* EvaluationDetailScroeDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluationDetailScroeDescriptionCell.m; sourceTree = "<group>"; };
-		6CDE37F91EF10FCF001F10DE /* HealthMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthMainCell.xib; sourceTree = "<group>"; };
 		6CDE37FB1EF113EE001F10DE /* CustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabel.h; sourceTree = "<group>"; };
 		6CDE37FC1EF113EE001F10DE /* CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabel.m; sourceTree = "<group>"; };
 		6CDE37FE1EF117B1001F10DE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -2006,8 +2048,6 @@
 		6CFDEB721F8B7DE7005D3971 /* praise@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "praise@2x.png"; sourceTree = "<group>"; };
 		6CFDEB731F8B7DE7005D3971 /* praise@3x_65.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "praise@3x_65.png"; sourceTree = "<group>"; };
 		6CFDEB741F8B7DE7005D3971 /* praise@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "praise@3x.png"; sourceTree = "<group>"; };
-		6CFDEB751F8B7DE7005D3971 /* Prompt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Prompt@2x.png"; sourceTree = "<group>"; };
-		6CFDEB761F8B7DE7005D3971 /* Prompt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Prompt@3x.png"; sourceTree = "<group>"; };
 		6CFDEB771F8B7DE7005D3971 /* putong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "putong@2x.png"; sourceTree = "<group>"; };
 		6CFDEB781F8B7DE7005D3971 /* putong@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "putong@3x.png"; sourceTree = "<group>"; };
 		6CFDEB791F8B7DE7005D3971 /* pwd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pwd@2x.png"; sourceTree = "<group>"; };
@@ -2417,9 +2457,6 @@
 		6C1B2B891EECDEFD0092AAF0 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				6C1B2BFB1EED4FBF0092AAF0 /* HealthMainCell.h */,
-				6C1B2BFC1EED4FBF0092AAF0 /* HealthMainCell.m */,
-				6CDE37F91EF10FCF001F10DE /* HealthMainCell.xib */,
 				6CCEEAB11EEE3D71002E1618 /* MeasurementInfoCell.h */,
 				6CCEEAB21EEE3D71002E1618 /* MeasurementInfoCell.m */,
 				6CCEEAB31EEE3D71002E1618 /* MeasurementInfoCell.xib */,
@@ -2875,6 +2912,7 @@
 		6C2AF21F1F71021900C00F2A /* community(社区) */ = {
 			isa = PBXGroup;
 			children = (
+				6CAC56651FD90E2E00D47E04 /* -fatStar(减脂明星) */,
 				6C027F271FA022F000556440 /* Community社区列表 */,
 				6C22419C1F7CAADB001BB2FD /* articleDetail(文章详情) */,
 				6CB750941F749C47007BAE04 /* postArticle()写文章 */,
@@ -3003,6 +3041,21 @@
 				6CFDE7F21F8B49FE005D3971 /* BeforeAfterContrastCell.h */,
 				6CFDE7F31F8B49FE005D3971 /* BeforeAfterContrastCell.m */,
 				6CFDE7F41F8B49FE005D3971 /* BeforeAfterContrastCell.xib */,
+				6C934DEC1FD930BA00D375AC /* NewMineFatStarHeadCell.h */,
+				6C934DED1FD930BA00D375AC /* NewMineFatStarHeadCell.m */,
+				6C934DEE1FD930BA00D375AC /* NewMineFatStarHeadCell.xib */,
+				6CD5F1141FDA635E00C8C31E /* NewMineFatInterCell.h */,
+				6CD5F1151FDA635E00C8C31E /* NewMineFatInterCell.m */,
+				6CD5F1161FDA635E00C8C31E /* NewMineFatInterCell.xib */,
+				6CD5F1191FDA64E300C8C31E /* NewMineFatLineCell.h */,
+				6CD5F11A1FDA64E300C8C31E /* NewMineFatLineCell.m */,
+				6CD5F11B1FDA64E300C8C31E /* NewMineFatLineCell.xib */,
+				6C934DF11FD935EA00D375AC /* reducedFatInterviewTableViewCell.h */,
+				6C934DF21FD935EA00D375AC /* reducedFatInterviewTableViewCell.m */,
+				6C934DF41FD9380400D375AC /* ReducedFatLineCell.h */,
+				6C934DF51FD9380400D375AC /* ReducedFatLineCell.m */,
+				6CD5F1111FDA20A300C8C31E /* NewMineModel.h */,
+				6CD5F1121FDA20A300C8C31E /* NewMineModel.m */,
 			);
 			name = HomePage;
 			sourceTree = "<group>";
@@ -3432,6 +3485,13 @@
 				6C2F464E1FAEE7E000E9C914 /* NewHealthCell.h */,
 				6C2F464F1FAEE7E000E9C914 /* NewHealthCell.m */,
 				6C2F46501FAEE7E000E9C914 /* NewHealthCell.xib */,
+				6CAC56341FD77FE000D47E04 /* HealthMainCell.h */,
+				6CAC56351FD77FE000D47E04 /* HealthMainCell.m */,
+				6CAC56361FD77FE000D47E04 /* HealthMainCell.xib */,
+				6CAC563A1FD7839D00D47E04 /* ColorCircleView.h */,
+				6CAC56391FD7839C00D47E04 /* ColorCircleView.m */,
+				6CAC56621FD7BA9C00D47E04 /* QQView.h */,
+				6CAC56611FD7BA9B00D47E04 /* QQView.m */,
 			);
 			name = NewHealth;
 			sourceTree = "<group>";
@@ -3723,6 +3783,22 @@
 				6C7939E31FCC3AE900A243A1 /* VouchersOrderDetailViewController.xib */,
 			);
 			name = roderDetail;
+			sourceTree = "<group>";
+		};
+		6CAC56651FD90E2E00D47E04 /* -fatStar(减脂明星) */ = {
+			isa = PBXGroup;
+			children = (
+				6CAC56661FD90E5C00D47E04 /* ReducedFatStarViewController.h */,
+				6CAC56671FD90E5C00D47E04 /* ReducedFatStarViewController.m */,
+				6CAC56691FD90F4500D47E04 /* ReducedFatCell.h */,
+				6CAC566A1FD90F4500D47E04 /* ReducedFatCell.m */,
+				6C934DE61FD915DF00D375AC /* ReducedFatModel.h */,
+				6C934DE71FD915DF00D375AC /* ReducedFatModel.m */,
+				6C1C80551FE364D3005CCD16 /* ReducedFatWebViewController.h */,
+				6C1C80561FE364D3005CCD16 /* ReducedFatWebViewController.m */,
+				6C1C80571FE364D3005CCD16 /* ReducedFatWebViewController.xib */,
+			);
+			path = "-fatStar(减脂明星)";
 			sourceTree = "<group>";
 		};
 		6CB7508E1F749AAE007BAE04 /* Share */ = {
@@ -4499,8 +4575,6 @@
 				6CFDEB721F8B7DE7005D3971 /* praise@2x.png */,
 				6CFDEB731F8B7DE7005D3971 /* praise@3x_65.png */,
 				6CFDEB741F8B7DE7005D3971 /* praise@3x.png */,
-				6CFDEB751F8B7DE7005D3971 /* Prompt@2x.png */,
-				6CFDEB761F8B7DE7005D3971 /* Prompt@3x.png */,
 				6CFDEB771F8B7DE7005D3971 /* putong@2x.png */,
 				6CFDEB781F8B7DE7005D3971 /* putong@3x.png */,
 				6CFDEB791F8B7DE7005D3971 /* pwd@2x.png */,
@@ -4842,7 +4916,6 @@
 				6CFDEC721F8B7DE8005D3971 /* logo@3x.png in Resources */,
 				6C3639D01F029B7200268851 /* OrderFootBtnView.xib in Resources */,
 				6CFDEC1F1F8B7DE7005D3971 /* footer-knowledge-red@3x.png in Resources */,
-				6CDE37FA1EF10FCF001F10DE /* HealthMainCell.xib in Resources */,
 				6CFDEC161F8B7DE7005D3971 /* fonter-help-red@2x.png in Resources */,
 				6CFDEBDD1F8B7DE7005D3971 /* bodyfat_wallet_3.png in Resources */,
 				6C2F46521FAEE7E000E9C914 /* NewHealthCell.xib in Resources */,
@@ -4935,7 +5008,6 @@
 				6CFDEBC01F8B7DE7005D3971 /* age@3x.png in Resources */,
 				6C73AF601F29C7BF0042C1A2 /* ContactUsViewController.xib in Resources */,
 				6CFDECDD1F8B7DE8005D3971 /* transmit@3x.png in Resources */,
-				6CFDECAF1F8B7DE8005D3971 /* Prompt@2x.png in Resources */,
 				6CFDEBB91F8B7DE7005D3971 /* aboutUs@2x.png in Resources */,
 				6CD010A81EF5247E00FB9419 /* Goods2Cell.xib in Resources */,
 				6C027F211F9F245A00556440 /* NewMineTableViewCell.xib in Resources */,
@@ -4948,6 +5020,7 @@
 				6CFDEC601F8B7DE8005D3971 /* integral@3x.png in Resources */,
 				6C3639C11F023F6600268851 /* HDCell.xib in Resources */,
 				6CFDECF21F8B7DE8005D3971 /* zhiTrue.png in Resources */,
+				6CD5F11D1FDA64E300C8C31E /* NewMineFatLineCell.xib in Resources */,
 				6CFDECDF1F8B7DE8005D3971 /* tzs_bg@3x.png in Resources */,
 				6CFDEC641F8B7DE8005D3971 /* isEmpty@3x.png in Resources */,
 				6CFDEBBA1F8B7DE7005D3971 /* aboutUs@3x.png in Resources */,
@@ -5014,6 +5087,7 @@
 				6CFDECB11F8B7DE8005D3971 /* putong@2x.png in Resources */,
 				6CD010931EF4082700FB9419 /* AboutUsViewController.xib in Resources */,
 				6CFDEBE51F8B7DE7005D3971 /* businessCardZ.png in Resources */,
+				6C1C80591FE364D3005CCD16 /* ReducedFatWebViewController.xib in Resources */,
 				6CFDEC891F8B7DE8005D3971 /* My-Earnings-bg@2x.png in Resources */,
 				6CFDECBF1F8B7DE8005D3971 /* record-shouru@2x.png in Resources */,
 				6CFDEC361F8B7DE7005D3971 /* help-icon1@2x.png in Resources */,
@@ -5168,6 +5242,7 @@
 				6CFDECA91F8B7DE8005D3971 /* personal-tui.png in Resources */,
 				6CFDE8001F8B5436005D3971 /* ArtcleDetailTextCell.xib in Resources */,
 				6C3639A91EFE53EE00268851 /* QrCodeView.xib in Resources */,
+				6CAC56381FD77FE000D47E04 /* HealthMainCell.xib in Resources */,
 				6C1DBD871F67AF1D00F5B975 /* SuperiorViewController.xib in Resources */,
 				6CCEEB311EEE7F91002E1618 /* MineViewController.xib in Resources */,
 				6CD011871EF9058600FB9419 /* HomeHeadView.xib in Resources */,
@@ -5191,6 +5266,7 @@
 				6CFDECB31F8B7DE8005D3971 /* pwd@2x.png in Resources */,
 				6CD0117E1EF8FD7A00FB9419 /* RealNameAuthenticationViewController.xib in Resources */,
 				6C6CFEA01F8F7AC7005C2738 /* HistoryInfoCell.xib in Resources */,
+				6C934DF01FD930BA00D375AC /* NewMineFatStarHeadCell.xib in Resources */,
 				6CA9C83A1F78B49300E0941B /* IntegralOrderDetailViewController.xib in Resources */,
 				6CDE37EF1EF0E902001F10DE /* EvaluationDetailScroeDescriptionCell.xib in Resources */,
 				6CFDEBF21F8B7DE7005D3971 /* chong.png@2x.png in Resources */,
@@ -5283,8 +5359,8 @@
 				6CFDEBF71F8B7DE7005D3971 /* community@3x.png in Resources */,
 				6CFDEBD91F8B7DE7005D3971 /* bodyfat_buy_6.png in Resources */,
 				6C43113A1F064DE90094EFF4 /* JZSchoolCell.xib in Resources */,
-				6CFDECB01F8B7DE8005D3971 /* Prompt@3x.png in Resources */,
 				6C6CFEC21F908EF9005C2738 /* NewHealthDetailSecondCell.xib in Resources */,
+				6CD5F1181FDA635E00C8C31E /* NewMineFatInterCell.xib in Resources */,
 				6C5779A21FA8669000388986 /* EmptyView.xib in Resources */,
 				6CD010F51EF7FB0C00FB9419 /* DetailWeigthCell.xib in Resources */,
 				6CFDEC2B1F8B7DE7005D3971 /* footer-ShoppingMall-red@3x.png in Resources */,
@@ -5449,6 +5525,7 @@
 				6C3639841EFE47E100268851 /* AAAnimation.m in Sources */,
 				6CD92FF81F0B28FE00D7989E /* ShareCell.m in Sources */,
 				6CD92FF31F0B280500D7989E /* ShareViewController.m in Sources */,
+				6CD5F11C1FDA64E300C8C31E /* NewMineFatLineCell.m in Sources */,
 				6C803D7F1FAB126200B2E186 /* Yd3View.m in Sources */,
 				6CC81FC91F1DB0EA00EB470C /* GoodsModel.m in Sources */,
 				6CC81FCC1F1E509D00EB470C /* CXdetailView.m in Sources */,
@@ -5466,6 +5543,7 @@
 				6CD0107D1EF3CABE00FB9419 /* MyCollectionViewController.m in Sources */,
 				6C2AF2441F710D9400C00F2A /* AddFriendsViewController.m in Sources */,
 				6CD010EF1EF7F9EB00FB9419 /* DecailTitleCell.m in Sources */,
+				6C1C80581FE364D3005CCD16 /* ReducedFatWebViewController.m in Sources */,
 				6CD010FE1EF7FD6E00FB9419 /* DetailReturnGoodsCell.m in Sources */,
 				6C43110F1F0632AB0094EFF4 /* UIView+Board.m in Sources */,
 				6C3639E41F02AAA100268851 /* TZSConfirmTheViewController.m in Sources */,
@@ -5484,6 +5562,7 @@
 				6CD010D11EF62B1D00FB9419 /* AddressListViewController.m in Sources */,
 				6CD011121EF82A0A00FB9419 /* HelpViewController.m in Sources */,
 				6C2F463C1FAD90CC00E9C914 /* PhoneChargesViewController.m in Sources */,
+				6C934DEF1FD930BA00D375AC /* NewMineFatStarHeadCell.m in Sources */,
 				6CCEEB1D1EEE7EFE002E1618 /* ShopTabbbarController.m in Sources */,
 				6C8F53C51F11D38A00C7A275 /* UIImage+LocalImage.m in Sources */,
 				6C3639911EFE47E100268851 /* AAOptions3d.m in Sources */,
@@ -5524,6 +5603,7 @@
 				6CEDADF61F74A9F000D3C223 /* IntegralOrderUpdateViewController.m in Sources */,
 				6C3639131EFD0BD300268851 /* ChangeJYpasswordViewController.m in Sources */,
 				6CD0109B1EF4D42000FB9419 /* HealthDetailsItem.m in Sources */,
+				6C934DF61FD9380400D375AC /* ReducedFatLineCell.m in Sources */,
 				6C027F451FA2C11500556440 /* IntegralShopDetailModel.m in Sources */,
 				6C43113E1F06527C0094EFF4 /* jzsSchoolWebViewController.m in Sources */,
 				6C1B2B581EECDE350092AAF0 /* main.m in Sources */,
@@ -5535,10 +5615,14 @@
 				6CE17CEB1FC2AB48001C7B73 /* VouchersTzsCell.m in Sources */,
 				6CD010921EF4082700FB9419 /* AboutUsViewController.m in Sources */,
 				6C36397B1EFE47E100268851 /* AAJsonConverter.m in Sources */,
+				6CAC56681FD90E5C00D47E04 /* ReducedFatStarViewController.m in Sources */,
 				6CDE37FD1EF113EE001F10DE /* CustomLabel.m in Sources */,
 				6CDE37F51EF0E941001F10DE /* HealthDetailSliderCell.m in Sources */,
+				6C934DF31FD935EA00D375AC /* reducedFatInterviewTableViewCell.m in Sources */,
 				6C3EEE891F7A52EC001886EB /* CommunityModel.m in Sources */,
 				6CCEEB261EEE7F65002E1618 /* InfomationViewController.m in Sources */,
+				6CAC563B1FD7839E00D47E04 /* ColorCircleView.m in Sources */,
+				6CAC56371FD77FE000D47E04 /* HealthMainCell.m in Sources */,
 				6CD0116A1EF8DA0100FB9419 /* EidtViewController.m in Sources */,
 				6C36399B1EFE47E100268851 /* AATooltip.m in Sources */,
 				6C9980EF1F9EDCEC00FC57E8 /* WriteArtcleViewController.m in Sources */,
@@ -5564,7 +5648,6 @@
 				6C2241A41F7CDB8C001BB2FD /* GuanzModel.m in Sources */,
 				6CD011311EF8C98600FB9419 /* PublicCell.m in Sources */,
 				6CFDE7F51F8B49FE005D3971 /* BeforeAfterContrastCell.m in Sources */,
-				6C1B2BFE1EED4FBF0092AAF0 /* HealthMainCell.m in Sources */,
 				6CD0108B1EF3D19400FB9419 /* HealthItem.m in Sources */,
 				6CA024C81F19DBA100F54DF3 /* YMSocketUtils.m in Sources */,
 				6C7939E41FCC3AE900A243A1 /* VouchersOrderDetailViewController.m in Sources */,
@@ -5611,6 +5694,7 @@
 				6CD010B21EF52BDD00FB9419 /* BannerItem.m in Sources */,
 				6C027F421FA2C0A400556440 /* IntegralShopDetailContentCell.m in Sources */,
 				6C6CFE6F1F8F165C005C2738 /* GrowthStstemHeaderCell.m in Sources */,
+				6CD5F1131FDA20A300C8C31E /* NewMineModel.m in Sources */,
 				6C36398A1EFE47E100268851 /* AADataLabels.m in Sources */,
 				6CD010E11EF655D600FB9419 /* BDBankCardViewController.m in Sources */,
 				6CD92FFC1F0B2E1900D7989E /* ShareHealthItem.m in Sources */,
@@ -5620,9 +5704,12 @@
 				6CD010AE1EF5294F00FB9419 /* ADCarouselView.m in Sources */,
 				6C2F46411FAD936200E9C914 /* PhoneChargesOrderViewController.m in Sources */,
 				6C2241AE1F7CF8E4001BB2FD /* EditUserInfoImageCell.m in Sources */,
+				6CAC56631FD7BA9C00D47E04 /* QQView.m in Sources */,
 				6C363A181F05097700268851 /* TeamOrderDetailViewController.m in Sources */,
 				6C803D701FAAE79900B2E186 /* GuidePageViewController.m in Sources */,
+				6CAC566B1FD90F4500D47E04 /* ReducedFatCell.m in Sources */,
 				6C027F201F9F245A00556440 /* NewMineTableViewCell.m in Sources */,
+				6C934DE81FD915DF00D375AC /* ReducedFatModel.m in Sources */,
 				6C3639861EFE47E100268851 /* AAAreaspline.m in Sources */,
 				6C027F391FA17E5300556440 /* NSString+Eomji.m in Sources */,
 				6C57799A1FA701B800388986 /* ClearCecheModel.m in Sources */,
@@ -5636,6 +5723,7 @@
 				6C13C5D11EFA51A100435A27 /* UpdataOrderViewController.m in Sources */,
 				6C803D751FAB10F800B2E186 /* Yd1View.m in Sources */,
 				6CD0117D1EF8FD7A00FB9419 /* RealNameAuthenticationViewController.m in Sources */,
+				6CD5F1171FDA635E00C8C31E /* NewMineFatInterCell.m in Sources */,
 				6C73B0271F31C3E90042C1A2 /* MessageViewController.m in Sources */,
 				6C13C5E01EFA747900435A27 /* UpdataAddressCell.m in Sources */,
 				6CD010B81EF5430700FB9419 /* GoodsItem.m in Sources */,

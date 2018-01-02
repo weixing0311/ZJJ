@@ -88,7 +88,11 @@
 {
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[UserModel shareInstance].headUrl] placeholderImage:[UIImage imageNamed:@"head_default"]];
     self.nameLabel.text = [UserModel shareInstance].nickName;
-    self.LevelImageView.image = [[UserModel shareInstance]getLevelImage];
+//    self.LevelImageView.image = [[UserModel shareInstance]getLevelImage];
+    
+    
+    [self.LevelImageView sd_setImageWithURL:[NSURL URLWithString:[UserModel shareInstance].gradeImg] placeholderImage:getImage(@"")];
+    
     self.tzsLabel.text = [UserModel shareInstance].gradeName;
     self.cerLabel.text = [UserModel shareInstance].isAttest;
     self.integrallb.text = [NSString stringWithFormat:@"旅游金币:%@",[UserModel shareInstance].tourismIntegral?[UserModel shareInstance].tourismIntegral:@"0"];
@@ -105,7 +109,6 @@
     [self.thirdView  setViewShadow];
     [self.forthView  setViewShadow];
     [self.fifthView  setViewShadow];
-
 }
 
 -(void)tj//统计

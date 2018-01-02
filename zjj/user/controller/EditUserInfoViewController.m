@@ -315,16 +315,8 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
             cell = [self getXibCellWithTitle:identifier];
         }
         cell.delegate= self;
-        
-        [cell.fatBeforeImageView sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"fatBefore"]] placeholderImage:getImage(@"fatBefore_") options:SDWebImageRetryFailed];
-        [cell.fatAfterImageView sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"fatAfter"]] placeholderImage:getImage(@"fatAfter_") options:SDWebImageRetryFailed];
+        [cell setInfoWithDict:_infoDict];
 
-        
-//        [cell.fatBeforeBtn sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"fatBefore"]] forState:UIControlStateNormal placeholderImage:getImage(@"fatBefore_") options:SDWebImageRetryFailed];
-//
-//        [cell.fatAfterBtn sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"fatAfter"]] forState:UIControlStateNormal placeholderImage:getImage(@"fatAfter_") options:SDWebImageRetryFailed];
-
-        
         return cell;
         
     }else{

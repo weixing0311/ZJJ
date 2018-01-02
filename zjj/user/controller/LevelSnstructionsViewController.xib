@@ -32,7 +32,7 @@
                     <rect key="frame" x="20" y="100" width="335" height="167.5"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="levelSM_" translatesAutoresizingMaskIntoConstraints="NO" id="iZr-aI-eO6">
-                            <rect key="frame" x="0.0" y="0.0" width="335" height="167.5"/>
+                            <rect key="frame" x="0.0" y="20" width="335" height="147.5"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还差10积分升级到LV2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EfH-QV-Xgv">
                             <rect key="frame" x="20" y="42" width="295" height="18"/>
@@ -64,7 +64,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="EfH-QV-Xgv" firstAttribute="centerX" secondItem="yik-Yb-mRQ" secondAttribute="centerX" id="0a1-hI-WQs"/>
-                        <constraint firstItem="iZr-aI-eO6" firstAttribute="top" secondItem="yik-Yb-mRQ" secondAttribute="top" id="3t0-Sf-NFO"/>
+                        <constraint firstItem="iZr-aI-eO6" firstAttribute="top" secondItem="yik-Yb-mRQ" secondAttribute="top" constant="20" id="3t0-Sf-NFO"/>
                         <constraint firstItem="iZr-aI-eO6" firstAttribute="leading" secondItem="yik-Yb-mRQ" secondAttribute="leading" id="B8L-2J-jbf"/>
                         <constraint firstAttribute="width" secondItem="yik-Yb-mRQ" secondAttribute="height" multiplier="2:1" id="GEp-Ms-CIp"/>
                         <constraint firstItem="itL-fp-cmB" firstAttribute="top" secondItem="EfH-QV-Xgv" secondAttribute="bottom" id="KJS-kp-tHo"/>
@@ -84,7 +84,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FJt-Sl-v7z">
-                    <rect key="frame" x="158" y="70" width="60" height="60"/>
+                    <rect key="frame" x="158" y="90" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="Hc8-6N-ovK"/>
                         <constraint firstAttribute="height" constant="60" id="nGu-bg-4Qf"/>
@@ -98,14 +98,14 @@
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NJ-cY-H9E">
                     <rect key="frame" x="20" y="277.5" width="335" height="369.5"/>
-                    <mutableString key="text">说明：
+                    <string key="text">说明：
 1.积分可以在积分商城兑换商品，完成任务可以获得积分，每个任务每日仅可完成一次。
 2.当前等级根据累计积分来判定，积分的使用与否并不影响所在的等级。
 3.成长体系里面显示累计积分，积分下方显示每日可获得积分的任务，积分商城右上角显示当前剩余的可用积分。
 4.减脂前后照片请用户上传自己的真实照片，一经发现用户存在使用虚假照片获取积分的行为我们会依据第5条规章制度处理。
 5.成长体系内的积分任务，如发现用户存在使用不正当手段获取积分的行为，我们将采取扣除积分、冻结或关闭账户等措施。
 6.有关积分的一切事物最终解释权归脂将军所属公司所有。
-7.客服电话：4006-119-516(周一至周五9:00-17:30)。</mutableString>
+7.客服电话：4006-119-516(周一至周五9:00-17:30)。</string>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -117,7 +117,7 @@
                 <constraint firstItem="bH6-1V-b2q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="IW4-gd-pbJ"/>
                 <constraint firstItem="6NJ-cY-H9E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Jhx-kU-H53"/>
                 <constraint firstItem="bH6-1V-b2q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LVy-ae-5CB"/>
-                <constraint firstItem="FJt-Sl-v7z" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="T22-EF-48o"/>
+                <constraint firstItem="FJt-Sl-v7z" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="T22-EF-48o"/>
                 <constraint firstItem="yik-Yb-mRQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="VVP-5O-A3D"/>
                 <constraint firstAttribute="bottom" secondItem="6NJ-cY-H9E" secondAttribute="bottom" constant="20" id="VZs-HV-9nq"/>
                 <constraint firstAttribute="trailing" secondItem="yik-Yb-mRQ" secondAttribute="trailing" constant="20" id="ZK2-9u-fWa"/>

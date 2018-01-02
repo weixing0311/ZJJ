@@ -33,6 +33,7 @@
 @property (nonatomic,copy) NSString * loadSuccess;
 @property (nonatomic,copy) NSString * topNum;//是否置顶 1是 0否
 @property (nonatomic,copy) NSString * location;//位置
+@property (nonatomic,copy) NSString * vip;
 -(void)setInfoWithDict:(NSDictionary *)dict;
 
 @end

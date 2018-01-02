@@ -22,7 +22,8 @@
 {
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[SubUserItem shareInstance].headUrl] placeholderImage:getImage(@"head_default")options:SDWebImageRetryFailed];
     self.nicknamelb.text = [SubUserItem shareInstance].nickname;
-    
+    self.sexImg.image = [UserModel shareInstance].gender==1?getImage(@"man_"):getImage(@"woman_");
+
     self.heightlb.text =[NSString stringWithFormat:@"身高:%d",item.height];
     self.agelb.text =[NSString stringWithFormat:@"年龄:%d",item.age];
     

@@ -15,10 +15,23 @@
 @property (weak, nonatomic) IBOutlet UILabel *todayIntegerallb;
 @property (weak, nonatomic) IBOutlet UILabel *totalIntegerallb;
 @property (weak, nonatomic) IBOutlet UILabel *dayslb;
+@property (weak, nonatomic) IBOutlet UILabel *level2lb;
 @property (weak, nonatomic) IBOutlet UIButton *qdBtn;
+@property (weak, nonatomic) IBOutlet UILabel *level1lb;
 
 @property (weak, nonatomic) IBOutlet UIButton *rightBtn;
 - (IBAction)didClickRightBtn:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *progressView;
+@property (weak, nonatomic) IBOutlet UIImageView *progressImg;
+
+@property (weak, nonatomic) IBOutlet UILabel *lessIntrgrallb;
+
+
+
+
+
+
+
 
 
 @property (nonatomic,assign)id<growthHeaderCellDelegate>delegate;

@@ -16,6 +16,7 @@
     self.isFollow = [[dict safeObjectForKey:@"isFollow"]boolValue];
     self.userId = [dict safeObjectForKey:@"userId"];
     self.introduction = [dict safeObjectForKey:@"introduction"];
+    self.vip = [dict safeObjectForKey:@"isVip"];
 }
 -(void)setGzInfoWithDict:(NSDictionary *)dict
 {
@@ -24,6 +25,8 @@
     self.isFollow = [[dict safeObjectForKey:@"isFollow"]boolValue];
     self.userId = [dict safeObjectForKey:@"followId"];
     self.introduction = [dict safeObjectForKey:@"introduction"];
+    self.vip = [dict safeObjectForKey:@"isVip"];
+
 
 }
 -(void)setGzsPersonInfoWithDict:(NSDictionary *)dict
@@ -32,6 +35,8 @@
     self.nickname = [dict safeObjectForKey:@"nickName"];
 //    self.isFollow = [[dict safeObjectForKey:@"isFollow"]boolValue];
     self.userId = [dict safeObjectForKey:@"userId"];
+    self.vip = [dict safeObjectForKey:@"isVip"];
+
 //    self.introduction = [dict safeObjectForKey:@"introduction"];
     
 }

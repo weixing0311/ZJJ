@@ -7,9 +7,11 @@
 //
 
 #import "JFABaseTableViewController.h"
+#import "HealthItem.h"
 @protocol weightingDelegate;
 @interface WeighingViewController : JFABaseTableViewController
 @property(nonatomic,assign)id<weightingDelegate>delegate;
+@property (nonatomic,strong)HealthItem * currItem;
 @end
 @protocol weightingDelegate <NSObject>
 

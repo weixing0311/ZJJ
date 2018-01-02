@@ -18,6 +18,27 @@
     self.fatAfterImageView.clipsToBounds = YES;
     // Initialization code
 }
+
+-(void)setInfoWithDict:(NSDictionary *)dict
+{
+    self.titlelb.hidden = YES;
+    
+    
+    
+    int  sex = [[dict safeObjectForKey:@"sex"]intValue];
+    
+    UIImage * beforeDefaultImage = getImage(@"fatBefore_w_");
+    UIImage * afterDefaultImage = getImage(@"fatAfter_w_");
+    
+    if (sex ==1) {
+        beforeDefaultImage = getImage(@"fatBefore_m_");
+        afterDefaultImage = getImage(@"fatAfter_m_");
+    }
+    
+    [self.fatBeforeImageView sd_setImageWithURL:[NSURL URLWithString:[dict safeObjectForKey:@"fatBefore"]] placeholderImage:beforeDefaultImage options:SDWebImageRetryFailed];
+    [self.fatAfterImageView sd_setImageWithURL:[NSURL URLWithString:[dict safeObjectForKey:@"fatAfter"]] placeholderImage:afterDefaultImage options:SDWebImageRetryFailed];
+
+}
 - (IBAction)addFatBeforeImage:(id)sender {
     if (self.delegate &&[self.delegate respondsToSelector:@selector(changeBeforeImage)]) {
         [self.delegate changeBeforeImage];

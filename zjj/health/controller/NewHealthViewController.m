@@ -20,6 +20,7 @@
 #import "WeighingViewController.h"
 #import "HistoryTotalViewController.h"
 #import "NewHealthCell.h"
+#import "HealthMainCell.h"
 @interface NewHealthViewController ()<userListDelegate,weightingDelegate,UITableViewDelegate,UITableViewDataSource,newHealthCellDelegate>
 @property (nonatomic,strong)UIView * userBackView;
 @property (nonatomic,strong)UserListView * userListView;
@@ -126,9 +127,8 @@
     } failure:^(NSError *error) {
         if (error.code ==402) {
             [headerArr removeAllObjects];
-            [self.tableview reloadData];
-
         }
+        [self.tableview reloadData];
         [self.tableview.mj_header endRefreshing];
 
         
@@ -145,22 +145,43 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * identifier = @"NewHealthCell";
-    
-    NewHealthCell * cell = [self.tableview dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [self getXibCellWithTitle:identifier];
-    }
-    cell.delegate = self;
-    if (headerArr&&headerArr.count>0) {
-        HealthItem * item  = [headerArr objectAtIndex:indexPath.row];
-        [cell refreshPageInfoWithItem:item];
-    }else{
-        [cell refreshPageInfoWithItem:nil];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    return cell;
+//    if (indexPath.row ==0) {
+//        static NSString * identifier = @"NewHealthCell";
+//
+//        NewHealthCell * cell = [self.tableview dequeueReusableCellWithIdentifier:identifier];
+//        if (!cell) {
+//            cell = [self getXibCellWithTitle:identifier];
+//        }
+//        cell.delegate = self;
+//        if (headerArr&&headerArr.count>0) {
+//            HealthItem * item  = [headerArr objectAtIndex:indexPath.row];
+//            [cell refreshPageInfoWithItem:item];
+//        }else{
+//            [cell refreshPageInfoWithItem:nil];
+//        }
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//
+//        return cell;
+//
+//    }else{
+        static NSString * identifier = @"HealthMainCell";
+        
+        HealthMainCell * cell = [self.tableview dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [self getXibCellWithTitle:identifier];
+        }
+        cell.delegate = self;
+        if (headerArr&&headerArr.count>0) {
+            HealthItem * item  = headerArr&&headerArr.count>0?headerArr[0]:nil;
+            [cell refreshPageInfoWithItem:item];
+        }else{
+            [cell refreshPageInfoWithItem:nil];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+
+//    }
 }
 
 #pragma mark ---↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
@@ -235,6 +256,7 @@
 {
     WeighingViewController * we = [[WeighingViewController alloc]init];
     we.delegate = self;
+    we.currItem = headerArr&&headerArr.count>0?headerArr[0]:nil;
     [self presentViewController:we animated:YES completion:nil];
 
 }

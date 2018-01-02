@@ -62,6 +62,7 @@
         _emptyView.hidden = YES;
         _emptyView.frame = self.view.bounds;
         _emptyView.backgroundColor =HEXCOLOR(0xeeeeee);
+        [_emptyView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapEmptyView)]];
         [self.view addSubview:_emptyView];
     }
     return _emptyView;
@@ -292,6 +293,14 @@
     return jsonString;
 }
 
+-(void)refreshEmptyView
+{
+    
+}
+-(void)didTapEmptyView
+{
+    [self refreshEmptyView];
+}
 
 
 /*

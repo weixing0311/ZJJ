@@ -32,10 +32,7 @@
                             </constraints>
                         </view>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tSb-rP-c5C">
-                            <rect key="frame" x="107.5" y="25" width="160" height="34"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="160" id="pUZ-6N-Wjx"/>
-                            </constraints>
+                            <rect key="frame" x="70" y="25" width="235" height="34"/>
                             <segments>
                                 <segment title="主页"/>
                                 <segment title="发现"/>
@@ -50,7 +47,9 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="KDK-rL-8mM"/>
                             </constraints>
-                            <state key="normal" image="FocusCamera_"/>
+                            <state key="normal" image="FocusCamera_">
+                                <color key="titleColor" red="0.13349066840277779" green="0.40000000000000002" blue="0.69886610243055558" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="didEdit:" destination="-1" eventType="touchUpInside" id="Jaw-R2-IC3"/>
                                 <action selector="enterWirte:" destination="-1" eventType="touchUpInside" id="JH4-wl-7iA"/>
@@ -74,6 +73,7 @@
                         <constraint firstItem="lKy-7L-9Vf" firstAttribute="top" secondItem="YW6-MH-2HL" secondAttribute="bottom" id="48l-je-ucJ"/>
                         <constraint firstAttribute="trailing" secondItem="YlI-FP-IlE" secondAttribute="trailing" id="6nv-CF-Egd"/>
                         <constraint firstAttribute="bottom" secondItem="lKy-7L-9Vf" secondAttribute="bottom" id="8Mp-Zx-Z0C"/>
+                        <constraint firstItem="YlI-FP-IlE" firstAttribute="leading" secondItem="tSb-rP-c5C" secondAttribute="trailing" constant="30" id="AAe-yC-eUO"/>
                         <constraint firstItem="tSb-rP-c5C" firstAttribute="top" secondItem="Bnx-pS-zfn" secondAttribute="top" constant="25" id="B27-Xg-pYx"/>
                         <constraint firstAttribute="trailing" secondItem="lKy-7L-9Vf" secondAttribute="trailing" id="EMp-3n-GNx"/>
                         <constraint firstItem="lKy-7L-9Vf" firstAttribute="leading" secondItem="Bnx-pS-zfn" secondAttribute="leading" id="IVK-su-pfV"/>
@@ -82,13 +82,14 @@
                         <constraint firstItem="YlI-FP-IlE" firstAttribute="top" secondItem="Bnx-pS-zfn" secondAttribute="top" constant="20" id="TTa-I2-cSw"/>
                         <constraint firstItem="lKy-7L-9Vf" firstAttribute="top" secondItem="tSb-rP-c5C" secondAttribute="bottom" constant="5" id="YYo-rF-ELv"/>
                         <constraint firstItem="YW6-MH-2HL" firstAttribute="leading" secondItem="Bnx-pS-zfn" secondAttribute="leading" id="lhN-Kb-USw"/>
+                        <constraint firstItem="tSb-rP-c5C" firstAttribute="leading" secondItem="YW6-MH-2HL" secondAttribute="trailing" constant="30" id="pLH-7V-W7G"/>
                         <constraint firstItem="tSb-rP-c5C" firstAttribute="centerX" secondItem="Bnx-pS-zfn" secondAttribute="centerX" id="rzA-7L-OxQ"/>
                         <constraint firstItem="lKy-7L-9Vf" firstAttribute="top" secondItem="YlI-FP-IlE" secondAttribute="bottom" id="zdY-ep-o0h"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WDe-Io-Qxl">
-                    <rect key="frame" x="0.0" y="64" width="375" height="543"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="WDe-Io-Qxl">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -99,7 +100,7 @@
                 <constraint firstItem="Bnx-pS-zfn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="adT-hV-o8V"/>
                 <constraint firstAttribute="trailing" secondItem="Bnx-pS-zfn" secondAttribute="trailing" id="fog-rP-ngP"/>
                 <constraint firstAttribute="trailing" secondItem="WDe-Io-Qxl" secondAttribute="trailing" id="hdx-2s-ppG"/>
-                <constraint firstAttribute="bottom" secondItem="WDe-Io-Qxl" secondAttribute="bottom" constant="60" id="qWd-yT-PyF"/>
+                <constraint firstAttribute="bottom" secondItem="WDe-Io-Qxl" secondAttribute="bottom" id="qWd-yT-PyF"/>
             </constraints>
         </view>
     </objects>

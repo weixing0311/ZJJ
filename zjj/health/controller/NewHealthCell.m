@@ -129,40 +129,40 @@
     
 }
 
-- (IBAction)didClickHeader:(id)sender {
-    
-    if (self.delegate &&[self.delegate respondsToSelector:@selector(didShowUserList)]) {
-        [self.delegate didShowUserList];
-    }
-    
-}
-
-- (IBAction)didClickRight:(id)sender {
-    if (self.delegate &&[self.delegate respondsToSelector:@selector(didShowSHuoming)]) {
-        [self.delegate didShowSHuoming];
-    }
-
-}
-
-- (IBAction)didWeight:(id)sender {
-    if (self.delegate &&[self.delegate respondsToSelector:@selector(didWeighting)]) {
-        [self.delegate didWeighting];
-    }
-
-}
-
-- (IBAction)didEnterDetail:(id)sender {
-    if (self.delegate &&[self.delegate respondsToSelector:@selector(didEnterDetailVC)]) {
-        [self.delegate didEnterDetailVC];
-    }
-
-}
-- (IBAction)didEnterHistory:(id)sender {
-    if (self.delegate &&[self.delegate respondsToSelector:@selector(didEnterRightVC)]) {
-        [self.delegate didEnterRightVC];
-    }
-
-}
+//- (IBAction)didClickHeader:(id)sender {
+//
+//    if (self.delegate &&[self.delegate respondsToSelector:@selector(didShowUserList)]) {
+//        [self.delegate didShowUserList];
+//    }
+//
+//}
+//
+//- (IBAction)didClickRight:(id)sender {
+//    if (self.delegate &&[self.delegate respondsToSelector:@selector(didShowSHuoming)]) {
+//        [self.delegate didShowSHuoming];
+//    }
+//
+//}
+//
+//- (IBAction)didWeight:(id)sender {
+//    if (self.delegate &&[self.delegate respondsToSelector:@selector(didWeighting)]) {
+//        [self.delegate didWeighting];
+//    }
+//
+//}
+//
+//- (IBAction)didEnterDetail:(id)sender {
+//    if (self.delegate &&[self.delegate respondsToSelector:@selector(didEnterDetailVC)]) {
+//        [self.delegate didEnterDetailVC];
+//    }
+//
+//}
+//- (IBAction)didEnterHistory:(id)sender {
+//    if (self.delegate &&[self.delegate respondsToSelector:@selector(didEnterRightVC)]) {
+//        [self.delegate didEnterRightVC];
+//    }
+//
+//}
 
 
 

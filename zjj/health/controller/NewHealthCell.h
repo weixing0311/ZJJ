@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol newHealthCellDelegate;
+//@protocol newHealthCellDelegate;
 @interface NewHealthCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *userHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *rightBtn;
@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lessWeightLb;
 @property (weak, nonatomic) IBOutlet UIImageView *trendArrowImageView;
 @property (weak, nonatomic) IBOutlet UIView *minView;
-@property (nonatomic,assign)id<newHealthCellDelegate>delegate;
+//@property (nonatomic,assign)id<newHealthCellDelegate>delegate;
 
 #pragma mark --引导页
 ///1
@@ -34,12 +34,13 @@
 - (IBAction)didFinish:(id)sender;
 -(void)refreshPageInfoWithItem:(HealthItem*)item;
 @end
-@protocol newHealthCellDelegate <NSObject>
--(void)didShowUserList;
--(void)didShowSHuoming;
--(void)didWeighting;
--(void)didEnterDetailVC;
--(void)didEnterRightVC;
+//@protocol newHealthCellDelegate <NSObject>
+//-(void)didShowUserList;
+//-(void)didShowSHuoming;
+//-(void)didWeighting;
+//-(void)didEnterDetailVC;
+//-(void)didEnterRightVC;
+//
+//
+//@end
 
-
-@end

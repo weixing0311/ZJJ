@@ -9,8 +9,8 @@
 #import "CommunityCell.h"
 #import <CoreImage/CoreImage.h>
 #import "NSString+dateWithString.h"
-#define BigImageWidth JFA_SCREEN_WIDTH-40
-#define BigImageHeight (JFA_SCREEN_WIDTH-40)*0.6
+#define BigImageWidth JFA_SCREEN_WIDTH-20
+#define BigImageHeight (JFA_SCREEN_WIDTH-20)*0.6
 
 @implementation CommunityCell
 {
@@ -24,11 +24,16 @@
 
     self.topLabel.layer.borderWidth= 1;
     self.topLabel.layer.borderColor = HEXCOLOR(0xeeeeee).CGColor;
-
+    self.locationlb.adjustsFontSizeToFitWidth = YES;
     
+    
+    self.midImageView.contentMode =UIViewContentModeScaleAspectFill;
+    self.midImageView.clipsToBounds = YES;
+
     
     self.imagesArray = [NSMutableArray array];
     [self.midImageView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showBigImage)]];
+
 
 }
 -(void)setInfoWithDict:(CommunityModel *)item
@@ -42,6 +47,16 @@
     self.zanCountlb.text     = item.greatnum;
     self.commentCountlb.text = item.commentnum;
 //    self.shareCountlb.text   = item.forwardingnum;
+    
+    
+    
+    if ([item.vip isEqualToString:@"1"]) {
+        self.vipImg.hidden = NO;
+    }else{
+        self.vipImg.hidden = YES;
+    }
+
+    
     self.levelLb.text        = item.level;
     self.locationlb.text     = item.location;
     if (item.isFabulous&&[item.isFabulous isEqualToString:@"1"]) {
@@ -102,15 +117,15 @@
 
         if (self.currModel.movieStr.length>5) {
             self.midImageView.frame = CGRectMake(
-                                                 JFA_SCREEN_WIDTH/2-20 - BigImageHeight/cachedImage.size.height*cachedImage.size.width/2<0?0:JFA_SCREEN_WIDTH/2-20 - BigImageHeight/cachedImage.size.height*cachedImage.size.width/2,
+                                                 JFA_SCREEN_WIDTH/2-10 - BigImageHeight/cachedImage.size.height*cachedImage.size.width/2<0?0:JFA_SCREEN_WIDTH/2-10 - BigImageHeight/cachedImage.size.height*cachedImage.size.width/2,
                                                  0,
-                                                 BigImageHeight/cachedImage.size.height*cachedImage.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-40):BigImageHeight/cachedImage.size.height*cachedImage.size.width,
+                                                 BigImageHeight/cachedImage.size.height*cachedImage.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/cachedImage.size.height*cachedImage.size.width,
                                                  BigImageHeight);
             DLog(@"已存在image--video");
         }else{
             self.midImageView.frame = CGRectMake(0,
                                                  0,
-                                                 BigImageHeight/cachedImage.size.height*cachedImage.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-40):BigImageHeight/cachedImage.size.height*cachedImage.size.width,
+                                                 BigImageHeight/cachedImage.size.height*cachedImage.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/cachedImage.size.height*cachedImage.size.width,
                                                  BigImageHeight);
             DLog(@"已存在image--Image");
         }
@@ -134,7 +149,7 @@
                 self.midImageView.frame = CGRectMake(
                                                      JFA_SCREEN_WIDTH/2-20 - BigImageHeight/image.size.height*image.size.width/2<0?0:JFA_SCREEN_WIDTH/2-20 - BigImageHeight/image.size.height*image.size.width/2,
                                                      0,
-                                                     BigImageHeight/image.size.height*image.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-40):BigImageHeight/image.size.height*image.size.width,
+                                                     BigImageHeight/image.size.height*image.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/image.size.height*image.size.width,
                                                      BigImageHeight);
                 DLog(@"下载image--video");
 
@@ -142,7 +157,7 @@
                 self.midImageView.frame = CGRectMake(
                                                      0,
                                                      0,
-                                                     BigImageHeight/image.size.height*image.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-40):BigImageHeight/image.size.height*image.size.width,
+                                                     BigImageHeight/image.size.height*image.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/image.size.height*image.size.width,
                                                      BigImageHeight);
                 DLog(@"下载image--image");
             }

@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *beforeWeightlb;
 @property (weak, nonatomic) IBOutlet UILabel *afterweightlb;
 @property (weak, nonatomic) IBOutlet UILabel *lossWeightlb;
-
+@property (weak, nonatomic) IBOutlet UILabel *bastWeightlb;
+-(void)setUpCellWithDict:(NSDictionary *)dict;
 @end

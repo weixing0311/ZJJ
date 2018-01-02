@@ -104,6 +104,14 @@
         self.zanImageView.image = getImage(@"praise");
     }
     
+    
+    if ([item.vip isEqualToString:@"1"]) {
+        self.vipImg.hidden = NO;
+    }else{
+        self.vipImg.hidden = YES;
+    }
+
+    
     if ( item.isFollow&&[item.isFollow isEqualToString:@"1"]) {
         self.gzBtn.selected = YES;
         self.gzBtn.layer.borderColor = HEXCOLOR(0x666666).CGColor;

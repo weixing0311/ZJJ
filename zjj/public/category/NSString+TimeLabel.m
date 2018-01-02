@@ -140,7 +140,7 @@ typedef struct StepInfo{
     //获得当前系统时间与出生日期之间的时间间隔
     NSTimeInterval time = [currentDate timeIntervalSinceDate:srcDate];
     //时间间隔以秒作为单位,求年的话除以60*60*24*356
-    int age = ((int)time)/(3600*24*365);
+    int age = time/(3600*24*365);
     return [NSString stringWithFormat:@"%d",age ];
 }
 

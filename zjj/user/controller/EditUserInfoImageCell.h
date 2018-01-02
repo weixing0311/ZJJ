@@ -14,7 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *fatBeforeImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *fatAfterImageView;
 @property (nonatomic,assign)id<EditUserInfoCellDelegate>delegate;
-
+@property (weak, nonatomic) IBOutlet UILabel *titlelb;
+-(void)setInfoWithDict:(NSDictionary *)dict;
 @end
 
 @protocol EditUserInfoCellDelegate <NSObject>

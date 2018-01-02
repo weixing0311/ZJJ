@@ -114,6 +114,10 @@
                     <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPf-zQ-s2O">
+                    <rect key="frame" x="77" y="198" width="35" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -127,6 +131,7 @@
                 <outlet property="headImageView" destination="QO0-vS-kwD" id="LCJ-bN-mzC"/>
                 <outlet property="nameLabel" destination="vqU-xC-k3L" id="M6M-ux-yj2"/>
                 <outlet property="qrCodeImageView" destination="4FD-y2-3s5" id="f5l-N8-cbb"/>
+                <outlet property="sexImg" destination="MPf-zQ-s2O" id="jXa-G9-vhj"/>
                 <outlet property="tableView" destination="yEz-1M-R79" id="RHQ-g6-My7"/>
                 <outlet property="weightChangeLabel" destination="HBs-jf-z6P" id="St7-aL-1fg"/>
                 <outlet property="weightChangeNameLabel" destination="Ntk-9P-a8P" id="9eU-CQ-8Qd"/>

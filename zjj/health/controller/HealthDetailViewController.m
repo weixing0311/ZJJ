@@ -59,9 +59,12 @@
     [self getInfo];
     [self buildRightNaviBarItem];
     
+    if (self.subtractMaxWeight.length>0) {
+        [self showAlertViewWithsubtractMaxWeight:self.subtractMaxWeight];
+        return;
+    }
+
     
-    
-    [self showErrorView];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -79,15 +82,16 @@
     NSMutableDictionary *param =[NSMutableDictionary dictionary];
     [param safeSetObject:self.dataId forKey:@"dataId"];
     [param safeSetObject:[UserModel shareInstance].subId forKey:@"subUserId"];
-    
+    [SVProgressHUD showWithStatus:@"加载中..."];
     self.currentTasks = [[BaseSservice sharedManager]post1:kShareUserReviewInfoUrl HiddenProgress:NO paramters:param success:^(NSDictionary *dic) {
-        
+        [SVProgressHUD dismiss];
         self.infoItem = [[HealthDetailsItem alloc]init];
         [self.infoItem getInfoWithDict:[dic objectForKey:@"data" ]];
         [self.tableview reloadData];
         DLog(@"%@",dic);
         
     } failure:^(NSError *error) {
+        [SVProgressHUD dismiss];
         DLog(@"%@",error);
         if (error.code ==-1001) {
             [[UserModel shareInstance] showErrorWithStatus:@"请求超时"];
@@ -585,55 +589,6 @@
     
 }
 
-#pragma mark ---显示各种弹窗
--(void)showErrorView
-{
-    NSDictionary * nowDict = [self.shareDict safeObjectForKey:@"now"];
-    NSDictionary * firstDict = [self.shareDict safeObjectForKey:@"first"];
-    float  waterWeight1 = [[nowDict safeObjectForKey:@"waterWeight"]floatValue];
-    float  waterWeight2 = [[firstDict safeObjectForKey:@"waterWeight"]floatValue];
-    float weight1 = [[nowDict safeObjectForKey:@"weight"]floatValue];
-    float weight2 = [[firstDict safeObjectForKey:@"weight"]floatValue];
-    if (fabsf(waterWeight1-waterWeight2)>5) {
-        [self showWaterErrorAlert];
-        return;
-    }
-    if (fabsf(weight1-weight2)) {
-        [self showWeightErrorAlert];
-        return;
-    }
-    if (self.subtractMaxWeight.length>0) {
-        [self showAlertViewWithsubtractMaxWeight:self.subtractMaxWeight];
-        return;
-    }
-
-}
-
--(void)showWaterErrorAlert
-{
-    NSString * info = @"系统检测到您本次测量状况异常，请检查您的测量状态，按照正确的方法使用体脂秤。（体脂秤使用过程中忌穿鞋袜，请将体脂秤放在坚硬平整的地面上，周边不可有除手机外的电子产品。）";
-    UIAlertController * lr = [UIAlertController alertControllerWithTitle:@"" message:info preferredStyle:UIAlertControllerStyleAlert];
-    [lr addAction:[UIAlertAction actionWithTitle:@"这是真实数据" style:UIAlertActionStyleCancel handler:nil]];
-    [lr addAction:[UIAlertAction actionWithTitle:@"重新体测" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }]];
-    
-    [self presentViewController:lr animated:YES completion:nil];
-    
-}
-
--(void)showWeightErrorAlert
-{
-    NSString * info = [NSString stringWithFormat:@"您的体重为%.1f斤，与上次测量相差过大，如果不是本人请添加子用户，设置符合自身条件的数据进行测量，如果是您本人请继续使用。",[[[self.shareDict safeObjectForKey:@"now"]objectForKey:@"weight"]floatValue]];
-    NSString * title = [NSString stringWithFormat:@"您是%@本人吗？",[UserModel shareInstance].nickName];
-    UIAlertController * lr = [UIAlertController alertControllerWithTitle:title message:info preferredStyle:UIAlertControllerStyleAlert];
-    [lr addAction:[UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleCancel handler:nil]];
-    [lr addAction:[UIAlertAction actionWithTitle:@"去添加" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }]];
-    
-    [self presentViewController:lr animated:YES completion:nil];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

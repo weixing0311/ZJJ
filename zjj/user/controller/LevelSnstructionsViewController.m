@@ -33,6 +33,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.title = @"积分说明";
     [self setTBWhiteColor];
 
 }
@@ -79,7 +80,7 @@
         currentLevel = [[bigArr objectAtIndex:1] objectForKey:@"gradeName"];
         self.titleLabel.text =[NSString stringWithFormat:@"还差%d积分升级到%@", CurrentInegral,currentLevel];
 
-        NSDictionary * lastDict = [arr objectAtIndex:arr.count-bigArr.count];
+        NSDictionary * lastDict = [arr objectAtIndex:arr.count-bigArr.count-1];
         int  lastIntegral = [[lastDict objectForKey:@"integral"]intValue];
         float littleWidth =(CurrentInegral-lastIntegral)/(jf1-lastIntegral)*self.bgTiaolb.frame.size.width/arr.count;
         

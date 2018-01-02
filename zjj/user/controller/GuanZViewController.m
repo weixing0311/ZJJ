@@ -199,6 +199,14 @@
         bgColor = [UIColor redColor];
         layerColor = [UIColor redColor];
     }
+    
+    
+    if ([model.vip isEqualToString:@"1"]) {
+        cell.vipImg.hidden = NO;
+    }else{
+        cell.vipImg.hidden =YES;
+    }
+    
     cell.gzbtn.layer.borderColor = layerColor.CGColor;
     cell.gzbtn.backgroundColor = bgColor;
 

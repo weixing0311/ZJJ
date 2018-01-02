@@ -47,11 +47,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dCH-IN-w0K">
+                                <rect key="frame" x="48" y="48" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="BjY-ST-HGI"/>
+                                    <constraint firstAttribute="width" constant="16" id="Fvf-mW-uZl"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="fzS-kW-NbH" firstAttribute="centerY" secondItem="jwR-XI-7KI" secondAttribute="centerY" id="CQz-s9-xlU"/>
+                            <constraint firstItem="dCH-IN-w0K" firstAttribute="leading" secondItem="jwR-XI-7KI" secondAttribute="leading" constant="48" id="DW3-P6-zyW"/>
                             <constraint firstAttribute="trailing" secondItem="fzS-kW-NbH" secondAttribute="trailing" constant="10" id="cgi-EY-kmh"/>
                             <constraint firstItem="fzS-kW-NbH" firstAttribute="leading" secondItem="5Kr-nv-h7O" secondAttribute="trailing" constant="10" id="fHf-S4-e7F"/>
+                            <constraint firstItem="dCH-IN-w0K" firstAttribute="top" secondItem="jwR-XI-7KI" secondAttribute="top" constant="48" id="hBv-Nv-BDl"/>
                             <constraint firstItem="5Kr-nv-h7O" firstAttribute="leading" secondItem="jwR-XI-7KI" secondAttribute="leading" constant="15" id="hfk-6g-UBm"/>
                             <constraint firstItem="5Kr-nv-h7O" firstAttribute="centerY" secondItem="jwR-XI-7KI" secondAttribute="centerY" id="yLB-fC-uzT"/>
                         </constraints>
@@ -148,7 +157,9 @@
                 <outlet property="headImageView" destination="5Kr-nv-h7O" id="E8X-fe-9v4"/>
                 <outlet property="heightlb" destination="g0X-XU-Ye8" id="PUV-zo-Ucm"/>
                 <outlet property="nicknamelb" destination="fzS-kW-NbH" id="v8E-gr-g4o"/>
+                <outlet property="sexImg" destination="dCH-IN-w0K" id="o1T-2D-frA"/>
             </connections>
+            <point key="canvasLocation" x="33.5" y="60"/>
         </tableViewCell>
     </objects>
 </document>

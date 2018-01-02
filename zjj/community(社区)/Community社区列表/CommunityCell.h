@@ -13,6 +13,8 @@
 @property (nonatomic,strong)NSMutableArray * imagesArray;
 -(void)setInfoWithDict:(CommunityModel *)item;
 @property (weak, nonatomic) IBOutlet UIButton *headImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *vipImg;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleIb;
 @property (weak, nonatomic) IBOutlet UILabel *timelb;
 @property (weak, nonatomic) IBOutlet UILabel *contentlb;

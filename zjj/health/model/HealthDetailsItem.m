@@ -563,5 +563,61 @@ static HealthDetailsItem *item;
     return nil;
 }
 
+-(double)getFatPercentagePoorWithItem:(HealthDetailsItem*)item
+{
+    float currPercentage = item.fatPercentage;
+    if ([UserModel shareInstance].gender ==1) {
+        if (currPercentage<16) {
+            return 16-currPercentage;
+        }
+        else if (currPercentage>20)
+        {
+            return 20-currPercentage;
+        }else{
+            return 0;
+        }
+    }else{
+        if (currPercentage<18) {
+            return 18-currPercentage;
+        }
+        else if (currPercentage>22)
+        {
+            return 22-currPercentage;
+        }else{
+            return 0;
+        }
+    }
+}
+-(double)getFatWeightPoorWithItem:(HealthDetailsItem*)item
+{
+    float currFatWeight = item.fatWeight;
+    if ([UserModel shareInstance].gender ==1) {
+        float standardMinWeight = 0.16*item.standardWeight;
+        float standardMaxWeight = 0.2*item.standardWeight;
+        if (currFatWeight<standardMinWeight) {
+            return standardMinWeight-currFatWeight;
+        }
+        else if (currFatWeight>standardMaxWeight)
+        {
+            return standardMaxWeight-currFatWeight;
+        }else{
+            return 0;
+        }
+    }else{
+        float standardMinWeight = 0.18*item.standardWeight;
+        float standardMaxWeight = 0.22*item.standardWeight;
+
+        if (currFatWeight<standardMinWeight) {
+            return standardMinWeight-currFatWeight;
+        }
+        else if (currFatWeight>standardMaxWeight)
+        {
+            return standardMaxWeight-currFatWeight;
+        }else{
+            return 0;
+        }
+    }
+
+}
 
 @end

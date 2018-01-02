@@ -212,7 +212,7 @@
 
             }
             else if (indexPath.row==2) {
-                cell.titleLabel.text = @"成长体系";
+                cell.titleLabel.text = @"成长积分";
                 cell.headImageView.image = getImage(@"home_3_");
             }
             else if (indexPath.row==3) {

@@ -105,4 +105,10 @@
 -(NSString *)getinstructionsWithType:(NSInteger)index;
 -(void)getInfoWithDict:(NSDictionary *)dict;
 -(NSMutableDictionary *)setSliderInfoWithRow:(NSInteger)row btnTag:(NSInteger)btnTag;
+
+/**获取距离最佳体脂率的差值*/
+-(double)getFatPercentagePoorWithItem:(HealthDetailsItem*)item;
+/**获取距离最佳体脂的差值*/
+-(double)getFatWeightPoorWithItem:(HealthDetailsItem*)item;
+
 @end

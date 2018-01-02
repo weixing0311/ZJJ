@@ -84,7 +84,7 @@
                                         <action selector="didEdit:" destination="-1" eventType="touchUpInside" id="xHi-mD-fdF"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sl9-kR-Qs8">
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sl9-kR-Qs8">
                                     <rect key="frame" x="320" y="25" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="5Ep-yR-T8j"/>
@@ -141,14 +141,14 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jin.png" translatesAutoresizingMaskIntoConstraints="NO" id="z8w-ov-JnS">
-                                    <rect key="frame" x="88" y="48" width="14" height="20"/>
+                                    <rect key="frame" x="88" y="48" width="15.5" height="20"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="z8w-ov-JnS" secondAttribute="height" multiplier="19:27" id="d67-no-YVZ"/>
+                                        <constraint firstAttribute="width" secondItem="z8w-ov-JnS" secondAttribute="height" multiplier="0.78:1" id="d67-no-YVZ"/>
                                         <constraint firstAttribute="height" constant="20" id="wCk-tI-Viq"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSQ-Ml-mJJ">
-                                    <rect key="frame" x="110" y="50" width="0.0" height="20"/>
+                                    <rect key="frame" x="111.5" y="50" width="0.0" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="owH-Nj-xKR"/>
                                         <constraint firstAttribute="width" priority="20" constant="100" id="pqR-b0-f1r"/>
@@ -526,6 +526,13 @@
                                         <constraint firstAttribute="bottom" secondItem="9Dr-by-xBP" secondAttribute="bottom" id="yZe-wc-Egb"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uld-ky-Rza">
+                                    <rect key="frame" x="304" y="3" width="31" height="31"/>
+                                    <state key="normal" image="kf_select_"/>
+                                    <connections>
+                                        <action selector="didShowKf:" destination="-1" eventType="touchUpInside" id="Mzs-kj-REc"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -533,6 +540,7 @@
                                 <constraint firstAttribute="trailing" secondItem="HoZ-Yx-bfR" secondAttribute="trailing" id="AmG-Ko-XDk"/>
                                 <constraint firstItem="HoZ-Yx-bfR" firstAttribute="top" secondItem="VdM-ls-X8B" secondAttribute="bottom" id="DFt-lj-vl8"/>
                                 <constraint firstItem="VdM-ls-X8B" firstAttribute="top" secondItem="dBw-1h-atV" secondAttribute="bottom" constant="8" id="MTq-qW-hNM"/>
+                                <constraint firstAttribute="trailing" secondItem="uld-ky-Rza" secondAttribute="trailing" constant="10" id="W0s-Id-skt"/>
                                 <constraint firstAttribute="bottom" secondItem="HoZ-Yx-bfR" secondAttribute="bottom" constant="10" id="Wkw-IA-vOR"/>
                                 <constraint firstItem="dBw-1h-atV" firstAttribute="top" secondItem="vg0-4v-tGO" secondAttribute="top" constant="8" id="X9O-rT-HMv"/>
                                 <constraint firstAttribute="height" constant="180" id="ZIc-bY-5AN"/>
@@ -540,6 +548,7 @@
                                 <constraint firstItem="HoZ-Yx-bfR" firstAttribute="leading" secondItem="vg0-4v-tGO" secondAttribute="leading" id="bae-rz-wYk"/>
                                 <constraint firstItem="dBw-1h-atV" firstAttribute="leading" secondItem="vg0-4v-tGO" secondAttribute="leading" constant="8" id="d0Y-Yd-M6Y"/>
                                 <constraint firstAttribute="trailing" secondItem="dBw-1h-atV" secondAttribute="trailing" constant="8" id="s9i-7G-KFU"/>
+                                <constraint firstItem="uld-ky-Rza" firstAttribute="centerY" secondItem="dBw-1h-atV" secondAttribute="centerY" id="yTG-5E-lqR"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -1120,6 +1129,7 @@
         <image name="invitation.png" width="67" height="27"/>
         <image name="jin.png" width="9" height="13"/>
         <image name="kf_" width="25" height="26"/>
+        <image name="kf_select_" width="31" height="31"/>
         <image name="new-icon.png" width="20" height="20"/>
         <image name="personal-tzr.png" width="74" height="74"/>
         <image name="setpage.png" width="31" height="31"/>

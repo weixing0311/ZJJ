@@ -66,5 +66,5 @@
 -(void)showEmptyViewWithTitle:(NSString *)title;
 
 -(void)hiddenEmptyView;
-
+-(void)refreshEmptyView;
 @end

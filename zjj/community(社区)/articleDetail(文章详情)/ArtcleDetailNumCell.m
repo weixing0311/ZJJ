@@ -21,4 +21,9 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)didClickZan:(id)sender {
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(didZanWithCell:)]) {
+        [self.delegate didZanWithCell:self];
+    }
+}
 @end

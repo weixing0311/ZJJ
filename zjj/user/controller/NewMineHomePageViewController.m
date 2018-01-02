@@ -21,12 +21,29 @@
 #import "BeforeAfterContrastCell.h"
 #import "FcBigImgViewController.h"
 #import "CommunityCell.h"
-@interface NewMineHomePageViewController ()<UITableViewDataSource,UITableViewDelegate,PublicArticleCellDelegate,NewMineHomePageHeaderCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,BigImageArticleCellDelegate>
+#import "NewMineFatLineCell.h"
+#import "NewMineFatInterCell.h"
+#import "NewMineModel.h"
+#import "JbView.h"
+@interface NewMineHomePageViewController ()
+<
+UITableViewDataSource,
+UITableViewDelegate,
+PublicArticleCellDelegate,
+NewMineHomePageHeaderCellDelegate,
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate,
+BigImageArticleCellDelegate
+>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic,strong)NSMutableArray * dataArray;
+@property (nonatomic,strong)NSMutableArray * reducedFatLineArray;
+@property (nonatomic,strong)NSMutableArray * reducedFatQuestionArray;
+
 @property (nonatomic, weak) CLPlayerView *playerView;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 @property (nonatomic,strong)NSMutableDictionary * infoDict;
+
 @end
 
 @implementation NewMineHomePageViewController
@@ -36,7 +53,7 @@
     CommunityCell * PlayingCell;
     int changeImageNum;
     
-    
+    JbView *jbv;
     
 
 }
@@ -62,19 +79,28 @@
     [super viewDidLoad];
     self.title = @" ";
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshMyInfo) name:@"refreshHomePageInfo" object:nil];
-    if (![self.userId isEqualToString:[UserModel shareInstance].userId]) {
-        self.shareBtn.hidden = YES;
-    }else{
-        self.shareBtn.hidden = NO;
-    }
+//    if (![self.userId isEqualToString:[UserModel shareInstance].userId]) {
+//        self.shareBtn.hidden = YES;
+//    }else{
+//        self.shareBtn.hidden = NO;
+//    }
+    
+    
+    
+    
     self.tableview.delegate=self;
     self.tableview.dataSource= self;
+    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     pageSize = 30;
     self.dataArray = [NSMutableArray array];
+    self.reducedFatQuestionArray = [NSMutableArray array];
+    self.reducedFatLineArray = [NSMutableArray array];
+
     self.infoDict = [NSMutableDictionary dictionary];
     [self setExtraCellLineHiddenWithTb:self.tableview];
     [self setRefrshWithTableView:self.tableview];
 }
+
 -(void)refreshMyInfo
 {
     [self.tableview.mj_header beginRefreshing];
@@ -102,23 +128,46 @@
         
         if (page ==1) {
             [self.dataArray removeAllObjects];
+            [self.reducedFatQuestionArray removeAllObjects];
+            [self.reducedFatLineArray removeAllObjects];
             self.tableview.mj_footer.hidden = NO;
-            
         }
-        
         
         NSDictionary * dataDic  = [dic safeObjectForKey:@"data"];
         self.infoDict = [dataDic safeObjectForKey:@"article"];
-        
         NSArray * infoArr = [dataDic safeObjectForKey:@"array"];
         if (infoArr.count<30) {
             self.tableview.mj_footer.hidden = YES;
         }
+
+        
+        
+        NSArray * coursesArr = [self.infoDict safeObjectForKey:@"courses"];
+        for (NSDictionary * infoDict in coursesArr) {
+            ReducedLineModel * model = [[ReducedLineModel alloc]init];
+            [model setInfoWithDict:infoDict];
+            [self.reducedFatLineArray addObject:model];
+        }
+        
+        NSArray * interviewsArr = [self.infoDict safeObjectForKey:@"interviews"];
+        for (NSDictionary * infoDict in interviewsArr) {
+            ReducedFatAskResultModel * model = [[ReducedFatAskResultModel alloc]init];
+            [model setInfoWithDict:infoDict];
+            [self.reducedFatQuestionArray addObject:model];
+        }
+
+        
+        
+        
+        NSString * isVip = [self.infoDict safeObjectForKey:@"isVip"];
+        
         for (NSMutableDictionary * infoDic in infoArr) {
             CommunityModel * item = [[CommunityModel alloc]init];
             [item setInfoWithDict:infoDic];
+            item.vip = isVip;
             [self.dataArray addObject:item];
         }
+
         [self.tableview reloadData];
 
         
@@ -134,17 +183,26 @@
 {
 
     if (indexPath.section ==0) {
-        return JFA_SCREEN_WIDTH*0.56;
+        return JFA_SCREEN_WIDTH/2+110;
     }
     else if(indexPath.section ==1)
     {
-        return 130;
+        return 180;
     }
     else if(indexPath.section==2)
     {
         return JFA_SCREEN_WIDTH*0.7;
     }
-
+    else if(indexPath.section ==3)
+    {
+        ReducedLineModel * model = _reducedFatLineArray[indexPath.row];
+        return model.height>200?model.height:200;
+    }
+    else if(indexPath.section ==4)
+    {
+        ReducedFatAskResultModel * model = _reducedFatQuestionArray[indexPath.row];
+        return model.height;
+    }
     else
     {
         CommunityModel * item =[self.dataArray objectAtIndex:indexPath.row];
@@ -156,41 +214,25 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 6;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    if (section ==0) {
-        return 1;
-    }
-    else if(section ==1)
+    if (section==3)
     {
-        return 1;
-    }
-    else if(section==2)
+        return self.reducedFatLineArray.count;
+    }else if(section ==4)
     {
-        return 1;
+        return self.reducedFatQuestionArray.count;
+    }
+    else if (section ==5)
+    {
+       return self.dataArray.count;;
     }
     else
     {
-        return self.dataArray.count;
-
-    }
-}
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section ==0) {
         return 1;
     }
-    else if (section ==1||section==2) {
-        return 10;
-    }
-    return 25;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -201,52 +243,8 @@
             cell = [self getXibCellWithTitle:identifier];
         }
         cell.delegate = self;
-        cell.headImageView.layer.cornerRadius = cell.headImageView.frame.size.height/2;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell.headImageView sd_setBackgroundImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"headimgurl"]] forState:UIControlStateNormal placeholderImage:getImage(@"defaultHead")
-         ];
-        
-        
-//        [cell.bgImageView getImageWithUrl:[_infoDict safeObjectForKey:@"backGroundImg"] getImageFinish:^(UIImage *image, NSError *error) {
-//            cell.bgImageView.image = image;
-//        }];
-        
-        
-        [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"backGroundImg"]] placeholderImage:getImage(@"newMineBg_") completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-            if (error) {
-                return ;
-            }
-            cell.bgImageView.image = [self cutImage:image imgViewWidth:image.size.width imgViewHeight:image.size.width*0.56];
-        }];
-                
-        
-        cell.nicknamelb.text = [_infoDict safeObjectForKey:@"nickName"];
-        NSString * introduction = [_infoDict safeObjectForKey:@"introduction"];
-        if (introduction.length<1) {
-            cell.jjlb.text = @"还没有编辑简介~";
-        }else{
-            cell.jjlb.text = [NSString stringWithFormat:@"简介：%@",introduction];
-        }
-        int  sex = [UserModel shareInstance].gender;
-        if (sex ==1) {
-            cell.sexImageView.image = getImage(@"man_");
-            
-        }else{
-            cell.sexImageView.image =getImage(@"woman_");
-        }
-        
-        if ([self.userId isEqualToString:[UserModel shareInstance].userId]) {
-            cell.gzBtn.hidden = YES;
-        }else{
-            cell.gzBtn.hidden = NO;
-            
-            if ([[_infoDict safeObjectForKey:@"isFollow"]isEqualToString:@"1"]) {
-                cell.gzBtn.selected = YES;
-            }else{
-                cell.gzBtn.selected = NO;
-            }            
-        }
-        
+        [cell setUpCellWithDict:_infoDict userId:self.userId];
         return cell;
     }
     
@@ -257,24 +255,9 @@
         if (!cell) {
             cell = [self getXibCellWithTitle:identifier];
         }
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.beforeWeightlb.text = [NSString stringWithFormat:@"%.1fkg",[[_infoDict safeObjectForKey:@"beforeWeight"] floatValue]];
-        cell.afterweightlb.text = [NSString stringWithFormat:@"%.1fkg",[[_infoDict safeObjectForKey:@"afterWeight"] floatValue]];
-        cell.continuousDatelb.text = [NSString stringWithFormat:@"%@",[_infoDict safeObjectForKey:@"registerDate"]?[_infoDict safeObjectForKey:@"registerDate"]:@"0"];
-        
-        double befortWeight =[[_infoDict safeObjectForKey:@"beforeWeight"]doubleValue];
-        double afterWeight =[[_infoDict safeObjectForKey:@"afterWeight"]doubleValue];
-
-        
-        float lossWeight  = befortWeight-afterWeight;
-        
-        if (lossWeight>0) {
-            cell.afterweightlb.textColor = [UIColor greenColor];
-        }else{
-            cell.afterweightlb.textColor = [UIColor orangeColor];
-        }
-        cell.lossWeightlb.text = [NSString stringWithFormat:@"%.1f",lossWeight>0?lossWeight:0];
-
+        [cell setUpCellWithDict:_infoDict];
         return cell;
     }
     else if(indexPath.section ==2)
@@ -285,16 +268,46 @@
             cell = [self getXibCellWithTitle:identifier];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-        [cell.fatBeforeImageView sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"fatBefore"]] placeholderImage:getImage(@"fatBefore_") options:SDWebImageRetryFailed];
-        [cell.fatAfterImageView sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"fatAfter"]] placeholderImage:getImage(@"fatAfter_") options:SDWebImageRetryFailed];
-
-        
-//        [cell.fatBeforeBtn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"fatBefore"]] placeholderImage:getImage(@"fatBefore_")];
-//        [cell.fatAfterBtn setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"fatAfter"]] placeholderImage:getImage(@"fatAfter_")];
-        
+        [cell setInfoWithDict:_infoDict];
         return cell;
         
+    }
+    else if(indexPath.section ==3)
+    {
+        
+        ReducedLineModel  * model = [_reducedFatLineArray objectAtIndex:indexPath.row];
+        
+        static NSString * identifier = @"NewMineFatLineCell";
+        NewMineFatLineCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [self getXibCellWithTitle:identifier];
+        }
+
+        [cell setViewHidden:indexPath.row];
+        cell.model = model;
+        cell.tag = indexPath.row;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+
+    }
+    else if(indexPath.section ==4)
+    {
+        ReducedFatAskResultModel  * model = [_reducedFatQuestionArray objectAtIndex:indexPath.row];
+        
+
+        static NSString * identifier = @"NewMineFatInterCell";
+        NewMineFatInterCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [self getXibCellWithTitle:identifier];
+        }
+        
+        cell.model = model;
+        cell.tag = indexPath.row;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        [cell.img2 sd_setImageWithURL:[NSURL URLWithString:[self.infoDict safeObjectForKey:@"headimgurl"]] placeholderImage:getImage(@"head_default")];
+        return cell;
+
     }
     else
     {
@@ -345,30 +358,106 @@
 //cell离开tableView时调用
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     //因为复用，同一个cell可能会走多次
-    if (indexPath.section ==1) {
+    if (indexPath.section ==5) {
         if ([PlayingCell isEqual:cell]) {
             //区分是否是播放器所在cell,销毁时将指针置空
             [_playerView destroyPlayer];
             PlayingCell = nil;
         }
-
     }
 }
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section ==0) {
-        return @"";
+    if (section ==1) {
+        return 1;
     }
-    else if (section==1)
+    else if(section ==2)
     {
-        return @"";
-    }else if(section ==2){
-        return @"";
-    }else{
-        return @"最新状态";
-
+        return 40;
     }
+    else if (section ==3)
+    {
+        return _reducedFatLineArray.count>0?40:0.01;
+    }
+    else if (section ==4)
+    {
+        return  _reducedFatLineArray.count>0?40:0.01;
+    }
+    else if (section ==5)
+    {
+        return 40;
+    }
+    return 1;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:
+            return 5;
+            break;
+        case 1:
+            return 9;
+            break;
+        case 2:
+            return 9;
+            break;
+        case 3:
+            return _reducedFatLineArray.count>0?10:0.01;
+            break;
+        case 4:
+            return _reducedFatLineArray.count>0?10:0.01;
+            break;
+        case 5:
+            return _dataArray.count>0?10:10;
+            break;
 
+        default:
+            break;
+    }
+    return 0.01;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    
+    UIView * view =[[UIView alloc]init];
+    view.backgroundColor = [UIColor whiteColor];
+    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 200, 30)];
+    label.font = [UIFont systemFontOfSize:17];
+    label.textColor = HEXCOLOR(0x666666);
+    [view addSubview:label];
+    
+    switch (section) {
+        case 0:
+            label.text = @"";
+            break;
+        case 1:
+            view.backgroundColor = HEXCOLOR(0xeeeeee);
+            label.text = @"";
+            break;
+        case 2:
+            label.text = @"减脂前后";
+            break;
+        case 3:
+            label.text = _reducedFatLineArray.count>0?@"减脂历程":@"";
+            break;
+        case 4:
+            label.text = _reducedFatQuestionArray.count>0?@"减脂访谈":@"";
+            break;
+        case 5:
+            label.text = @"最新动态";
+            break;
+
+        default:
+            break;
+    }
+    return view;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView * view =[[UIView alloc]init];
+    view.backgroundColor =HEXCOLOR(0xeeeeee);
+    return view;
 }
 #pragma mark - 滑动代理
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -382,7 +471,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section ==3){
+    if(indexPath.section ==5){
     CommunityModel * model = [_dataArray objectAtIndex:indexPath.row];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ArticleDetailViewController * ard =[[ArticleDetailViewController alloc]init];
@@ -425,6 +514,51 @@
 }
 
 #pragma  mark ---cell delegate
+
+
+-(void)didPlayVideoWithCell:(NewMineHomePageCell*)cell
+{
+    //销毁播放器
+    [_playerView destroyPlayer];
+    CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, (JFA_SCREEN_WIDTH), JFA_SCREEN_WIDTH*0.5)];
+    _playerView = playerView;
+    [cell.bgImageView addSubview:_playerView];
+    [cell.bgImageView bringSubviewToFront:_playerView];
+    //    _playerView.fillMode = ResizeAspectFill;
+    
+    //视频地址
+    _playerView.url = [NSURL URLWithString:[self.infoDict safeObjectForKey:@"videoPath"]];
+    //播放
+    [_playerView playVideo];
+    //返回按钮点击事件回调
+    [_playerView backButton:^(UIButton *button) {
+        NSLog(@"返回按钮被点击");
+        [_playerView destroyPlayer];
+        cell.videoPlayBtn.hidden =NO;
+        _playerView = nil;
+        PlayingCell = nil;
+        
+    }];
+    //播放完成回调
+    [_playerView endPlay:^{
+        //销毁播放器
+        [_playerView destroyPlayer];
+        cell.videoPlayBtn.hidden =NO;
+        _playerView = nil;
+        PlayingCell = nil;
+        
+        NSLog(@"播放完成");
+    }];
+    
+}
+
+
+
+
+
+
+
+
 -(void)didShowChangeUserInfoPage
 {
     
@@ -517,7 +651,7 @@
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     [params safeSetObject:@"" forKey:@"commentId"];
     [params safeSetObject:model.uid forKey:@"articleId"];
-    if (model.isFabulous) {
+    if (model.isFabulous&&[model.isFabulous isEqualToString:@"1"]) {
         [params safeSetObject:@"0" forKey:@"isFabulous"];//1是点赞 0取消
     }else{
         [params safeSetObject:@"1" forKey:@"isFabulous"];//1是点赞 0取消
@@ -597,7 +731,7 @@
     PlayingCell = cell;
     //销毁播放器
     [_playerView destroyPlayer];
-    CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, (JFA_SCREEN_WIDTH-40), (JFA_SCREEN_WIDTH-40)*0.6)];
+    CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, (JFA_SCREEN_WIDTH-20), (JFA_SCREEN_WIDTH-20)*0.6)];
     _playerView = playerView;
     [cell.playerBgView addSubview:_playerView];
     [cell.playerBgView bringSubviewToFront:_playerView];
@@ -683,7 +817,7 @@
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     [params safeSetObject:@"" forKey:@"commentId"];
     [params safeSetObject:model.uid forKey:@"articleId"];
-    if (model.isFabulous) {
+    if (model.isFabulous&&[model.isFabulous isEqualToString:@"1"]) {
         [params safeSetObject:@"0" forKey:@"isFabulous"];//1是点赞 0取消
     }else{
         [params safeSetObject:@"1" forKey:@"isFabulous"];//1是点赞 0取消
@@ -809,31 +943,11 @@
     }
     else
     {
-        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"" message:@"希望您能正确对待社群内容，不要随意举报他人，请确认该用户发表不良信息再进行举报。" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            
-        }];
-        [alert addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-        [alert addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSString *strUrl = [alert.textFields.firstObject.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-            
-            if (strUrl.length<5) {
-                [[UserModel shareInstance]showInfoWithStatus:@"举报内容不能小于5个字。"];
-                return ;
-            }
-            NSMutableDictionary * params = [NSMutableDictionary dictionary];
-            [params safeSetObject:model.uid forKey:@"articleId"];
-            [params safeSetObject:alert.textFields.firstObject.text forKey:@"reportContent"];
-            [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
-            self.currentTasks =[[BaseSservice sharedManager]post1:@"app/reportArticle/updateIsreported.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
-                [[UserModel shareInstance]showSuccessWithStatus:@"您已成功举报"];
-            } failure:^(NSError *error) {
-                
-            }];
-            
-        }]];
-        [self presentViewController:alert animated:YES completion:nil];
-        
+        jbv = [[JbView alloc]initWithFrame:CGRectMake(0, 64, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT-110)];
+        jbv.articleId = model.uid;
+        [self.view addSubview:jbv];
+        [self.view bringSubviewToFront:jbv];
+
     }
     
     
@@ -966,6 +1080,8 @@
         self.currentTasks = [[BaseSservice sharedManager]post1:@"app/community/userfollow/followUser.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
             DLog(@"dic-关注成功--%@",dic);
             cell.gzBtn.selected = YES;
+            cell.gzBtn.layer.borderColor = HEXCOLOR(0xeeeeee).CGColor;
+
             [[UserModel shareInstance]showSuccessWithStatus:@"关注成功"];
             [self.tableview.mj_header beginRefreshing];
         } failure:^(NSError *error) {
@@ -973,25 +1089,29 @@
         }];
     }
 }
-
 -(void)cancelGzWithId:(NSString * )followId cell:(NewMineHomePageCell*)cell
 {
     [SVProgressHUD showWithStatus:@"修改中。。。"];
     NSMutableDictionary * params =[NSMutableDictionary dictionary];
     [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
     [params setObject:followId forKey:@"followId"];
+
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+
     self.currentTasks = [[BaseSservice sharedManager]post1:@"app/community/userfollow/removeUserFollow.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
         DLog(@"dic-取消关注成功--%@",dic);
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            
-            cell.gzBtn.selected = YES;
+        
+            cell.gzBtn.selected = NO;
+            cell.gzBtn.layer.borderColor = [UIColor redColor].CGColor;
+
             [[UserModel shareInstance]showSuccessWithStatus: @"取消成功"];
             [self.tableview.mj_header beginRefreshing];
-        });
     } failure:^(NSError *error) {
         
     }];
+    });
+
 }
 
 
