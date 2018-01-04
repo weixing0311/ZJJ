@@ -102,10 +102,8 @@
                      }];
 }
 
-
 -(void)didUpdateinfo
 {
-    
     self.statuslb.text = @"请赤脚上称。。。";
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
     
@@ -116,17 +114,18 @@
         }
     } success:^(NSDictionary *dic) {
 //        self.statuslb.text = @"测量成功！开始上传...";
+        [[WWXBlueToothManager shareInstance]stop];
 
         float nowWeight = [[dic safeObjectForKey:@"mWeight"]floatValue];
         float firstWeight = self.currItem.weight;
         float  nowWaterWeight = [[dic safeObjectForKey:@"mWater"]floatValue]/100*nowWeight;
         float  firstWaterWeight = self.currItem.waterWeight;
 
-        if (fabsf(nowWaterWeight-firstWaterWeight)>1.5) {
+        if (firstWaterWeight>0&& fabsf(nowWaterWeight-firstWaterWeight)>1.5) {
             [self showWaterErrorAlertWithDict:dic];
             return;
         }
-        if (fabsf(nowWeight-firstWeight)>5) {
+        if (firstWeight>0&&fabsf(nowWeight-firstWeight)>5) {
             [self showWeightErrorAlertWithDict:dic];
             return;
         }
@@ -193,6 +192,7 @@
 }
 
 - (IBAction)didClickClose:(id)sender {
+    [[WWXBlueToothManager shareInstance]stop];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)didClickLj:(id)sender {

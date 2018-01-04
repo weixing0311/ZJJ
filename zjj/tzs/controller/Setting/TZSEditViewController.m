@@ -105,7 +105,7 @@
         if (!cell) {
             cell = [self getXibCellWithTitle:identifier];
         }
-        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[UserModel shareInstance].headUrl] placeholderImage:[UIImage imageNamed:@"logo_"]];
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[UserModel shareInstance].headUrl] placeholderImage:[UIImage imageNamed:@"logo"]];
         return cell;
     }else{
         static NSString *identifier = @"cell";

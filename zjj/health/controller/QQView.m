@@ -101,6 +101,8 @@
 -(void)refreshProgressLayer
 {
     
+    
+    
     CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.width/2);  //设置圆心位置
     CGFloat radius = self.bounds.size.width/2-25;  //设置半径
     CGFloat startA =  M_PI_4*5.7/2;  //圆起点位置

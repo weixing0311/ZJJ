@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="dPi-jW-EdE">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dPi-jW-EdE">
                     <rect key="frame" x="150" y="83" width="75" height="75"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="B89-FP-YgI"/>
@@ -260,6 +260,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo2" width="76" height="76"/>
+        <image name="logo" width="80" height="80"/>
     </resources>
 </document>

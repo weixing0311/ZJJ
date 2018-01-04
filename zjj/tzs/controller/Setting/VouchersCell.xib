@@ -64,7 +64,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仅限脂将军饼干使用" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ukh-L0-Ete">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仅限饼干使用" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ukh-L0-Ete">
                                 <rect key="frame" x="80" y="53" width="140" height="14.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="10" constant="25" id="0rQ-1D-Crd"/>

@@ -169,7 +169,7 @@
     [[SubUserItem shareInstance]removeAll];
     [JPUSHService setAlias:@"" callbackSelector:nil object:self];
 
-    UIAlertController *al = [UIAlertController alertControllerWithTitle:@"警告" message:@"有人在其他设备登录您的脂将军账号，本设备将会强制退出。如果这不是您本人操作，请立刻通过登录页面找回密码功能修改密码，慎防盗号。" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *al = [UIAlertController alertControllerWithTitle:@"警告" message:@"有人在其他设备登录您的账号，本设备将会强制退出。如果这不是您本人操作，请立刻通过登录页面找回密码功能修改密码，慎防盗号。" preferredStyle:UIAlertControllerStyleAlert];
     
     
     [al addAction:[UIAlertAction actionWithTitle:@"登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
