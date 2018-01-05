@@ -271,9 +271,9 @@ static ShareHealthItem *item;
      
      bmi  1低  2正常3高4高
      内脂  1正常2超标3高
-     蛋白质(P)/骨骼肌(boneMuscle)/骨量(boneWeight)/水分(waterWieghtLevel)/肌肉(Muscle)  1正常 else低
+     蛋白质(P)/骨骼肌(boneMuscle)/骨量(boneWeight)//肌肉(Muscle)  1正常 else低
 
-     
+     水分(waterWieghtLevel) 1低2正常3高
      
      
      
@@ -310,7 +310,7 @@ static ShareHealthItem *item;
                     return @"高";
                     break;
                 case 4:
-                    return @"高";
+                    return @"极高";
                     break;
                     
                 default:
@@ -323,12 +323,15 @@ static ShareHealthItem *item;
                     return @"正常";
                     break;
                 case 2:
-                    return @"超标";
+                    return @"偏高";
                     break;
                 case 3:
                     return @"高";
                     break;
-                    
+                case 4:
+                    return @"极高";
+                    break;
+
                 default:
                     break;
             }
@@ -337,15 +340,21 @@ static ShareHealthItem *item;
         case IS_FAT:
             switch (level) {
                 case 1:
-                    return @"正常";
-                    break;
-                case 2:
                     return @"低";
                     break;
+                case 2:
+                    return @"正常";
+                    break;
                 case 3:
+                    return @"偏高";
+                    break;
+                case 4:
                     return @"高";
                     break;
-                    
+                case 5:
+                    return @"极高";
+                    break;
+
                 default:
                     break;
             }
@@ -354,15 +363,21 @@ static ShareHealthItem *item;
         case IS_FATPERCENT:
             switch (level) {
                 case 1:
-                    return @"正常";
-                    break;
-                case 2:
                     return @"低";
                     break;
+                case 2:
+                    return @"正常";
+                    break;
                 case 3:
+                    return @"偏高";
+                    break;
+                case 4:
                     return @"高";
                     break;
-                    
+                case 5:
+                    return @"极高";
+                    break;
+
                 default:
                     break;
             }
@@ -444,6 +459,23 @@ static ShareHealthItem *item;
             {
                 return @"低";
             }
+            break;
+        case IS_WATER:
+            switch (level) {
+                case 1:
+                    return @"低";
+                    break;
+                case 2:
+                    return @"正常";
+                    break;
+                case 3:
+                    return @"偏高";
+                    break;
+                    
+                default:
+                    break;
+            }
+            
             break;
         default:
             break;

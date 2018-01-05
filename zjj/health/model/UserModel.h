@@ -331,5 +331,6 @@
 
 ///修改签到弹窗状态
 -(void)changeUserDefaultWithSignInType:(int)type;
-
+///截取连接中的参数
+- (NSMutableDictionary *)getURLParameters:(NSString *)urlStr;
 @end

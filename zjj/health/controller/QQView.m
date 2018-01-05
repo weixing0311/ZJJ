@@ -192,12 +192,14 @@
         level = [self getWomanLevelWithBfp:bfp];
     }
 
-    _progress = [self getpaiWithWeightLevel:level]-[self getDetailLocationWithbfp:bfp];
+    double allPrs = [self getpaiWithWeightLevel:level];
+    double detPrs = [self getDetailLocationWithbfp:bfp];
+    _progress = allPrs-detPrs;
     [self  setNeedsDisplay];
 
 }
 //获取位置
--(float)getpaiWithWeightLevel:(int)level
+-(double)getpaiWithWeightLevel:(int)level
 {
     switch (level) {
         case 0:
@@ -210,16 +212,13 @@
             return 0.4;
             break;
         case 3:
-            return 0.1+0.4;
+            return 0.4/3+0.4;
             break;
         case 4:
-            return 0.1*2+0.4;
+            return 0.4/3*2+0.4;
             break;
         case 5:
-            return 0.1*3+0.4;
-            break;
-        case 6:
-            return 0.1*4+0.4;
+            return 0.4/3*3+0.4;
             break;
             
         default:
@@ -230,38 +229,35 @@
 
 //获取精确位置
 
--(float)getDetailLocationWithbfp:(float)bfp
+-(double)getDetailLocationWithbfp:(float)bfp
 {
     
     if ([UserModel shareInstance].gender==1) {
+        
+        double a[4];
+        if ([UserModel shareInstance].age<40) {
+            a[0] = 0.16;
+            a[1] = 0.21;
+            a[2] = 0.26;
+            a[3] = 0.45;
+            
+            
+        }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
+        {
+            a[0] = 0.17;
+            a[1] = 0.22;
+            a[2] = 0.27;
+            a[3] = 0.45;
+        }else{
+            a[0] = 0.19;
+            a[1] = 0.24;
+            a[2] = 0.29;
+            a[3] = 0.45;
+        }
+        
+        
+        
       int  level = [self getManLevelWithBfp:bfp];
-
-        
-        
-        
-        
-        
-//        0.22 = 0.5----0.2 = 0.4
-//                      0.1 = ?
-//
-//        ? = 0.1*0.4/0.2
-//
-//
-//
-//        0.24 = 0.6
-//
-//        0.02 = 0.1
-//        0.01 = ?
-//
-//
-//        0.28 = 0.7
-//        0.3  = 0.8
-//
-//
-//
-//        return 0.4/0.2
-        
-        
         
         switch (level) {
             case 0:
@@ -269,22 +265,19 @@
                 break;
             case 1:
                 
-                return (0.2-bfp) * 0.4/0.2;
+                return (a[0]-bfp) * 0.4/a[0];//（极值-当前值)/极值 X 圆环所在位置长度
                 break;
             case 2:
-                return (0.2-bfp)*0.4/0.2;
+                return (a[0]-bfp)*0.4/a[0];
                 break;
             case 3:
-                return (0.24-bfp)*0.1/0.04;
+                return (a[1]-bfp)*0.4/3/(a[1]-a[0]);
                 break;
             case 4:
-                return (0.28-bfp)*0.1/0.04;
+                return (a[2]-bfp)*0.4/3/(a[2]-a[1]);
                 break;
             case 5:
-                return (0.30-bfp)*0.1/0.02;
-                break;
-            case 6:
-                return fabs(0.4-bfp)*0.1/0.1;
+                return (a[3]-bfp)*0.4/3/(a[3]-a[2]);
                 break;
                 
             default:
@@ -295,28 +288,47 @@
     }else{
        int level = [self getWomanLevelWithBfp:bfp];
 
+        float a[4];
+        if ([UserModel shareInstance].age<40) {
+            a[0] = 0.27;
+            a[1] = 0.34;
+            a[2] = 0.39;
+            a[3] = 0.45;
+            
+            
+        }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
+        {
+            a[0] = 0.28;
+            a[1] = 0.35;
+            a[2] = 0.40;
+            a[3] = 0.45;
+        }else{
+            a[0] = 0.29;
+            a[1] = 0.36;
+            a[2] = 0.41;
+            a[3] = 0.45;
+        }
+
+        
         switch (level) {
             case 0:
                 return 0.0;
                 break;
             case 1:
                 
-                return (0.22-bfp)*0.4/0.22;
+                return (a[0]-bfp)*0.4/a[0];
                 break;
             case 2:
-                return (0.22-bfp)*0.1/0.02;
+                return (a[0]-bfp)*0.4/a[0];
                 break;
             case 3:
-                return (0.26-bfp)*0.1/0.04;
+                return (a[1]-bfp)*0.4/3/(a[1]-a[0]);
                 break;
             case 4:
-                return (0.29-bfp)*0.1/0.03;
+                return (a[2]-bfp)*0.4/3/(a[2]-a[1]);
                 break;
             case 5:
-                return (0.35-bfp)*0.1/0.06;
-                break;
-            case 6:
-                return fabs(0.45-bfp)*0.1/0.1;
+                return (a[3]-bfp)*0.4/3/(a[3]-a[2]);
                 break;
                 
             default:
@@ -332,34 +344,50 @@
 //获取等级
 -(int)getManLevelWithBfp:(float)bfp
 {
-    if (bfp<0.16) {
+    float a[4];
+    if ([UserModel shareInstance].age<40) {
+        a[0] = 0.16;
+        a[1] = 0.21;
+        a[2] = 0.26;
+        a[3] = 0.45;
+        
+        
+    }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
+    {
+        a[0] = 0.17;
+        a[1] = 0.22;
+        a[2] = 0.27;
+        a[3] = 0.45;
+    }else{
+        a[0] = 0.19;
+        a[1] = 0.24;
+        a[2] = 0.29;
+        a[3] = 0.45;
+    }
+
+    if (bfp<0.1) {
         //偏瘦
         return 1;
     }
-    else if(bfp>=0.16&&bfp<0.2)
+    else if(bfp>=0.1&&bfp<a[0])
     {
         //        正常
         return 2;
     }
-    else if(bfp>=0.2&&bfp<0.24)
+    else if(bfp>=a[0]&&bfp<a[1])
     {
         //        WEIGHT_LIGHT_FAT
         return 3;
     }
-    else if(bfp>=0.24&&bfp<0.28)
+    else if(bfp>=a[1]&&bfp<a[2])
     {
         //        WEIGHT_MODERATE_FAT
         return 4;
     }
-    else if(bfp>=0.28&&bfp<0.30)
+    else if(bfp>=a[2]&&bfp<a[3])
     {
         //        WEIGHT_SEVERE_FAT
         return 5;
-    }
-    else if(bfp>=0.3)
-    {
-        //        WEIGHT_EXTREME_FAT
-        return 6;
     }
     else{
         return 0;
@@ -369,34 +397,52 @@
 //获取等级
 -(int)getWomanLevelWithBfp:(float)bfp
 {
-    if (bfp<0.18) {
+    
+    float a[4];
+    if ([UserModel shareInstance].age<40) {
+        a[0] = 0.27;
+        a[1] = 0.34;
+        a[2] = 0.39;
+        a[3] = 0.45;
+        
+        
+    }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
+    {
+        a[0] = 0.28;
+        a[1] = 0.35;
+        a[2] = 0.40;
+        a[3] = 0.45;
+    }else{
+        a[0] = 0.29;
+        a[1] = 0.36;
+        a[2] = 0.41;
+        a[3] = 0.45;
+    }
+
+    
+    if (bfp<0.1) {
         //偏瘦
         return 1;
     }
-    else if(bfp>=0.18&&bfp<0.22)
+    else if(bfp>=0.2&&bfp<a[0])
     {
         //        正常
         return 2;
     }
-    else if(bfp>=0.22&&bfp<0.26)
+    else if(bfp>=a[0]&&bfp<a[1])
     {
         //        WEIGHT_LIGHT_FAT
         return 3;
     }
-    else if(bfp>=0.26&&bfp<0.29)
+    else if(bfp>=a[1]&&bfp<a[2])
     {
         //        WEIGHT_MODERATE_FAT
         return 4;
     }
-    else if(bfp>=0.29&&bfp<0.35)
+    else if(bfp>=a[2]&&bfp<a[3])
     {
         //        WEIGHT_SEVERE_FAT
         return 5;
-    }
-    else if(bfp>=0.35)
-    {
-        //        WEIGHT_EXTREME_FAT
-        return 6;
     }
     else{
         return 0;

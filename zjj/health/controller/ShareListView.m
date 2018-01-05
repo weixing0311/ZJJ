@@ -11,6 +11,10 @@
 #import "NSString+dateWithString.h"
 #import "ShareTrendListCell.h"
 #import "NSDate+CustomDate.h"
+#define warningColor   [UIColor colorWithRed:246/255.0 green:172/255.0 blue:2/255.0 alpha:1]
+#define normalColor    [UIColor colorWithRed:57/255.0 green:208/255.0 blue:160/255.0 alpha:1]
+#define seriousColor   [UIColor colorWithRed:236/255.0 green:85/255.0 blue:78/255.0 alpha:1]
+
 @implementation ShareListView
 
 -(NSMutableArray*)dataArray
@@ -190,19 +194,34 @@
         cell.value2TrendImageView.hidden = YES;
     }
     
-    
-    if ([cell.value1StatusLabel.text isEqualToString:@"正常"]) {
-        cell.value1StatusBgView.backgroundColor =HEXCOLOR(0x39D19F);
-    }else{
-        cell.value1StatusBgView.backgroundColor = HEXCOLOR(0xE46F48);
-    }
-    if ([cell.value2StatusLabel.text isEqualToString:@"正常"]) {
-        cell.value2StatusBgView.backgroundColor =HEXCOLOR(0x39D19F);
-    }else{
-        cell.value2StatusBgView.backgroundColor = HEXCOLOR(0xE46F48);
-    }
+    cell.value1StatusBgView.backgroundColor = [self getColorWithString:cell.value1StatusLabel.text];
+    cell.value2StatusBgView.backgroundColor = [self getColorWithString:cell.value2StatusLabel.text];
+
+//    if ([cell.value1StatusLabel.text isEqualToString:@"正常"]) {
+//        cell.value1StatusBgView.backgroundColor =HEXCOLOR(0x39D19F);
+//    }else{
+//        cell.value1StatusBgView.backgroundColor = HEXCOLOR(0xE46F48);
+//    }
+//    if ([cell.value2StatusLabel.text isEqualToString:@"正常"]) {
+//        cell.value2StatusBgView.backgroundColor =HEXCOLOR(0x39D19F);
+//    }else{
+//        cell.value2StatusBgView.backgroundColor = HEXCOLOR(0xE46F48);
+//    }
     
     return cell;
+}
+-(UIColor *)getColorWithString:(NSString *)string
+{
+    
+    if ([string isEqualToString:@"偏低"]||[string isEqualToString:@"偏高"]||[string isEqualToString:@"超标"]||[string isEqualToString:@"低"]) {
+        return warningColor;
+    }
+    else if ([string isEqualToString:@"正常"])
+    {
+        return normalColor;
+    }else{
+        return seriousColor;
+    }
 }
 -(NSInteger)gettimeXWithTime1:(NSDate *)tiem1 time2:(NSDate *)time2
 {
@@ -256,8 +275,8 @@
     NSString *bone1 =[[ShareHealthItem shareInstance] getHeightWithLevel:item1.boneLevel status:IS_SAME];
     NSString *bone2 =[[ShareHealthItem shareInstance] getHeightWithLevel:item2.boneLevel status:IS_SAME];
 //水分
-    NSString *water1 =[[ShareHealthItem shareInstance] getHeightWithLevel:item1.waterLevel status:IS_SAME];
-    NSString *water2 =[[ShareHealthItem shareInstance] getHeightWithLevel:item2.waterLevel status:IS_SAME];
+    NSString *water1 =[[ShareHealthItem shareInstance] getHeightWithLevel:item1.waterLevel status:IS_WATER];
+    NSString *water2 =[[ShareHealthItem shareInstance] getHeightWithLevel:item2.waterLevel status:IS_WATER];
 //内脂
     NSString *viscerlFat1 =[[ShareHealthItem shareInstance] getHeightWithLevel:item1.visceralFatPercentageLevel status:IS_VISCERALFAT];
     NSString *viscerlFat2 =[[ShareHealthItem shareInstance] getHeightWithLevel:item2.visceralFatPercentageLevel status:IS_VISCERALFAT];

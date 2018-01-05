@@ -78,10 +78,6 @@
             self.fatStatuslb.text = [NSString stringWithFormat:@"重度肥胖"];
             //            self.fatStatuslb.textColor = HEXCOLOR(0xe84849);
             break;
-        case 6:
-            self.fatStatuslb.text = [NSString stringWithFormat:@"极度肥胖"];
-            //            self.fatStatuslb.textColor = HEXCOLOR(0xe84849);
-            break;
             
         default:
             break;

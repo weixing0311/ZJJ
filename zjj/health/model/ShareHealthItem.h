@@ -13,7 +13,8 @@ typedef enum
     IS_VISCERALFAT,///内脂
     IS_FAT,///脂肪
     IS_FATPERCENT,///体脂  fatPercentage
-    IS_SAME,///肌肉\骨骼肌\水分\蛋白质\骨重判定标准///骨骼肌
+    IS_SAME,///肌肉\骨骼肌\蛋白质\骨重判定标准///骨骼肌
+    IS_WATER,
     IS_BODYWEIGHT,///体重判定
     IS_SIZE,///体型
     IS_BMR,

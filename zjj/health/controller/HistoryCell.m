@@ -120,8 +120,7 @@
         self.second10Lb.backgroundColor = [self getColorWithLevel:self.second10Lb.text];
 
         
-        
-        self.second11Lb.text = [[ShareHealthItem shareInstance] getHeightWithLevel:[[infoDict safeObjectForKey:@"waterLevel"]intValue] status:IS_SAME];
+        self.second11Lb.text = [[ShareHealthItem shareInstance] getHeightWithLevel:[[infoDict safeObjectForKey:@"waterLevel"]intValue] status:IS_WATER];
         self.second11Lb.backgroundColor = [self getColorWithLevel:self.second11Lb.text];
 
         

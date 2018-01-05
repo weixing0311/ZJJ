@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface QQView : UIView
-@property (nonatomic,assign)float progress;
+@property (nonatomic,assign)double progress;
 -(void)getProgressWithBfp:(float)bfp;
 @end

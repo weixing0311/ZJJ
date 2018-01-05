@@ -359,7 +359,7 @@
                                 <rect key="frame" x="0.0" y="132" width="320" height="43"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYV-af-zhM">
-                                        <rect key="frame" x="160" y="11.5" width="70" height="20"/>
+                                        <rect key="frame" x="170" y="11.5" width="70" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="RIb-KI-Owg"/>
                                             <constraint firstAttribute="height" constant="20" id="cKc-Zi-0NO"/>
@@ -411,7 +411,7 @@
                                     <constraint firstAttribute="trailing" secondItem="6Zu-iI-bbI" secondAttribute="trailing" constant="20" id="SZM-hX-glB"/>
                                     <constraint firstAttribute="height" constant="43" id="T9s-US-1Jv"/>
                                     <constraint firstItem="YYV-af-zhM" firstAttribute="centerY" secondItem="lVB-c3-ZsE" secondAttribute="centerY" id="WTU-tk-pPd"/>
-                                    <constraint firstItem="6Zu-iI-bbI" firstAttribute="leading" secondItem="YYV-af-zhM" secondAttribute="trailing" constant="20" id="cxv-mY-OlC"/>
+                                    <constraint firstItem="6Zu-iI-bbI" firstAttribute="leading" secondItem="YYV-af-zhM" secondAttribute="trailing" constant="10" id="cxv-mY-OlC"/>
                                     <constraint firstItem="Ibs-lX-CdT" firstAttribute="centerY" secondItem="lVB-c3-ZsE" secondAttribute="centerY" id="lBA-WX-Hdw"/>
                                     <constraint firstItem="6Zu-iI-bbI" firstAttribute="centerY" secondItem="lVB-c3-ZsE" secondAttribute="centerY" id="vta-gD-XHL"/>
                                 </constraints>

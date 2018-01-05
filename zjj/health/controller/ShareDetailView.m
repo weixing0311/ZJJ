@@ -228,36 +228,64 @@
     float visceral = 0.0;
     int sex = [UserModel shareInstance].gender;
     if (sex ==1) {
-        fatWeightV = 20.0f;
-        visceral = 8;
+        if ([UserModel shareInstance].age<40) {
+            fatWeightV = 13.5f;
+        }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
+        {
+            fatWeightV = 14.5f;
+        }else if ([UserModel shareInstance].age>60)
+        {
+            fatWeightV = 16.5f;
+        }
+
+//        fatWeightV = 20.0f;
+        visceral = 4;
     }else{
-        visceral = 6;
-        fatWeightV = 22.0f;
+        if ([UserModel shareInstance].age<40) {
+            fatWeightV = 24.0f;
+        }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
+        {
+            fatWeightV = 25.0f;
+        }else if ([UserModel shareInstance].age>60)
+        {
+            fatWeightV = 26.0f;
+        }
+
+        visceral = 4;
+//        fatWeightV = 22.0f;
     }
 
     
-    float target1 = item.standardWeight-item.weight;
-    float target2 = [item getFatPercentagePoorWithItem:item];
-    float target3 = [item getFatWeightPoorWithItem:item];
-    float target4 = visceral -item.visceralFatPercentage;
+//    float target1 = item.standardWeight-item.weight;
+//    float target2 = [item getFatPercentagePoorWithItem:item];
+//    float target3 = [item getFatWeightPoorWithItem:item];
+//    float target4 = visceral -item.visceralFatPercentage;
+    float target1 = item.standardWeight-item.weight>0?0:item.standardWeight-item.weight;
+    float target2 = [item getFatPercentagePoorWithItem:item]>0?0:[item getFatPercentagePoorWithItem:item];
+    float target3 = [item getFatWeightPoorWithItem:item]>0?0:[item getFatWeightPoorWithItem:item];
+    float target4 = visceral -item.visceralFatPercentage>0?0:visceral -item.visceralFatPercentage;
+
+//    if (target2>0) {
+//        self.statusFatLabel.text = @"增脂";
+//    }else if (target2<0)
+//    {
+//        self.statusFatLabel.text = @"减脂";
+//    }else
+//    {
+//        self.statusFatLabel.text = @"";
+//    }
     
-    if (target2>0) {
-        self.statusFatLabel.text = @"增脂";
-    }else if (target2<0)
-    {
-        self.statusFatLabel.text = @"减脂";
-    }else
-    {
-        self.statusFatLabel.text = @"";
-    }
     
+    self.target1label.text =[NSString stringWithFormat:@"%.1fkg",target1];
+    self.target2label.text =[NSString stringWithFormat:@"%.1f%%",target2];
+    self.target3label.text =[NSString stringWithFormat:@"%.1fkg",target3];
+    self.target4label.text =[NSString stringWithFormat:@"%.1f",target4];
+
     
-    
-    
-    self.target1label.text =[NSString stringWithFormat:@"%@%.1fkg",target1>0?@"+":@"",target1];
-    self.target2label.text =[NSString stringWithFormat:@"%@%.1f%%",target2>0?@"+":@"",target2];
-    self.target3label.text =[NSString stringWithFormat:@"%@%.1fkg",target3>0?@"+":@"",target3];
-    self.target4label.text =[NSString stringWithFormat:@"%@%.1f",target4>0?@"+":@"",target4];
+//    self.target1label.text =[NSString stringWithFormat:@"%@%.1fkg",target1>0?@"+":@"",target1];
+//    self.target2label.text =[NSString stringWithFormat:@"%@%.1f%%",target2>0?@"+":@"",target2];
+//    self.target3label.text =[NSString stringWithFormat:@"%@%.1fkg",target3>0?@"+":@"",target3];
+//    self.target4label.text =[NSString stringWithFormat:@"%@%.1f",target4>0?@"+":@"",target4];
     
     self.my1Label.text = [NSString stringWithFormat:@"%.1fkg",item.weight];
     self.my2Label.text = [NSString stringWithFormat:@"%.1f%%",item.fatPercentage];
@@ -396,27 +424,36 @@
                     return @"正常";
                     break;
                 case 3:
-                    return @"高";
+                    return @"偏高";
                     break;
                 case 4:
                     return @"高";
                     break;
-                    
+                case 5:
+                    return @"极高";
+                    break;
+
                 default:
                     break;
             }
         case IS_MODEL_FATPERCENT:
             switch (item.fatPercentageLevel) {
                 case 1:
-                    return @"正常";
+                    return @"低";
                     break;
                 case 2:
-                    return @"偏高";
+                    return @"正常";
                     break;
                 case 3:
+                    return @"偏高";
+                    break;
+                case 4:
                     return @"高";
                     break;
-                    
+                case 5:
+                    return @"极高";
+                    break;
+
                 default:
                     break;
             }
@@ -424,15 +461,21 @@
         case IS_MODEL_FAT:
             switch (item.fatWeightLevel) {
                 case 1:
-                    return @"正常";
+                    return @"低";
                     break;
                 case 2:
-                    return @"偏高";
+                    return @"正常";
                     break;
                 case 3:
+                    return @"偏高";
+                    break;
+                case 4:
                     return @"高";
                     break;
-                    
+                case 5:
+                    return @"极高";
+                    break;
+
                 default:
                     break;
             }
@@ -440,12 +483,15 @@
         case IS_MODEL_WATER:
             switch (item.waterLevel) {
                 case 1:
-                    return @"正常";
-                    break;
-                case 2:
                     return @"低";
                     break;
-                    
+                case 2:
+                    return @"正常";
+                    break;
+                case 3:
+                    return @"偏高";
+                    break;
+
                 default:
                     break;
             }
@@ -501,12 +547,15 @@
                     return @"正常";
                     break;
                 case 2:
-                    return @"超标";
+                    return @"偏高";
                     break;
                 case 3:
                     return @"高";
                     break;
-                    
+                case 4:
+                    return @"极高";
+                    break;
+
                 default:
                     break;
             }

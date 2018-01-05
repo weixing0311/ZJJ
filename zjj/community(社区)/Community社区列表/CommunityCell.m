@@ -99,6 +99,9 @@
         self.zhezhaoceng.hidden = YES;
         imageUrl = item.pictures[0];;
     }
+    
+    
+    [self getimageBoundsWithUrl:imageUrl];
     [self configureImage:imageUrl];
 }
 - (void)configureImage:(NSString *)imageUrl {
@@ -115,21 +118,22 @@
         
         self.midImageView.image = [self cutImage:cachedImage imgViewWidth:BigImageHeight/cachedImage.size.height*cachedImage.size.width imgViewHeight:BigImageHeight];
 
-        if (self.currModel.movieStr.length>5) {
-            self.midImageView.frame = CGRectMake(
-                                                 JFA_SCREEN_WIDTH/2-10 - BigImageHeight/cachedImage.size.height*cachedImage.size.width/2<0?0:JFA_SCREEN_WIDTH/2-10 - BigImageHeight/cachedImage.size.height*cachedImage.size.width/2,
-                                                 0,
-                                                 BigImageHeight/cachedImage.size.height*cachedImage.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/cachedImage.size.height*cachedImage.size.width,
-                                                 BigImageHeight);
-            DLog(@"已存在image--video");
-        }else{
-            self.midImageView.frame = CGRectMake(0,
-                                                 0,
-                                                 BigImageHeight/cachedImage.size.height*cachedImage.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/cachedImage.size.height*cachedImage.size.width,
-                                                 BigImageHeight);
-            DLog(@"已存在image--Image");
+        if (![[UserModel shareInstance] getURLParameters:imageUrl]) {
+            if (self.currModel.movieStr.length>5) {
+                self.midImageView.frame = CGRectMake(
+                                                     JFA_SCREEN_WIDTH/2-10 - BigImageHeight/cachedImage.size.height*cachedImage.size.width/2<0?0:JFA_SCREEN_WIDTH/2-10 - BigImageHeight/cachedImage.size.height*cachedImage.size.width/2,
+                                                     0,
+                                                     BigImageHeight/cachedImage.size.height*cachedImage.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/cachedImage.size.height*cachedImage.size.width,
+                                                     BigImageHeight);
+                DLog(@"已存在image--video");
+            }else{
+                self.midImageView.frame = CGRectMake(0,
+                                                     0,
+                                                     BigImageHeight/cachedImage.size.height*cachedImage.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/cachedImage.size.height*cachedImage.size.width,
+                                                     BigImageHeight);
+                DLog(@"已存在image--Image");
+            }
         }
-
     }
 }
 
@@ -145,27 +149,63 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.bgImageView.image = image;
             self.midImageView.image = image;
-            if (self.currModel.movieStr.length>5) {
-                self.midImageView.frame = CGRectMake(
-                                                     JFA_SCREEN_WIDTH/2-20 - BigImageHeight/image.size.height*image.size.width/2<0?0:JFA_SCREEN_WIDTH/2-20 - BigImageHeight/image.size.height*image.size.width/2,
-                                                     0,
-                                                     BigImageHeight/image.size.height*image.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/image.size.height*image.size.width,
-                                                     BigImageHeight);
-                DLog(@"下载image--video");
-
-            }else{
-                self.midImageView.frame = CGRectMake(
-                                                     0,
-                                                     0,
-                                                     BigImageHeight/image.size.height*image.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/image.size.height*image.size.width,
-                                                     BigImageHeight);
-                DLog(@"下载image--image");
+            if (![[UserModel shareInstance] getURLParameters:imageURL]) {
+                if (self.currModel.movieStr.length>5) {
+                    self.midImageView.frame = CGRectMake(
+                                                         JFA_SCREEN_WIDTH/2-20 - BigImageHeight/image.size.height*image.size.width/2<0?0:JFA_SCREEN_WIDTH/2-20 - BigImageHeight/image.size.height*image.size.width/2,
+                                                         0,
+                                                         BigImageHeight/image.size.height*image.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/image.size.height*image.size.width,
+                                                         BigImageHeight);
+                    DLog(@"下载image--video");
+                    
+                }else{
+                    self.midImageView.frame = CGRectMake(
+                                                         0,
+                                                         0,
+                                                         BigImageHeight/image.size.height*image.size.width>(JFA_SCREEN_WIDTH-20)?(JFA_SCREEN_WIDTH-20):BigImageHeight/image.size.height*image.size.width,
+                                                         BigImageHeight);
+                    DLog(@"下载image--image");
+                }
             }
+
 
         });
     }];
 }
-
+///获取image图片大小
+-(void)getimageBoundsWithUrl:(NSString*)imageUrl
+{
+    NSDictionary * dic = [[UserModel shareInstance] getURLParameters:imageUrl];
+    if (!dic) {
+        return;
+    }
+    double width = [[dic safeObjectForKey:@"w"]doubleValue];
+    double height = [[dic safeObjectForKey:@"h"]doubleValue];
+    
+    double imageW =  BigImageHeight/height*width;
+    double imageH = BigImageHeight;
+    if (imageW<100) {
+        imageW = 100;
+    }
+    if (imageW>JFA_SCREEN_WIDTH-20) {
+        imageW = JFA_SCREEN_WIDTH-20;
+    }
+    if (self.currModel.movieStr.length>5) {
+        self.midImageView.frame = CGRectMake(
+                                             JFA_SCREEN_WIDTH-20 - imageW<0
+                                             ?0
+                                             :(JFA_SCREEN_WIDTH-20 - imageW)/2,
+                                             0,
+                                             imageW,
+                                             imageH);
+    }else{
+        self.midImageView.frame = CGRectMake(0,
+                                             0,
+                                             imageW
+                                             ,imageH);
+    }
+    
+}
 
 //裁剪图片
 

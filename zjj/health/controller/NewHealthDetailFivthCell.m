@@ -126,8 +126,8 @@
             self.secondHeadImage.image = self.headerImageView.image;
             self.sliderBgImageView.image = getImage(@"sliderBg4_");
             
-            self.sliderLislb.text =@"10";
-            self.sliderMorlb.text = @"14";
+            self.sliderLislb.text =@"4";
+            self.sliderMorlb.text = @"9";
             
             currX = [self getlocationDianL:self.currItem.visceralFatPercentage Withleft:[self.sliderLislb.text floatValue] right:[self.sliderMorlb.text floatValue]];
 
@@ -301,7 +301,7 @@
 
 -(double)getlocationDianL:(float)dian Withleft:(float)min right:(float)max
 {
-    float width = JFA_SCREEN_WIDTH-60;//总长度
+    float width = JFA_SCREEN_WIDTH-75;//总长度
     float start  = min-(max-min);//起始位置数值
     float end    = max+(max-min);//终点位置数值
     float one     = width/(end-start); //单点数值所占长度
@@ -360,7 +360,7 @@
                     return @"高";
                     break;
                 case 4:
-                    return @"高";
+                    return @"极高";
                     break;
                     
                 default:
@@ -369,15 +369,21 @@
         case IS_MODEL_FATPERCENT:
             switch (item.fatPercentageLevel) {
                 case 1:
-                    return @"正常";
-                    break;
-                case 2:
                     return @"低";
                     break;
+                case 2:
+                    return @"正常";
+                    break;
                 case 3:
+                    return @"偏高";
+                    break;
+                case 4:
                     return @"高";
                     break;
-                    
+                case 5:
+                    return @"极高";
+                    break;
+
                 default:
                     break;
             }
@@ -385,15 +391,21 @@
         case IS_MODEL_FAT:
             switch (item.fatWeightLevel) {
                 case 1:
-                    return @"正常";
-                    break;
-                case 2:
                     return @"低";
                     break;
+                case 2:
+                    return @"正常";
+                    break;
                 case 3:
+                    return @"偏高";
+                    break;
+                case 4:
                     return @"高";
                     break;
-                    
+                case 5:
+                    return @"极高";
+                    break;
+
                 default:
                     break;
             }
@@ -401,12 +413,14 @@
         case IS_MODEL_WATER:
             switch (item.waterLevel) {
                 case 1:
-                    return @"正常";
-                    break;
-                case 2:
                     return @"低";
                     break;
-                    
+                case 2:
+                    return @"正常";
+                    break;
+                case 3:
+                    return @"偏高";
+                    break;
                 default:
                     break;
             }
@@ -462,12 +476,15 @@
                     return @"正常";
                     break;
                 case 2:
-                    return @"超标";
+                    return @"偏高";
                     break;
                 case 3:
                     return @"高";
                     break;
-                    
+                case 4:
+                    return @"极高";
+                    break;
+
                 default:
                     break;
             }

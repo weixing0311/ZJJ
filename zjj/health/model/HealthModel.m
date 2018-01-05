@@ -218,9 +218,9 @@
     fatPercentage level  1正常2低3高
     
     bmi  1低  2正常3高4高
-    fatweightlevel  1正常2低3高
+    fatweightlevel  1低2正常3偏高 4高 5极高
     
-    waterlevel 1正常 else 低
+    waterlevel 1低  2 正常 3高
         
         蛋白质  1正常 else低
             
@@ -244,7 +244,7 @@
                     return seriousColor;
                     break;
                 case 4:
-                    return warningColor;
+                    return seriousColor;
                     break;
                     
                 default:
@@ -253,15 +253,21 @@
         case IS_MODEL_FATPERCENT:
             switch (item.fatPercentageLevel) {
                 case 1:
-                    return normalColor;
-                    break;
-                case 2:
                     return warningColor;
                     break;
+                case 2:
+                    return normalColor;
+                    break;
                 case 3:
+                    return warningColor;
+                    break;
+                case 4:
                     return seriousColor;
                     break;
-                    
+                case 5:
+                    return seriousColor;
+                    break;
+
                 default:
                     break;
             }
@@ -269,15 +275,21 @@
         case IS_MODEL_FAT:
             switch (item.fatWeightLevel) {
                 case 1:
-                    return normalColor;
-                    break;
-                case 2:
                     return warningColor;
                     break;
+                case 2:
+                    return normalColor;
+                    break;
                 case 3:
+                    return warningColor;
+                    break;
+                case 4:
                     return seriousColor;
                     break;
-                    
+                case 5:
+                    return seriousColor;
+                    break;
+
                 default:
                     break;
             }
@@ -285,12 +297,15 @@
         case IS_MODEL_WATER:
             switch (item.waterLevel) {
             case 1:
-                return normalColor;
-                break;
-            case 2:
                 return warningColor;
                 break;
-                
+            case 2:
+                return normalColor;
+                break;
+            case 3:
+                return warningColor;
+                break;
+
             default:
                 break;
         }
@@ -351,6 +366,10 @@
                 case 3:
                     return seriousColor;
                     break;
+                case 4:
+                    return seriousColor;
+                    break;
+
                 default:
                     break;
             }
