@@ -110,8 +110,8 @@
     UIImage *cachedImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imageUrl];
     
     if ( !cachedImage ) {
-        self.bgImageView.image = getImage(@"default");
-        self.midImageView.image = getImage(@"default");
+        self.bgImageView.image = getImage(@"reducedFat_Default");
+        self.midImageView.image = getImage(@"fatLine_default");
         [self downloadImage:imageUrl];
     } else {
         self.bgImageView.image =cachedImage;
@@ -141,8 +141,8 @@
     // 利用 SDWebImage 框架提供的功能下载图片
     [[SDWebImageDownloader sharedDownloader]downloadImageWithURL:[NSURL URLWithString:imageURL] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
         if (error) {
-            self.bgImageView.image = getImage(@"default");
-            self.midImageView.image = getImage(@"");
+            self.bgImageView.image = getImage(@"reducedFat_Default");
+            self.midImageView.image = getImage(@"reducedFat_Default");
             return ;
         }
         [[SDImageCache sharedImageCache]storeImage:image forKey:imageURL completion:nil];

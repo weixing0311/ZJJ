@@ -40,23 +40,19 @@
             self.weightStatusLabel.textColor = HEXCOLOR(0xf4a519);
             break;
         case 2:
-            self.weightStatusLabel.text = [NSString stringWithFormat:@"正常"];
+            self.weightStatusLabel.text = [NSString stringWithFormat:@"标准"];
             self.weightStatusLabel.textColor = HEXCOLOR(0x41bf7c);
             break;
         case 3:
-            self.weightStatusLabel.text = [NSString stringWithFormat:@"轻度肥胖"];
+            self.weightStatusLabel.text = [NSString stringWithFormat:@"偏胖"];
             self.weightStatusLabel.textColor = HEXCOLOR(0xf4a519);
             break;
         case 4:
-            self.weightStatusLabel.text = [NSString stringWithFormat:@"中度肥胖"];
+            self.weightStatusLabel.text = [NSString stringWithFormat:@"偏胖"];
             self.weightStatusLabel.textColor = HEXCOLOR(0xf4a519);
             break;
         case 5:
-            self.weightStatusLabel.text = [NSString stringWithFormat:@"重度肥胖"];
-            self.weightStatusLabel.textColor = HEXCOLOR(0xe84849);
-            break;
-        case 6:
-            self.weightStatusLabel.text = [NSString stringWithFormat:@"极度肥胖"];
+            self.weightStatusLabel.text = [NSString stringWithFormat:@"超重"];
             self.weightStatusLabel.textColor = HEXCOLOR(0xe84849);
             break;
             

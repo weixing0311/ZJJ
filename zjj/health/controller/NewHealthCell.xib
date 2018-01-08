@@ -138,7 +138,7 @@
                                     <constraint firstItem="YPZ-oL-ber" firstAttribute="top" secondItem="dp7-5B-f2F" secondAttribute="top" id="tfI-SU-4fC"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="轻度肥胖" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJl-zD-1Hq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标准" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJl-zD-1Hq">
                                 <rect key="frame" x="30" y="25" width="120" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="JTT-ZH-PUU"/>
@@ -536,8 +536,8 @@
         <image name="guideText1_" width="207" height="14"/>
         <image name="guideText9_" width="212" height="47"/>
         <image name="head_default" width="52" height="52"/>
-        <image name="newHealth_left" width="61" height="61"/>
-        <image name="newHealth_right" width="61" height="61"/>
+        <image name="newHealth_left" width="47" height="46"/>
+        <image name="newHealth_right" width="46" height="46"/>
         <image name="trand_down_icon" width="8" height="6"/>
         <image name="wave_" width="375" height="67"/>
     </resources>

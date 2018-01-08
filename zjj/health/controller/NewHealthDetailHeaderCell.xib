@@ -103,7 +103,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCg-9C-UjT">
-                                        <rect key="frame" x="123.5" y="10" width="1" height="35"/>
+                                        <rect key="frame" x="123.5" y="15" width="1" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="WFf-mc-422"/>
@@ -115,7 +115,7 @@
                                     <constraint firstItem="MCg-9C-UjT" firstAttribute="leading" secondItem="MZN-qh-C0W" secondAttribute="trailing" constant="10" id="6Lh-ox-Hq6"/>
                                     <constraint firstItem="g0X-XU-Ye8" firstAttribute="centerY" secondItem="Pjx-fC-7Q1" secondAttribute="centerY" id="MiP-uC-BJK"/>
                                     <constraint firstAttribute="trailing" secondItem="1xR-45-fKD" secondAttribute="trailing" constant="20" id="U8L-Zm-UjQ"/>
-                                    <constraint firstItem="MCg-9C-UjT" firstAttribute="top" secondItem="LGv-BJ-wNJ" secondAttribute="top" constant="10" id="YvE-Cr-a4E"/>
+                                    <constraint firstItem="MCg-9C-UjT" firstAttribute="top" secondItem="LGv-BJ-wNJ" secondAttribute="top" constant="15" id="YvE-Cr-a4E"/>
                                     <constraint firstItem="Pjx-fC-7Q1" firstAttribute="width" secondItem="1xR-45-fKD" secondAttribute="width" id="c58-FX-pCh"/>
                                     <constraint firstItem="1xR-45-fKD" firstAttribute="top" secondItem="Pjx-fC-7Q1" secondAttribute="bottom" constant="5" id="cw0-4z-rKU"/>
                                     <constraint firstAttribute="trailing" secondItem="Pjx-fC-7Q1" secondAttribute="trailing" constant="20" id="hjc-iw-CnS"/>

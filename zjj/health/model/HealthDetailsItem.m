@@ -85,8 +85,8 @@ static HealthDetailsItem *item;
 
     self . mCalorie              = [[dict safeObjectForKey:@"mCalorie"]intValue];
     self . fatPercentage         = [[dict safeObjectForKey:@"fatPercentage"]floatValue]*100;
-    self . fatPercentageMax      = [[dict safeObjectForKey:@"fatPercentageMax"]floatValue]*100;
-    self . fatPercentageMin      = [[dict safeObjectForKey:@"fatPercentageMin"]floatValue]*100;
+    self . fatPercentageMax      = [[dict safeObjectForKey:@"fatPercentageMax"]doubleValue]*100;
+    self . fatPercentageMin      = [[dict safeObjectForKey:@"fatPercentageMin"]doubleValue]*100;
     self . fatPercentageLevel    = [[dict safeObjectForKey:@"fatPercentageLevel"]intValue];
     
 
@@ -135,14 +135,14 @@ static HealthDetailsItem *item;
             switch (btnTag) {
                 case 1:
                     [dic safeSetObject:[NSString stringWithFormat:@"18.5"] forKey:@"lowText"] ;
-                    [dic safeSetObject:[NSString stringWithFormat:@"24.0"] forKey:@"HeightText"];;
-                    x = [self getLocationWithMax:24.0
+                    [dic safeSetObject:[NSString stringWithFormat:@"25.0"] forKey:@"HeightText"];;
+                    x = [self getLocationWithMax:25.0
                                              Min:18.5
                                             info:[HealthDetailsItem instance].bmi ];
                     
                     [dic safeSetObject:[[HealthModel shareInstance]getStatus:IS_MODEL_BMI] forKey:@"info"];
                     
-                    [dic safeSetObject:[[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_BMI] forKey:@"color"];
+                    [dic safeSetObject:[[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_BMI Level:[HealthDetailsItem instance].bmi] forKey:@"color"];
                     
                     break;
                 case 2:
@@ -154,7 +154,7 @@ static HealthDetailsItem *item;
                                             info:[HealthDetailsItem instance].fatPercentage ];
                     [dic safeSetObject:[[HealthModel shareInstance]getStatus:IS_MODEL_FATPERCENT] forKey:@"info"];
                     
-                    [dic safeSetObject:[[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_FATPERCENT] forKey:@"color"];
+                    [dic safeSetObject:[[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_FATPERCENT Level:[HealthDetailsItem instance].fatPercentageLevel] forKey:@"color"];
                     break;
                 case 3:
                     
@@ -166,7 +166,7 @@ static HealthDetailsItem *item;
                                             info:[HealthDetailsItem instance].fatWeight ];
                     
                     [dic safeSetObject:[[HealthModel shareInstance]getStatus:IS_MODEL_FAT] forKey:@"info"];
-                    [dic safeSetObject:[[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_FAT] forKey:@"color"];
+                    [dic safeSetObject:[[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_FAT Level:[HealthDetailsItem instance].fatWeightLevel] forKey:@"color"];
 
                     break;
                 case 4:
@@ -179,7 +179,7 @@ static HealthDetailsItem *item;
                                             info:[HealthDetailsItem instance].waterWeight ];
                     [dic safeSetObject:[[HealthModel shareInstance]getStatus:IS_MODEL_WATER] forKey:@"info"];
                     
-                    [dic safeSetObject:[[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_WATER] forKey:@"color"];
+                    [dic safeSetObject:[[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_WATER Level:[HealthDetailsItem instance].waterLevel] forKey:@"color"];
                     break;
                     
                 default:
@@ -197,7 +197,7 @@ static HealthDetailsItem *item;
                                             info:[HealthDetailsItem instance].proteinWeight ];
                     [dic safeSetObject:[[HealthModel shareInstance]getStatus:IS_MODEL_PROTEIN] forKey:@"info"];
                     
-                    [dic safeSetObject:[[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_PROTEIN] forKey:@"color"];
+                    [dic safeSetObject:[[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_PROTEIN Level:[HealthDetailsItem instance].proteinLevel] forKey:@"color"];
                     break;
                 case 2:
                     [dic safeSetObject:[NSString stringWithFormat:@"%.1fkg",[HealthDetailsItem instance].muscleWeightMax] forKey:@"HeightText"];;
@@ -208,7 +208,7 @@ static HealthDetailsItem *item;
                                             info:[HealthDetailsItem instance].muscleWeight ];
                     [dic safeSetObject:[[HealthModel shareInstance]getStatus:IS_MODEL_MUSCLE] forKey:@"info"];
                     
-                    [dic safeSetObject:[[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_MUSCLE] forKey:@"color"];
+                    [dic safeSetObject:[[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_MUSCLE Level:[HealthDetailsItem instance].muscleLevel] forKey:@"color"];
                     break;
                 case 3:
                     [dic safeSetObject:[NSString stringWithFormat:@"%.1fkg",[HealthDetailsItem instance].boneMuscleWeightMax] forKey:@"HeightText"];;
@@ -220,7 +220,7 @@ static HealthDetailsItem *item;
                     
                     [dic safeSetObject:[[HealthModel shareInstance]getStatus:IS_MODEL_BONEMUSCLE] forKey:@"info"];
                     
-                    [dic safeSetObject:[[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_BONEMUSCLE] forKey:@"color"];
+                    [dic safeSetObject:[[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_BONEMUSCLE Level:[HealthDetailsItem instance].boneMuscleLevel] forKey:@"color"];
                     break;
                 case 4:
                     [dic safeSetObject:[NSString stringWithFormat:@"14.0"] forKey:@"HeightText"]; ;
@@ -234,7 +234,7 @@ static HealthDetailsItem *item;
                     
                     
                     
-                    [dic safeSetObject:[[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_VISCERALFAT] forKey:@"color"];
+                    [dic safeSetObject:[[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_VISCERALFAT Level:[HealthDetailsItem instance].visceralFatPercentageLevel] forKey:@"color"];
                     break;
                     
                 default:
@@ -575,7 +575,7 @@ static HealthDetailsItem *item;
 
                     break;
                 case 3:
-//                    return @"您身体的水分含量处于偏高状态，请保持这种状态，这代表您的身体循环系统比较正常，身体比较健康。";
+                    return @"您的身体水分含量较高，这代表您的身体比较健康，充足的水分能帮助您更好的消化食物吸收养分，并促进新陈代谢，带走体内的废物与毒素。";
                     
                     break;
 
@@ -589,60 +589,47 @@ static HealthDetailsItem *item;
     return nil;
 }
 
--(double)getFatPercentagePoorWithItem:(HealthDetailsItem*)item
-{
-    float currPercentage = item.fatPercentage;
-    if ([UserModel shareInstance].gender ==1) {
-        if (currPercentage<16) {
-            return 16-currPercentage;
-        }
-        else if (currPercentage>20)
-        {
-            return 20-currPercentage;
-        }else{
-            return 0;
-        }
-    }else{
-        if (currPercentage<18) {
-            return 18-currPercentage;
-        }
-        else if (currPercentage>22)
-        {
-            return 22-currPercentage;
-        }else{
-            return 0;
-        }
-    }
-}
 -(double)getFatWeightPoorWithItem:(HealthDetailsItem*)item
 {
-    float currFatWeight = item.fatWeight;
-    if ([UserModel shareInstance].gender ==1) {
-        float standardMinWeight = 0.16*item.standardWeight;
-        float standardMaxWeight = 0.2*item.standardWeight;
-        if (currFatWeight<standardMinWeight) {
-            return standardMinWeight-currFatWeight;
-        }
-        else if (currFatWeight>standardMaxWeight)
-        {
-            return standardMaxWeight-currFatWeight;
-        }else{
-            return 0;
-        }
-    }else{
-        float standardMinWeight = 0.18*item.standardWeight;
-        float standardMaxWeight = 0.22*item.standardWeight;
+    double fatPercentage = item.fatPercentageMin+(item.fatPercentageMax-item.fatPercentageMin)/2;
 
-        if (currFatWeight<standardMinWeight) {
-            return standardMinWeight-currFatWeight;
-        }
-        else if (currFatWeight>standardMaxWeight)
-        {
-            return standardMaxWeight-currFatWeight;
-        }else{
-            return 0;
-        }
-    }
+    double currFatWeight = item.fatWeight;
+    double bestFatWeight = fatPercentage * item.standardWeight/100;
+    
+    return bestFatWeight-currFatWeight>0?0:bestFatWeight-currFatWeight;
+    
+    
+    
+    
+    
+    
+    
+//    if ([UserModel shareInstance].gender ==1) {
+//        float standardMinWeight = 0.16*item.standardWeight;
+//        float standardMaxWeight = 0.2*item.standardWeight;
+//        if (currFatWeight<standardMinWeight) {
+//            return standardMinWeight-currFatWeight;
+//        }
+//        else if (currFatWeight>standardMaxWeight)
+//        {
+//            return standardMaxWeight-currFatWeight;
+//        }else{
+//            return 0;
+//        }
+//    }else{
+//        float standardMinWeight = 0.18*item.standardWeight;
+//        float standardMaxWeight = 0.22*item.standardWeight;
+//
+//        if (currFatWeight<standardMinWeight) {
+//            return standardMinWeight-currFatWeight;
+//        }
+//        else if (currFatWeight>standardMaxWeight)
+//        {
+//            return standardMaxWeight-currFatWeight;
+//        }else{
+//            return 0;
+//        }
+//    }
 
 }
 

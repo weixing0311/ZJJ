@@ -62,7 +62,10 @@ typedef enum {
 ////体重判定标准
 @property (nonatomic,assign) int                weightLevel ;
 @property (nonatomic,copy  ) NSString     *     createTime ;
-@property (nonatomic,assign) float              fatPercentage;
+@property (nonatomic,assign) float              fatPercentage ; //体脂百分比
+@property (nonatomic,assign) double              fatPercentageMax ; //体脂指数正常范围上限
+@property (nonatomic,assign) double              fatPercentageMin ; //体脂指数正常范围下限
+
 @property (nonatomic,assign)enumsType           type;
 ////标准体重
 @property (nonatomic,assign) float              standardWeight;
@@ -106,9 +109,9 @@ typedef enum {
 @property (nonatomic,assign) float              fatWeightMax ;// 脂肪重正常范围上限
 @property (nonatomic,assign) float              fatWeightMin ;// 脂肪重正常范围下限
 
-@property (nonatomic,assign) float              fatPercentage ;// 体脂百分比
-@property (nonatomic,assign) float              fatPercentageMax ;// 体脂指数正常范围上限
-@property (nonatomic,assign) float              fatPercentageMin ;// 体脂指数正常范围下限
+@property (nonatomic,assign) float              fatPercentage ; 体脂百分比
+@property (nonatomic,assign) float              fatPercentageMax ; 体脂指数正常范围上限
+@property (nonatomic,assign) float              fatPercentageMin ; 体脂指数正常范围下限
 
 
 @property (nonatomic,assign) int                weightLevel ;//体重判定标准

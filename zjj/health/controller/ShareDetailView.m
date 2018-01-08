@@ -55,7 +55,6 @@
 
     
     
-//    _recodeImageView.image = [UIImage imageWithData:[UserModel shareInstance].qrcodeImageData];
     
     [self.recodeImageView getImageWithUrl:[UserModel shareInstance].qrcodeImageUrl getImageFinish:^(UIImage *image, NSError *error) {
         if (error) {
@@ -80,7 +79,7 @@
             self.headImageView.image = getImage(@"head_default");
         }
     }];
-    self.sexImg.image = [UserModel shareInstance].gender==1?getImage(@"man_"):getImage(@"woman_");
+    self.sexImg.image = [SubUserItem shareInstance].sex==1?getImage(@"man_"):getImage(@"woman_");
 
     
     self.nicknamelb.text = [SubUserItem shareInstance].nickname;
@@ -214,100 +213,62 @@
         
         
     
-    self.status1lb.backgroundColor = [self getColorWithString:self.status1lb.text];
-    self.status2lb.backgroundColor = [self getColorWithString:self.status2lb.text];
-    self.status3lb.backgroundColor = [self getColorWithString:self.status3lb.text];
+    self.status1lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_FATPERCENT Level:item.fatPercentageLevel];
+    self.status2lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_FAT Level:item.fatWeightLevel];
+    self.status3lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_VISCERALFAT Level: item.visceralFatPercentageLevel];
     self.status4lb.backgroundColor = [self getColorWithString:self.status4lb.text];
     self.status5lb.backgroundColor = [self getColorWithString:self.status5lb.text];
     self.status6lb.backgroundColor = [self getColorWithString:self.status6lb.text];
-    self.status7lb.backgroundColor = [self getColorWithString:self.status7lb.text];
+    self.status7lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_BMI Level: item.bmiLevel+1];
     self.status8lb.backgroundColor = [self getColorWithString:self.status8lb.text];
-    self.status9lb.backgroundColor = [self getColorWithString:self.status9lb.text];
-
-    float fatWeightV =0.0;
-    float visceral = 0.0;
-    int sex = [UserModel shareInstance].gender;
-    if (sex ==1) {
-        if ([UserModel shareInstance].age<40) {
-            fatWeightV = 13.5f;
-        }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
-        {
-            fatWeightV = 14.5f;
-        }else if ([UserModel shareInstance].age>60)
-        {
-            fatWeightV = 16.5f;
-        }
-
-//        fatWeightV = 20.0f;
-        visceral = 4;
-    }else{
-        if ([UserModel shareInstance].age<40) {
-            fatWeightV = 24.0f;
-        }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
-        {
-            fatWeightV = 25.0f;
-        }else if ([UserModel shareInstance].age>60)
-        {
-            fatWeightV = 26.0f;
-        }
-
-        visceral = 4;
-//        fatWeightV = 22.0f;
-    }
+    self.status9lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_WATER Level: item.waterLevel];
 
     
-//    float target1 = item.standardWeight-item.weight;
-//    float target2 = [item getFatPercentagePoorWithItem:item];
-//    float target3 = [item getFatWeightPoorWithItem:item];
-//    float target4 = visceral -item.visceralFatPercentage;
-    float target1 = item.standardWeight-item.weight>0?0:item.standardWeight-item.weight;
-    float target2 = [item getFatPercentagePoorWithItem:item]>0?0:[item getFatPercentagePoorWithItem:item];
-    float target3 = [item getFatWeightPoorWithItem:item]>0?0:[item getFatWeightPoorWithItem:item];
-    float target4 = visceral -item.visceralFatPercentage>0?0:visceral -item.visceralFatPercentage;
+    
+    
+    float visceral = 4;
+    double fatPercentage = item.fatPercentageMin+(item.fatPercentageMax-item.fatPercentageMin)/2;
 
-//    if (target2>0) {
-//        self.statusFatLabel.text = @"增脂";
-//    }else if (target2<0)
-//    {
-//        self.statusFatLabel.text = @"减脂";
-//    }else
-//    {
-//        self.statusFatLabel.text = @"";
-//    }
+    
+    float target1 = item.standardWeight-item.weight>0?0:item.standardWeight-item.weight;
+    float target2 = fatPercentage-item.fatPercentage>0?0:fatPercentage-item.fatPercentage;
+    float target3 = [item getFatWeightPoorWithItem:item];
+    float target4 = visceral -item.visceralFatPercentage>0?0:visceral -item.visceralFatPercentage;
+    
+    //    if (target2>0) {
+    //        self.statusFatLabel.text = @"增脂";
+    //    }else if (target2<0)
+    //    {
+    //        self.statusFatLabel.text = @"减脂";
+    //    }else
+    //    {
+    //        self.statusFatLabel.text = @"";
+    //    }
+    
+    
     
     
     self.target1label.text =[NSString stringWithFormat:@"%.1fkg",target1];
     self.target2label.text =[NSString stringWithFormat:@"%.1f%%",target2];
     self.target3label.text =[NSString stringWithFormat:@"%.1fkg",target3];
     self.target4label.text =[NSString stringWithFormat:@"%.1f",target4];
-
-    
-//    self.target1label.text =[NSString stringWithFormat:@"%@%.1fkg",target1>0?@"+":@"",target1];
-//    self.target2label.text =[NSString stringWithFormat:@"%@%.1f%%",target2>0?@"+":@"",target2];
-//    self.target3label.text =[NSString stringWithFormat:@"%@%.1fkg",target3>0?@"+":@"",target3];
-//    self.target4label.text =[NSString stringWithFormat:@"%@%.1f",target4>0?@"+":@"",target4];
     
     self.my1Label.text = [NSString stringWithFormat:@"%.1fkg",item.weight];
     self.my2Label.text = [NSString stringWithFormat:@"%.1f%%",item.fatPercentage];
     self.my3Label.text = [NSString stringWithFormat:@"%.1fkg",item.fatWeight];
     self.my4Label.text = [NSString stringWithFormat:@"%.1f",item.visceralFatPercentage];
     
-    self.my1Label.textColor = [[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_WEIGHT item:item];
-    self.my2Label.textColor = [[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_FATPERCENT item:item];
-    self.my3Label.textColor = [[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_FAT item:item];
-    self.my4Label.textColor = [[HealthModel shareInstance]getHealthDetailColorWithStatus:IS_MODEL_VISCERALFAT item:item];
+    self.my1Label.textColor = [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_WEIGHT Level:item.weightLevel];
+    self.my2Label.textColor = [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_FATPERCENT Level:item.fatPercentageLevel];
+    self.value3Label.text =[NSString stringWithFormat:@"%.1fkg",(item.fatPercentageMin+(item.fatPercentageMax-item.fatPercentageMin)/2)*item.standardWeight/100];
+    self.my4Label.textColor = [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_VISCERALFAT Level:item.visceralFatPercentageLevel];
     
     
     self.value1Label.text =[NSString stringWithFormat:@"%.1fkg",item.standardWeight];
-    self.value2Label.text =[NSString stringWithFormat:@"%.1f%%",fatWeightV];
-    self.value3Label.text =[NSString stringWithFormat:@"%.1fkg",item.standardWeight *fatWeightV/100];
+    self.value2Label.text =[NSString stringWithFormat:@"%.1f%%",fatPercentage];
+    self.value3Label.text =[NSString stringWithFormat:@"%.1fkg",item.standardWeight *fatPercentage/100];
     self.value4Label.text =[NSString stringWithFormat:@"%.1f",visceral];
 
-    
-    
-    
-    
-    
     
 }
 
@@ -418,18 +379,15 @@
         case IS_MODEL_BMI:
             switch (item.bmiLevel) {
                 case 1:
-                    return @"偏低";
+                    return @"低";
                     break;
                 case 2:
                     return @"正常";
                     break;
                 case 3:
-                    return @"偏高";
-                    break;
-                case 4:
                     return @"高";
                     break;
-                case 5:
+                case 4:
                     return @"极高";
                     break;
 

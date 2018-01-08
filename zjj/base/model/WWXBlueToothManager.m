@@ -123,44 +123,16 @@ static WWXBlueToothManager * manager;
     self.age =[[TimeModel shareInstance] ageWithDateOfBirth:[SubUserItem shareInstance].birthday];
     self.height =[SubUserItem shareInstance].height;
     
-    [[HealthModel shareInstance]setLogInUpLoadString:[NSString stringWithFormat:@"写入数据id:%@;sex:%d;age:%d;height:%d",[UserModel shareInstance].userId,self.sex,self.age,self.height]];
+    [[HealthModel shareInstance]setLogInUpLoadString:[NSString stringWithFormat:@"写入数据id:%@;sex:%d;age:%d;height:%d",[UserModel shareInstance].subId,self.sex,self.age,self.height]];
 
-    DLog(@"写入数据id:%@;sex:%d;age:%d;height:%d",[UserModel shareInstance].userId,self.sex-1,self.age,self.height);
+    DLog(@"写入数据id:%@;sex:%d;age:%d;height:%d",[UserModel shareInstance].subId,self.sex-1,self.age,self.height);
     
 
     
-//    Byte byte1[1];
-//    byte1[0] = 0x10;
-//    
-//    Byte byte2[1];
-//    byte2[0] =(Byte)0xff & [[UserModel shareInstance].userId intValue];
-//    
-//    Byte byte3[1];
-//    byte3[0] =(Byte)0xff & [[UserModel shareInstance].userId intValue];
-//
-//    Byte byte4[1];
-//    byte4[0] =(Byte)0xff & [[UserModel shareInstance].userId intValue];
-//
-//    Byte byte5[1];
-//    byte5[0] =(Byte)0xff & [[UserModel shareInstance].userId intValue];
-//
-//    NSData * data1 = [NSData dataWithBytes:byte1 length:1];
-//    NSData * data2 = [NSData dataWithBytes:byte2 length:1];
-//    NSData * data3 = [NSData dataWithBytes:byte3 length:1];
-//    NSData * data4 = [NSData dataWithBytes:byte4 length:1];
-//    NSData * data5 = [NSData dataWithBytes:byte5 length:1];
-//
-//    NSMutableData * upData = [NSMutableData new];
-//    [upData appendData:data1];
-//    [upData appendData:data2];
-//    [upData appendData:data3];
-//    [upData appendData:data4];
-//    [upData appendData:data5];
-//    return upData;
     
     Byte bytes[5];
     bytes[0] =(Byte)0xff & 16;
-    bytes[1] =(Byte)0xff & [[UserModel shareInstance].userId intValue]>>8;
+    bytes[1] =(Byte)0xff & [[UserModel shareInstance].subId intValue]>>8;
     if (self.sex ==1) {
         bytes[2] =0x00;
   
@@ -170,11 +142,6 @@ static WWXBlueToothManager * manager;
     }
     bytes[3] =(Byte)0xff & self.age;
     bytes[4] =(Byte)0xff & self.height;
-//    bytes[0] = 0x10;
-//    bytes[1] = (0xff00 & [[UserModel shareInstance].userId intValue]) >> 8;
-//    bytes[2] = (0xff0000 & self.sex) >> 16;
-//    bytes[3] = (0xff000000 & self.age) >> 24;
-//    bytes[4] = (0xff00000000 & self.height) >> 32;
 
     
     NSData * data = [[NSData alloc]initWithBytes:bytes length:5];

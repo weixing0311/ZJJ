@@ -76,9 +76,24 @@
         
     }
     
-    self.status1Label.backgroundColor = [self getColorWithString:self.status1Label.text];
-    self.status2Label.backgroundColor = [self getColorWithString:self.status2Label.text];
-    self.status3Label.backgroundColor = [self getColorWithString:self.status3Label.text];
+    if (self.tag ==1) {
+        self.status1Label.backgroundColor = [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_FATPERCENT Level:item.fatPercentageLevel];
+        self.status2Label.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_FAT Level:item.fatWeightLevel];
+        self.status3Label.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_VISCERALFAT Level:item.visceralFatPercentageLevel];
+    }else if (self.tag ==2)
+    {
+        self.status1Label.backgroundColor = [self getColorWithString:self.status1Label.text];
+        self.status2Label.backgroundColor = [self getColorWithString:self.status2Label.text];
+        self.status3Label.backgroundColor = [self getColorWithString:self.status3Label.text];
+
+    }else{
+        self.status1Label.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_BMI Level:item.bmiLevel];
+        self.status2Label.backgroundColor = [self getColorWithString:self.status2Label.text];
+        self.status3Label.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_WATER Level:item.waterLevel];
+
+    }
+    
+    
 
 }
 -(void)setDetailViewContentWithButtonIndex:(NSInteger)index
@@ -185,7 +200,7 @@
             self.secondHeadImage.image = self.headerImageView.image;
             
             self.sliderLislb.text = @"18.5";
-            self.sliderMorlb.text = @"24";
+            self.sliderMorlb.text = @"25";
             self.sliderBgImageView.image = getImage(@"sliderBg2_");
             currX = [self getlocationDianL:self.currItem.bmi  Withleft:[self.sliderLislb.text floatValue] right:[self.sliderMorlb.text floatValue]];
 
@@ -211,7 +226,7 @@
             self.headerValuelb.text = [NSString stringWithFormat:@"%.1f",self.currItem.waterWeight];
             self.secondTitle.text = self.headerNamelb.text;
             self.secondHeadImage.image = self.headerImageView.image;
-            self.sliderBgImageView.image = getImage(@"sliderBg3_");
+            self.sliderBgImageView.image = getImage(@"sliderBg2_");
             
             self.sliderLislb.text =[NSString stringWithFormat:@"%.1fkg",self.currItem.waterWeightMin];
             self.sliderMorlb.text = [NSString stringWithFormat:@"%.1fkg",self.currItem.waterWeightMax];
@@ -237,9 +252,15 @@
     
     if (index==3) {
         _leftlb.text = @"正常";
-        _midlb.text = @"超标";
+        _midlb.text = @"偏高";
         _rightlb.text = @"高";
-    }else{
+    }else if (index ==7||index ==1||index ==2||index ==9)
+    {
+        _leftlb.text = @"低";
+        _midlb.text = @"正常";
+        _rightlb.text = @"高";
+    }
+    else{
         _leftlb.text = @"偏低";
         _midlb.text = @"正常";
         _rightlb.text = @"偏高";

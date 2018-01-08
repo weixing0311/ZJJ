@@ -166,7 +166,7 @@
     midLayer.frame = CGRectMake(self.bounds.size.width / 2-blueStart, 0, blueWidth, self.bounds.size.height);    // 分段设置渐变色
 
     midLayer.locations = @[ @0.05,@0.07, @1];
-    midLayer.colors = @[(id)HEXCOLOR(0x15c4e4).CGColor,(id)[UIColor blueColor].CGColor];
+    midLayer.colors = @[(id)HEXCOLOR(0x15c4e4).CGColor,(id)HEXCOLOR(0x15c4e4).CGColor];
     [gradientLayer addSublayer:midLayer];
     
     
@@ -185,7 +185,7 @@
 -(void)getProgressWithBfp:(float)bfp
 {
     int level;
-    if( [UserModel shareInstance].gender==1)
+    if( [SubUserItem shareInstance].sex==1)
     {
         level = [self getManLevelWithBfp:bfp];
     }else{
@@ -232,7 +232,7 @@
 -(double)getDetailLocationWithbfp:(float)bfp
 {
     
-    if ([UserModel shareInstance].gender==1) {
+    if ([SubUserItem shareInstance].sex==1) {
         
         double a[4];
         if ([UserModel shareInstance].age<40) {
@@ -242,7 +242,7 @@
             a[3] = 0.45;
             
             
-        }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
+        }else if ([SubUserItem shareInstance].age>=40&&[SubUserItem shareInstance].age<60)
         {
             a[0] = 0.17;
             a[1] = 0.22;
@@ -289,14 +289,14 @@
        int level = [self getWomanLevelWithBfp:bfp];
 
         float a[4];
-        if ([UserModel shareInstance].age<40) {
+        if ([SubUserItem shareInstance].age<40) {
             a[0] = 0.27;
             a[1] = 0.34;
             a[2] = 0.39;
             a[3] = 0.45;
             
             
-        }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
+        }else if ([SubUserItem shareInstance].age>=40&&[SubUserItem shareInstance].age<60)
         {
             a[0] = 0.28;
             a[1] = 0.35;
@@ -345,14 +345,14 @@
 -(int)getManLevelWithBfp:(float)bfp
 {
     float a[4];
-    if ([UserModel shareInstance].age<40) {
+    if ([SubUserItem shareInstance].age<40) {
         a[0] = 0.16;
         a[1] = 0.21;
         a[2] = 0.26;
         a[3] = 0.45;
         
         
-    }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
+    }else if ([SubUserItem shareInstance].age>=40&&[SubUserItem shareInstance].age<60)
     {
         a[0] = 0.17;
         a[1] = 0.22;
@@ -399,14 +399,14 @@
 {
     
     float a[4];
-    if ([UserModel shareInstance].age<40) {
+    if ([SubUserItem shareInstance].age<40) {
         a[0] = 0.27;
         a[1] = 0.34;
         a[2] = 0.39;
         a[3] = 0.45;
         
         
-    }else if ([UserModel shareInstance].age>=40&&[UserModel shareInstance].age<60)
+    }else if ([SubUserItem shareInstance].age>=40&&[SubUserItem shareInstance].age<60)
     {
         a[0] = 0.28;
         a[1] = 0.35;
@@ -452,7 +452,7 @@
 
 -(float)getMaxWithLevel:(int)level
 {
-   if ([UserModel shareInstance].gender==1)
+   if ([SubUserItem shareInstance].sex==1)
     {
     switch (level) {
         case 1:

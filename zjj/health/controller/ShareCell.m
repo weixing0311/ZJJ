@@ -22,9 +22,9 @@
     self.neifatLabel. text = [NSString stringWithFormat:@"%.1f",item.visceralFatPercentage];
     self.bodyFatLabel.text = [NSString stringWithFormat:@"%.1fkg",item.fatWeight];
     
-    self.weightlabel.textColor = [[HealthModel shareInstance]getHealthShareColorWithStatus:IS_MODEL_BODYWEIGHT item:item];
-    self.neifatLabel.textColor = [[HealthModel shareInstance]getHealthShareColorWithStatus:IS_MODEL_VISCERALFAT item:item];
-    self.bodyFatLabel.textColor = [[HealthModel shareInstance]getHealthShareColorWithStatus:IS_MODEL_FAT item:item];
+    self.weightlabel.textColor = [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_BODYWEIGHT Level:item.weightLevel];
+    self.neifatLabel.textColor = [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_VISCERALFAT Level:item.visceralFatPercentageLevel];
+    self.bodyFatLabel.textColor = [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_FAT Level:item.fatWeightLevel];
     
     
 }

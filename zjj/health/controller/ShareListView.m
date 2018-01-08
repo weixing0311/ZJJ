@@ -82,9 +82,6 @@
         }
     }];
     
-//    _qrCodeImageView.image = [UIImage imageWithData:[UserModel shareInstance].qrcodeImageData];
-//
-//    [self.qrCodeImageView sd_setImageWithURL:[NSURL URLWithString:[UserModel shareInstance].qrcodeImageUrl ]placeholderImage:[UIImage imageNamed:@"head_default"]];
 
     self.nameLabel.text = [SubUserItem shareInstance].nickname;
     
@@ -92,11 +89,11 @@
     
     self.date2Label.text = [item2.createTime yyyymmdd];
     
-    self.sexImg.image = [UserModel shareInstance].gender==1?getImage(@"man_"):getImage(@"woman_");
+    self.sexImg.image = [SubUserItem shareInstance].sex==1?getImage(@"man_"):getImage(@"woman_");
     
     
     
-    self.dateCountLabel.text = [NSString stringWithFormat:@"%d",[self gettimeXWithTime1:item1.createTime time2:item2.createTime]];
+    self.dateCountLabel.text = [NSString stringWithFormat:@"%ld",(long)[self gettimeXWithTime1:item1.createTime time2:item2.createTime]];
     
     
     // 减脂量
@@ -194,19 +191,11 @@
         cell.value2TrendImageView.hidden = YES;
     }
     
-    cell.value1StatusBgView.backgroundColor = [self getColorWithString:cell.value1StatusLabel.text];
-    cell.value2StatusBgView.backgroundColor = [self getColorWithString:cell.value2StatusLabel.text];
-
-//    if ([cell.value1StatusLabel.text isEqualToString:@"正常"]) {
-//        cell.value1StatusBgView.backgroundColor =HEXCOLOR(0x39D19F);
-//    }else{
-//        cell.value1StatusBgView.backgroundColor = HEXCOLOR(0xE46F48);
-//    }
-//    if ([cell.value2StatusLabel.text isEqualToString:@"正常"]) {
-//        cell.value2StatusBgView.backgroundColor =HEXCOLOR(0x39D19F);
-//    }else{
-//        cell.value2StatusBgView.backgroundColor = HEXCOLOR(0xE46F48);
-//    }
+    cell.value1StatusBgView.backgroundColor = [dic safeObjectForKey:@"color1"];
+    cell.value2StatusBgView.backgroundColor = [dic safeObjectForKey:@"color2"];
+    
+//        cell.value1StatusBgView.backgroundColor = [self getColorWithString:cell.value1StatusLabel.text];
+//        cell.value2StatusBgView.backgroundColor = [self getColorWithString:cell.value2StatusLabel.text];
     
     return cell;
 }
@@ -304,68 +293,87 @@
                            weightStatus1,@"level1",
                            weightStatus2,@"level2", nil];
 //肥胖等级
+    
     NSDictionary * dic3 = [NSDictionary dictionaryWithObjectsAndKeys:
                            @"肥胖等级",@"title",
                            [self getwl:item1.weightLevel],@"value1",
                            [self getwl:item2.weightLevel],@"value2",
                            weightStatus1,@"level1",
-                           weightStatus2,@"level2", nil];
+                           weightStatus2,@"level2",
+                           [self getColorWithString:weightStatus1],@"color1",
+                           [self getColorWithString:weightStatus2],@"color2",nil];
 //体脂率
     NSDictionary * dic4 = [NSDictionary dictionaryWithObjectsAndKeys:
                            @"体脂率(%)",@"title",
                            [NSString stringWithFormat:@"%.1f",item1.fatPercentage*100],@"value1",
                            [NSString stringWithFormat:@"%.1f",item2.fatPercentage*100],@"value2",
                            fatpercent1,@"level1",
-                           fatpercent2,@"level2", nil];
+                           fatpercent2,@"level2",
+                           [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_FATPERCENT Level:item1.fatPercentageLevel],@"color1",
+                           [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_FATPERCENT Level:item2.fatPercentageLevel],@"color2",nil];
 //脂肪量
     NSDictionary * dic5 = [NSDictionary dictionaryWithObjectsAndKeys:
                            @"脂肪量(kg)",@"title",
                            [NSString stringWithFormat:@"%.1f",item1.fatWeight],@"value1",
                            [NSString stringWithFormat:@"%.1f",item2.fatWeight],@"value2",
                            fatLevel1,@"level1",
-                           fatLevel2,@"level2",nil];
+                           fatLevel2,@"level2",
+                           [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_FAT Level:item1.fatWeightLevel],@"color1",
+                           [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_FAT Level:item2.fatWeightLevel],@"color2",nil];
     //    内脏脂肪
     NSDictionary * dic6 = [NSDictionary dictionaryWithObjectsAndKeys:
                            @"内脂指数",@"title",
                             [NSString stringWithFormat:@"%.1f",item1.visceralFatPercentage],@"value1",
                             [NSString stringWithFormat:@"%.1f",item2.visceralFatPercentage],@"value2",
                             viscerlFat1,@"level1",
-                            viscerlFat2,@"level2", nil];
+                            viscerlFat2,@"level2",
+                           [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_VISCERALFAT Level:item1.visceralFatPercentageLevel],@"color1",
+                           [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_VISCERALFAT Level:item2.visceralFatPercentageLevel],@"color2",nil];
 //BMI
     NSDictionary * dic7 = [NSDictionary dictionaryWithObjectsAndKeys:
                            @"BMI",@"title",
                            [NSString stringWithFormat:@"%.1f",item1.bmi],@"value1",
                            [NSString stringWithFormat:@"%.1f",item2.bmi],@"value2",
                            BMI1,@"level1",
-                           BMI2,@"level2",nil];
+                           BMI2,@"level2",
+                           [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_BMI Level:item1.bmiLevel],@"color1",
+                           [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_BMI Level:item2.bmiLevel],@"color2",nil];
 //基础代谢
     NSDictionary * dic8 = [NSDictionary dictionaryWithObjectsAndKeys:
                            @"基础代谢 ",@"title",
                            [NSString stringWithFormat:@"%.0f",item1.bmr],@"value1",
                            [NSString stringWithFormat:@"%.0f",item2.bmr],@"value2",
                            bmr1,@"level1",
-                           bmr2,@"level2",nil];
+                           bmr2,@"level2",
+                           [self getColorWithString:bmr1],@"color1",
+                           [self getColorWithString:bmr2],@"color2",nil];
     //    肌肉
     NSDictionary * dic9 = [NSDictionary dictionaryWithObjectsAndKeys:
                            @"肌肉(kg)",@"title",
                             [NSString stringWithFormat:@"%.1f",item1.muscleWeight],@"value1",
                             [NSString stringWithFormat:@"%.1f",item2.muscleWeight],@"value2",
                             muscle1,@"level1",
-                            muscle2,@"level2", nil];
+                            muscle2,@"level2",
+                           [self getColorWithString:muscle1],@"color1",
+                           [self getColorWithString:muscle2],@"color2",nil];
 //蛋白质
     NSDictionary * dic10 = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"蛋白质(kg)",@"title",
                            [NSString stringWithFormat:@"%.1f",item1.proteinWeight],@"value1",
                            [NSString stringWithFormat:@"%.1f",item2.proteinWeight],@"value2",
                            protein1,@"level1",
-                           protein2,@"level2", nil];
+                           protein2,@"level2",
+                            [self getColorWithString:protein1],@"color1",
+                            [self getColorWithString:protein2],@"color2",nil];
 //骨量
     NSDictionary * dic11 = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"骨量(kg)",@"title",
                            [NSString stringWithFormat:@"%.1f",item1.boneWeight],@"value1",
                            [NSString stringWithFormat:@"%.1f",item2.boneWeight],@"value2",
                            bone1,@"level1",
-                           bone2,@"level2", nil];
+                           bone2,@"level2",
+                            [self getColorWithString:bone1],@"color1",
+                            [self getColorWithString:bone2],@"color2",nil];
     
     //骨骼肌
     NSDictionary * dic12 = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -373,7 +381,9 @@
     [NSString stringWithFormat:@"%.1f",item1.boneMuscleWeight],@"value1",
     [NSString stringWithFormat:@"%.1f",item2.boneMuscleWeight],@"value2",
     boneMuscle1,@"level1",
-    boneMuscle2,@"level2", nil];
+    boneMuscle2,@"level2",
+    [self getColorWithString:boneMuscle1],@"color1",
+    [self getColorWithString:boneMuscle2],@"color2",nil];
 
 //水分
     NSDictionary * dic13 = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -381,7 +391,9 @@
                             [NSString stringWithFormat:@"%.1f",item1.waterWeight],@"value1",
                             [NSString stringWithFormat:@"%.1f",item2.waterWeight],@"value2",
                             water1,@"level1",
-                            water2,@"level2", nil];
+                            water2,@"level2",
+                            [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_WATER Level:item1.waterLevel],@"color1",
+                            [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_WATER Level:item2.waterLevel],@"color2",nil];
     
     
     [_dataArray addObject:dic1];
@@ -411,7 +423,7 @@
             levelStr = [NSString stringWithFormat:@"偏瘦"];
             break;
         case 2:
-            levelStr = [NSString stringWithFormat:@"正常"];
+            levelStr = [NSString stringWithFormat:@"标准"];
             break;
         case 3:
             levelStr = [NSString stringWithFormat:@"偏胖"];

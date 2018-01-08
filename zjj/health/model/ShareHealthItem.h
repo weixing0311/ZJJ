@@ -105,5 +105,4 @@ typedef enum
 @property (nonatomic,assign) float          mCalorie ;// 脂肪量
 -(void)setobjectWithDic:(NSDictionary *)dict ;
 -(NSString *)getHeightWithLevel:(int)level status:(mytype)isMytype;
--(NSString *)getStatusWithLevel:(int)level status:(mytype)isMytype;
 @end

@@ -83,23 +83,18 @@
     switch (item.weightLevel) {
         case 1:
             self.statuslb.text = [NSString stringWithFormat:@"偏瘦"];
-            //            self.fatStatuslb.textColor = HEXCOLOR(0xf4a519);
             break;
         case 2:
-            self.statuslb.text = [NSString stringWithFormat:@"正常"];
-            //            self.fatStatuslb.textColor = HEXCOLOR(0x41bf7c);
+            self.statuslb.text = [NSString stringWithFormat:@"标准"];
             break;
         case 3:
-            self.statuslb.text = [NSString stringWithFormat:@"轻度肥胖"];
-            //            self.fatStatuslb.textColor = HEXCOLOR(0xf4a519);
+            self.statuslb.text = [NSString stringWithFormat:@"偏胖"];
             break;
         case 4:
             self.statuslb.text = [NSString stringWithFormat:@"中度肥胖"];
-            //            self.fatStatuslb.textColor = HEXCOLOR(0xf4a519);
             break;
         case 5:
             self.statuslb.text = [NSString stringWithFormat:@"重度肥胖"];
-            //            self.fatStatuslb.textColor = HEXCOLOR(0xe84849);
             break;
 //        case 6:
 //            self.statuslb.text = [NSString stringWithFormat:@"极度肥胖"];

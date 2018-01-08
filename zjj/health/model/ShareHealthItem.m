@@ -90,173 +90,6 @@ static ShareHealthItem *item;
 
 }
 
-/**
- * 根据level获取 正常/偏瘦/危险、
- */
--(NSString *)getStatusWithLevel:(int)level status:(mytype)isMytype
-{
-    /*
-    IS_BMI,
-    IS_VISCERALFAT,//内脂
-    IS_FAT,//脂肪
-    IS_FATPERCENT,//体脂  fatPercentage
-    IS_SAME,//肌肉\骨量\水分\蛋白质\骨重判定标准
-    IS_BODYWEIGHT,//体重判定
-    IS_SIZE,//体型
-     */
-
-    switch (isMytype) {
-        case IS_BMI:
-            switch (level) {
-                case 1:
-                    return @"偏低";
-                    break;
-                case 2:
-                    return @"正常";
-                    break;
-                case 3:
-                    return @"偏高";
-                    break;
-                case 4:
-                    return @"超标";
-                    break;
-                    
-                default:
-                    break;
-            }
-            break;
-        case IS_VISCERALFAT:
-            switch (level) {
-                case 1:
-                    return @"正常";
-                    break;
-                case 2:
-                    return @"警告";
-                    break;
-                case 3:
-                    return @"严重";
-                    break;
-                    
-                default:
-                    break;
-            }
-           
-            break;
-        case IS_FAT:
-            switch (level) {
-                case 1:
-                    return @"正常";
-                    break;
-                case 2:
-                    return @"警告";
-                    break;
-                case 3:
-                    return @"严重";
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-            break;
-        case IS_FATPERCENT:
-            switch (level) {
-                case 1:
-                    return @"偏低";
-                    break;
-                case 2:
-                    return @"正常";
-                    break;
-                case 3:
-                    return @"偏高";
-                    break;
-                case 4:
-                    return @"超标";
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-            break;
-        case IS_BODYWEIGHT:
-            switch (level) {
-                case 1:
-                    return @"偏瘦";
-                    break;
-                case 2:
-                    return @"正常";
-                    break;
-                case 3:
-                    return @"轻度肥胖";
-                    break;
-                case 4:
-                    return @"中度肥胖";
-                    break;
-                case 5:
-                    return @"重度肥胖";
-                    break;
-                case 6:
-                    return @"极度肥胖";
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-            break;
-        case IS_SIZE:
-            switch (level) {
-                case 1:
-                    return @"隐性肥胖型";
-                    break;
-                case 2:
-                    return @"脂肪过多";
-                    break;
-                case 3:
-                    return @"肥胖";
-                    break;
-                case 4:
-                    return @"肌肉不足";
-                    break;
-                case 5:
-                    return @"健康匀称型";
-                    break;
-                case 6:
-                    return @"超重肌肉型";
-                    break;
-                case 7:
-                    return @"消瘦型";
-                    break;
-                case 8:
-                    return @"低脂肪型";
-                    break;
-                case 9:
-                    return @"运动员型";
-                    break;
-                   
-                default:
-                    break;
-            }
-            
-            break;
-        case IS_SAME:
-            switch (level) {
-                case 1:
-                    return @"正常";
-                    break;
-                case 2:
-                    return @"警告";
-                    break;
-                default:
-                    break;
-            }
-            break;
-        default:
-            break;
-    }
-    return nil;
-}
 
 
 -(NSString *)getHeightWithLevel:(int)level status:(mytype)isMytype
@@ -389,19 +222,16 @@ static ShareHealthItem *item;
                     return @"低";
                     break;
                 case 2:
-                    return @"正常";
+                    return @"标准";
                     break;
                 case 3:
                     return @"偏高";
                     break;
                 case 4:
-                    return @"偏高";
+                    return @"高";
                     break;
                 case 5:
-                    return @"高";
-                    break;
-                case 6:
-                    return @"高";
+                    return @"极高";
                     break;
                     
                 default:

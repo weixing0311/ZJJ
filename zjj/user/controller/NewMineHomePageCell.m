@@ -28,7 +28,7 @@
 -(void)setUpCellWithDict:(NSDictionary *)dict userId:(NSString *)userId
 {
     self.headImageView.layer.cornerRadius = self.headImageView.frame.size.height/2;
-    [self.headImageView sd_setBackgroundImageWithURL:[NSURL URLWithString:[dict safeObjectForKey:@"headimgurl"]] forState:UIControlStateNormal placeholderImage:getImage(@"defaultHead")
+    [self.headImageView sd_setBackgroundImageWithURL:[NSURL URLWithString:[dict safeObjectForKey:@"headimgurl"]] forState:UIControlStateNormal placeholderImage:getImage(@"head_default")
      ];
     
     self.levellb.text = [dict safeObjectForKey:@"gradeName"];

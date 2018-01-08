@@ -19,6 +19,7 @@ typedef enum
      *BMI
      */
     IS_MODEL_BMI,
+    
     /**
      *内脂
      */
@@ -63,14 +64,10 @@ typedef enum
     IS_MODEL_BMR,
     IS_MODEL_WEIGHT,
 }isMyType;
+
 -(NSString *)getStatus:(isMyType)isMytype;
 -(UIColor *)returnColorWithLevel:(int)level;
--(UIColor *)getHealthDetailColorWithStatus:(isMyType)myType;
--(UIColor *)getHealthDetailColorWithStatus:(isMyType)myType item:(HealthDetailsItem*)item;
--(UIColor *)getHealthHeaderColorWithStatus:(isMyType)myType item:(HealthItem*)item;
--(UIColor *)getHealthShareColorWithStatus:(isMyType)myType item:(ShareHealthItem*)item;
-
-
+-(UIColor *)getHealthColorWithStatus:(isMyType)myType Level:(int)level;
 
 
 

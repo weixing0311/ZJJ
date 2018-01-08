@@ -73,8 +73,8 @@
 
 @property (nonatomic,assign) float                mCalorie;//脂肪量
 @property (nonatomic,assign) float              fatPercentage; //脂肪比例
-@property (nonatomic,assign) float              fatPercentageMax;
-@property (nonatomic,assign) float              fatPercentageMin;
+@property (nonatomic,assign) double              fatPercentageMax;
+@property (nonatomic,assign) double              fatPercentageMin;
 @property (nonatomic,assign) int                fatPercentageLevel;
 
 
@@ -106,8 +106,6 @@
 -(void)getInfoWithDict:(NSDictionary *)dict;
 -(NSMutableDictionary *)setSliderInfoWithRow:(NSInteger)row btnTag:(NSInteger)btnTag;
 
-/**获取距离最佳体脂率的差值*/
--(double)getFatPercentagePoorWithItem:(HealthDetailsItem*)item;
 /**获取距离最佳体脂的差值*/
 -(double)getFatWeightPoorWithItem:(HealthDetailsItem*)item;
 

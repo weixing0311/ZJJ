@@ -49,7 +49,7 @@
         
         self.value3lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"weight"]floatValue]];
         
-        self.value4lb.text = [NSString stringWithFormat:@"%@",[infoDict objectForKey:@"weightLevel"]];
+        self.value4lb.text = [NSString stringWithFormat:@"%@",[self getwl:[[infoDict objectForKey:@"weightLevel"]intValue]]];
         
         self.value5lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"fatPercentage"]floatValue]*100];
         
@@ -67,7 +67,7 @@
         
         self.value12lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"visceralFatPercentage"]floatValue]];
         
-        self.value13lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"standardWeight"]floatValue]];
+        self.value13lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"boneMuscleWeight"]floatValue]];
 
         
         self.second3Lb.text = [self getwl:[[infoDict objectForKey:@"weightLevel"]intValue]];
@@ -95,11 +95,11 @@
         
         
         self.second5Lb.text = [[ShareHealthItem shareInstance] getHeightWithLevel:[[infoDict safeObjectForKey:@"fatPercentageLevel"]intValue] status:IS_FATPERCENT];
-        self.second5Lb.backgroundColor = [self getColorWithLevel:self.second5Lb.text];
+        self.second5Lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_FATPERCENT Level:[[infoDict safeObjectForKey:@"fatPercentageLevel"]intValue]];
 
         
         self.second6Lb.text = [[ShareHealthItem shareInstance] getHeightWithLevel:[[infoDict safeObjectForKey:@"fatWeightLevel"]intValue] status:IS_FAT];
-        self.second6Lb.backgroundColor = [self getColorWithLevel:self.second6Lb.text];
+        self.second6Lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_FAT Level:[[infoDict safeObjectForKey:@"fatWeightLevel"]intValue]];
 
         
         
@@ -109,7 +109,7 @@
 
         self.second8Lb.text = [[ShareHealthItem shareInstance] getHeightWithLevel:[[infoDict safeObjectForKey:@"bmiLevel"]intValue] status:IS_BMI];
         
-        self.second8Lb.backgroundColor = [self getColorWithLevel:self.second8Lb.text];
+        self.second8Lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_BMI Level:[[infoDict safeObjectForKey:@"bmiLevel"]intValue]];
 
         
         self.second9Lb.text = [[ShareHealthItem shareInstance] getHeightWithLevel:[[infoDict safeObjectForKey:@"proteinLevel"]intValue] status:IS_SAME];
@@ -121,13 +121,16 @@
 
         
         self.second11Lb.text = [[ShareHealthItem shareInstance] getHeightWithLevel:[[infoDict safeObjectForKey:@"waterLevel"]intValue] status:IS_WATER];
-        self.second11Lb.backgroundColor = [self getColorWithLevel:self.second11Lb.text];
+        self.second11Lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_WATER Level:[[infoDict safeObjectForKey:@"waterLevel"]intValue]];
 
         
         
         self.second12Lb.text = [[ShareHealthItem shareInstance] getHeightWithLevel:[[infoDict safeObjectForKey:@"visceralFatPercentageLevel"]intValue] status:IS_VISCERALFAT];
-        self.second12Lb.backgroundColor = [self getColorWithLevel:self.second12Lb.text];
+        self.second12Lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_VISCERALFAT Level:[[infoDict safeObjectForKey:@"visceralFatPercentageLevel"]intValue]];
 
+
+        self.second13Lb.text = [[ShareHealthItem shareInstance]getHeightWithLevel:[[infoDict safeObjectForKey:@"boneMuscleLevel"]intValue] status:IS_SAME];
+        self.second13Lb.backgroundColor = [self getColorWithLevel:self.second13Lb.text];
 
         
     }else{
@@ -137,6 +140,8 @@
 
     
 }
+
+
 -(UIColor *)getColorWithLevel:(NSString *)levelStr
 {
     if ([levelStr isEqualToString:@"正常"]) {
@@ -159,7 +164,7 @@
             levelStr = [NSString stringWithFormat:@"偏瘦"];
             break;
         case 2:
-            levelStr = [NSString stringWithFormat:@"正常"];
+            levelStr = [NSString stringWithFormat:@"标准"];
             break;
         case 3:
             levelStr = [NSString stringWithFormat:@"偏胖"];
@@ -168,9 +173,6 @@
             levelStr = [NSString stringWithFormat:@"偏胖"];
             break;
         case 5:
-            levelStr = [NSString stringWithFormat:@"超重"];
-            break;
-        case 6:
             levelStr = [NSString stringWithFormat:@"超重"];
             break;
             

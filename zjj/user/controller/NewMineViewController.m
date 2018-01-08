@@ -164,7 +164,7 @@
             }
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
-            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"headimgurl"]]placeholderImage:getImage(@"defaultHead")];
+            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[_infoDict safeObjectForKey:@"headimgurl"]]placeholderImage:getImage(@"head_default")];
             cell.nickNamelb.text  = [_infoDict safeObjectForKey:@"nickName"];
             NSString * introduction = [_infoDict safeObjectForKey:@"introduction"];
             if (introduction.length<1) {

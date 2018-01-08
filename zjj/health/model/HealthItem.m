@@ -40,6 +40,9 @@
     self.warn                       = [[dict safeObjectForKey:@"warn"]intValue];
     self.createTime                 = [ dict safeObjectForKey:@"createTime"];
     self.fatPercentage              = [[dict safeObjectForKey:@"fatPercentage"]floatValue];
+    self.fatPercentageMin           = [[dict safeObjectForKey:@"fatPercentageMin"]doubleValue]*100;
+    self.fatPercentageMax           = [[dict safeObjectForKey:@"fatPercentageMax"]doubleValue]*100;
+
     self.standardWeight             = [[dict safeObjectForKey:@"standardWeight"]floatValue];
     self.weightControl              = [[dict safeObjectForKey:@"weightControl"]floatValue];
     self.lbm                        = [[dict safeObjectForKey:@"lbm"]floatValue];
@@ -148,34 +151,13 @@
 }
 -(double)getFatWeightPoorWithItem:(HealthItem*)item
 {
-    float currFatWeight = item.fatWeight;
-    if ([UserModel shareInstance].gender ==1) {
-        float standardMinWeight = 0.16*item.standardWeight;
-        float standardMaxWeight = 0.2*item.standardWeight;
-        if (currFatWeight<standardMinWeight) {
-            return standardMinWeight-currFatWeight;
-        }
-        else if (currFatWeight>standardMaxWeight)
-        {
-            return standardMaxWeight-currFatWeight;
-        }else{
-            return 0;
-        }
-    }else{
-        float standardMinWeight = 0.18*item.standardWeight;
-        float standardMaxWeight = 0.22*item.standardWeight;
-        
-        if (currFatWeight<standardMinWeight) {
-            return standardMinWeight-currFatWeight;
-        }
-        else if (currFatWeight>standardMaxWeight)
-        {
-            return standardMaxWeight-currFatWeight;
-        }else{
-            return 0;
-        }
-    }
+    double fatPercentage = item.fatPercentageMin+(item.fatPercentageMax-item.fatPercentageMin)/2;
     
+    double currFatWeight = item.fatWeight;
+    double bestFatWeight = fatPercentage * item.standardWeight/100;
+    
+    return bestFatWeight-currFatWeight>0?0:bestFatWeight-currFatWeight;
+
 }
 
 

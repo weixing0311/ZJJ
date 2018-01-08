@@ -57,6 +57,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *second12Lb;
 
 @property (weak, nonatomic) IBOutlet UILabel *value13lb;
+@property (weak, nonatomic) IBOutlet UILabel *second13Lb;
+
+
+
+
+
 
 -(void)setInfoWithDict:(NSDictionary *)infoDict isHidden:(BOOL)isHidden;
 

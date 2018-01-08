@@ -63,19 +63,19 @@
             //            self.fatStatuslb.textColor = HEXCOLOR(0xf4a519);
             break;
         case 2:
-            self.fatStatuslb.text = [NSString stringWithFormat:@"正常"];
+            self.fatStatuslb.text = [NSString stringWithFormat:@"标准"];
             //            self.fatStatuslb.textColor = HEXCOLOR(0x41bf7c);
             break;
         case 3:
-            self.fatStatuslb.text = [NSString stringWithFormat:@"轻度肥胖"];
+            self.fatStatuslb.text = [NSString stringWithFormat:@"偏胖"];
             //            self.fatStatuslb.textColor = HEXCOLOR(0xf4a519);
             break;
         case 4:
-            self.fatStatuslb.text = [NSString stringWithFormat:@"中度肥胖"];
+            self.fatStatuslb.text = [NSString stringWithFormat:@"偏胖"];
             //            self.fatStatuslb.textColor = HEXCOLOR(0xf4a519);
             break;
         case 5:
-            self.fatStatuslb.text = [NSString stringWithFormat:@"重度肥胖"];
+            self.fatStatuslb.text = [NSString stringWithFormat:@"超重"];
             //            self.fatStatuslb.textColor = HEXCOLOR(0xe84849);
             break;
             

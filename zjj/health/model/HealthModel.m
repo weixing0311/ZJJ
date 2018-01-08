@@ -9,7 +9,7 @@
 #import "HealthModel.h"
 #import "SubProjectItem.h"
 
-#define warningColor   [UIColor colorWithRed:246/255.0 green:172/255.0 blue:2/255.0 alpha:1]
+#define warningColor   HEXCOLOR(0xfec200)
 #define normalColor    [UIColor colorWithRed:57/255.0 green:208/255.0 blue:160/255.0 alpha:1]
 #define seriousColor   [UIColor colorWithRed:236/255.0 green:85/255.0 blue:78/255.0 alpha:1]
 @implementation HealthModel
@@ -211,37 +211,38 @@
 }
 
 
--(UIColor *)getHealthDetailColorWithStatus:(isMyType)myType item:(HealthDetailsItem*)item
+-(UIColor *)getHealthColorWithStatus:(isMyType)myType Level:(int)level
 {
-   /*
-    weightLevel  1偏瘦2正常3警告4警告5超重6超重  1低 2正常  3456 高
-    fatPercentage level  1正常2低3高
-    
-    bmi  1低  2正常3高4高
-    fatweightlevel  1低2正常3偏高 4高 5极高
-    
-    waterlevel 1低  2 正常 3高
-        
-        蛋白质  1正常 else低
-            
-            muscle 肌肉 1正常 else 低
-                
-                boneMuscle  1正常 else低
-                    
-                    内脂  1正常2超标3高
-*/
+    /*
+     weightLevel  1偏瘦2标准3偏胖4偏胖5超重  1低 2正常  3456 高
+     fatPercentage level  1正常2低3高
+     
+     bmi  1低  2正常3高4高
+     fatweightlevel  1低2正常3偏高 4高 5极高
+     
+     waterlevel 1低  2 正常 3高
+     
+     蛋白质  1正常 else低
+     
+     muscle 肌肉 1正常 else 低
+     
+     boneMuscle  1正常 else低
+     
+     内脂  1正常2超标3高
+     */
+
 //    SubProjectItem * subItem = [[SubProjectItem alloc]init];
     switch (myType) {
         case IS_MODEL_BMI:
-            switch (item.bmiLevel) {
+            switch (level) {
                 case 1:
-                    return warningColor;
+                    return HEXCOLOR(0x00aef7);
                     break;
                 case 2:
                     return normalColor;
                     break;
                 case 3:
-                    return seriousColor;
+                    return HEXCOLOR(0xffa126);
                     break;
                 case 4:
                     return seriousColor;
@@ -251,9 +252,9 @@
                     break;
             }
         case IS_MODEL_FATPERCENT:
-            switch (item.fatPercentageLevel) {
+            switch (level) {
                 case 1:
-                    return warningColor;
+                    return HEXCOLOR(0x00aef7);
                     break;
                 case 2:
                     return normalColor;
@@ -262,7 +263,7 @@
                     return warningColor;
                     break;
                 case 4:
-                    return seriousColor;
+                    return HEXCOLOR(0xffa126);
                     break;
                 case 5:
                     return seriousColor;
@@ -273,9 +274,9 @@
             }
             break;
         case IS_MODEL_FAT:
-            switch (item.fatWeightLevel) {
+            switch (level) {
                 case 1:
-                    return warningColor;
+                    return HEXCOLOR(0x00aef7);
                     break;
                 case 2:
                     return normalColor;
@@ -284,7 +285,7 @@
                     return warningColor;
                     break;
                 case 4:
-                    return seriousColor;
+                    return HEXCOLOR(0xffa126);
                     break;
                 case 5:
                     return seriousColor;
@@ -295,9 +296,9 @@
             }
              break;
         case IS_MODEL_WATER:
-            switch (item.waterLevel) {
+            switch (level) {
             case 1:
-                return warningColor;
+                return HEXCOLOR(0x00aef7);
                 break;
             case 2:
                 return normalColor;
@@ -311,7 +312,7 @@
         }
              break;
         case IS_MODEL_PROTEIN:
-            switch (item.proteinLevel) {
+            switch (level) {
                 case 1:
                     return normalColor;
                     break;
@@ -325,7 +326,7 @@
             
             break;
         case IS_MODEL_MUSCLE:
-            switch (item.muscleLevel) {
+            switch (level) {
                 case 1:
                     return normalColor;
                     break;
@@ -341,7 +342,7 @@
             
             break;
         case IS_MODEL_BONEMUSCLE:
-            switch (item.boneLevel) {
+            switch (level) {
                 case 1:
                     return normalColor;
                     break;
@@ -356,7 +357,7 @@
             
             
         case IS_MODEL_VISCERALFAT:
-            switch (item.visceralFatPercentageLevel) {
+            switch (level) {
                 case 1:
                     return normalColor;
                     break;
@@ -364,7 +365,7 @@
                     return warningColor;
                     break;
                 case 3:
-                    return seriousColor;
+                    return HEXCOLOR(0xffa126);
                     break;
                 case 4:
                     return seriousColor;
@@ -375,7 +376,7 @@
             }
              break;
         case IS_MODEL_BONE:
-            switch (item.boneLevel) {
+            switch (level) {
                 case 1:
                     return normalColor;
                     break;
@@ -387,9 +388,9 @@
             }
             break;
         case IS_MODEL_WEIGHT:
-            switch (item.weightLevel) {
+            switch (level) {
                 case 1:
-                    return warningColor;
+                    return HEXCOLOR(0x00aef7);
                     break;
                 case 2:
                     return normalColor;
@@ -398,12 +399,9 @@
                     return warningColor;
                     break;
                 case 4:
-                    return warningColor;
+                    return HEXCOLOR(0xffa126);
                     break;
                 case 5:
-                    return seriousColor;
-                    break;
-                case 6:
                     return seriousColor;
                     break;
 
@@ -418,286 +416,24 @@
     return nil;
 }
 
-
-
-
-
-
-
--(UIColor *)getHealthHeaderColorWithStatus:(isMyType)myType item:(HealthItem*)item
-{
-    switch (myType) {
-        case IS_MODEL_BMI:
-            switch (item.bmiLevel) {
-                case 1:
-                    return warningColor;
-                    break;
-                case 2:
-                    return normalColor;
-                    break;
-                case 3:
-                    return seriousColor;
-                    break;
-                case 4:
-                    return warningColor;
-                    break;
-                    
-                default:
-                    break;
-            }
-        case IS_MODEL_FAT:
-            switch (item.fatWeightLevel) {
-                case 1:
-                    return normalColor;
-                    break;
-                case 2:
-                    return warningColor;
-                    break;
-                case 3:
-                    return seriousColor;
-                    break;
-                    
-                default:
-                    break;
-            }
-            break;
-        case IS_MODEL_WATER:
-            switch (item.waterLevel) {
-                case 1:
-                    return normalColor;
-                    break;
-                case 2:
-                    return warningColor;
-                    break;
-                    
-                default:
-                    break;
-            }
-            break;
-        case IS_MODEL_PROTEIN:
-            switch (item.proteinLevel) {
-                case 1:
-                    return normalColor;
-                    break;
-                case 2:
-                    return warningColor;
-                    break;
-                default:
-                    break;
-            }
-            
-            
-            break;
-        case IS_MODEL_MUSCLE:
-            switch (item.muscleLevel) {
-                case 1:
-                    return normalColor;
-                    break;
-                case 2:
-                    return warningColor;
-                    break;
-                    
-                    
-                default:
-                    break;
-            }
-            
-            
-            break;
-            
-        case IS_MODEL_VISCERALFAT:
-            switch (item.visceralFatPercentageLevel) {
-                case 1:
-                    return normalColor;
-                    break;
-                case 2:
-                    return warningColor;
-                    break;
-                case 3:
-                    return seriousColor;
-                    break;
-                default:
-                    break;
-            }
-        case IS_MODEL_BODYWEIGHT:
-            switch (item.weightLevel) {
-                case 1:
-                    //                    return @"偏瘦";
-                    return warningColor;
-                    
-                    break;
-                case 2:
-                    //                    return @"正常";
-                    return normalColor;
-                    
-                    break;
-                case 3:
-                    //                    return @"轻度肥胖";
-                    return warningColor;
-                    
-                    break;
-                case 4:
-                    //                    return @"中度肥胖";
-                    return warningColor;
-                    
-                    break;
-                case 5:
-                    //                    return @"重度肥胖";
-                    return seriousColor;
-                    
-                    break;
-                case 6:
-                    //                    return @"极度肥胖";
-                    return seriousColor;
-                    
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-
-            break;
-            
-        default:
-            break;
-    }
-    return nil;
-}
--(UIColor *)getHealthShareColorWithStatus:(isMyType)myType item:(ShareHealthItem*)item
+-(UIColor *)getSomeColorWithLevel:(int)Level
 {
     
-    switch (myType) {
-        case IS_MODEL_BMI:
-            switch (item.bmiLevel) {
-                case 1:
-                    return warningColor;
-                    break;
-                case 2:
-                    return normalColor;
-                    break;
-                case 3:
-                    return seriousColor;
-                    break;
-                case 4:
-                    return warningColor;
-                    break;
-                    
-                default:
-                    break;
-            }
-        case IS_MODEL_FAT:
-            switch (item.fatWeightLevel) {
-                case 1:
-                    return normalColor;
-                    break;
-                case 2:
-                    return warningColor;
-                    break;
-                case 3:
-                    return seriousColor;
-                    break;
-                    
-                default:
-                    break;
-            }
+    switch (Level) {
+        case 1:
+            return HEXCOLOR(0x00aef7);
             break;
-        case IS_MODEL_WATER:
-            switch (item.waterLevel) {
-                case 1:
-                    return normalColor;
-                    break;
-                case 2:
-                    return warningColor;
-                    break;
-                    
-                default:
-                    break;
-            }
+        case 2:
+            return [UIColor colorWithRed:57/255.0 green:208/255.0 blue:160/255.0 alpha:1];
             break;
-        case IS_MODEL_PROTEIN:
-            switch (item.proteinLevel) {
-                case 1:
-                    return normalColor;
-                    break;
-                case 2:
-                    return warningColor;
-                    break;
-                default:
-                    break;
-            }
-            
-            
+        case 3:
+            return HEXCOLOR(0xffa126);//[UIColor colorWithRed:246/255.0 green:172/255.0 blue:2/255.0 alpha:1];
             break;
-        case IS_MODEL_MUSCLE:
-            switch (item.muscleLevel) {
-                case 1:
-                    return normalColor;
-                    break;
-                case 2:
-                    return warningColor;
-                    break;
-                    
-                    
-                default:
-                    break;
-            }
-            
-            
+        case 4:
+            return HEXCOLOR(0xefd81a);
             break;
-            
-        case IS_MODEL_VISCERALFAT:
-            switch (item.visceralFatPercentageLevel) {
-                case 1:
-                    return normalColor;
-                    break;
-                case 2:
-                    return warningColor;
-                    break;
-                case 3:
-                    return seriousColor;
-                    break;
-                default:
-                    break;
-            }
-        case IS_MODEL_BODYWEIGHT:
-            switch (item.weightLevel) {
-                case 1:
-                    //                    return @"偏瘦";
-                    return warningColor;
-                    
-                    break;
-                case 2:
-                    //                    return @"正常";
-                    return normalColor;
-                    
-                    break;
-                case 3:
-                    //                    return @"轻度肥胖";
-                    return warningColor;
-                    
-                    break;
-                case 4:
-                    //                    return @"中度肥胖";
-                    return warningColor;
-                    
-                    break;
-                case 5:
-                    //                    return @"重度肥胖";
-                    return seriousColor;
-                    
-                    break;
-                case 6:
-                    //                    return @"极度肥胖";
-                    return seriousColor;
-                    
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-            
+        case 5:
+            return [UIColor redColor];
             break;
             
         default:

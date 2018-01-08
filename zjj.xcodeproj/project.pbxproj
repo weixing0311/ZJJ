@@ -371,8 +371,6 @@
 		6C9980F31F9EDD4200FC57E8 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9980F11F9EDD4200FC57E8 /* TZTestCell.m */; };
 		6C9980F41F9EDD4200FC57E8 /* TZTestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C9980F21F9EDD4200FC57E8 /* TZTestCell.xib */; };
 		6C9980F71F9EDD6400FC57E8 /* LxGridViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C9980F51F9EDD6400FC57E8 /* LxGridViewFlowLayout.m */; };
-		6CA0249F1F12544F00F54DF3 /* HealthDetailSelectedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0249D1F12544F00F54DF3 /* HealthDetailSelectedCell.m */; };
-		6CA024A01F12544F00F54DF3 /* HealthDetailSelectedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CA0249E1F12544F00F54DF3 /* HealthDetailSelectedCell.xib */; };
 		6CA024A61F14B32A00F54DF3 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA024A41F14B32A00F54DF3 /* ForgetPasswordViewController.m */; };
 		6CA024A71F14B32A00F54DF3 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CA024A51F14B32A00F54DF3 /* ForgetPasswordViewController.xib */; };
 		6CA024AF1F14C01700F54DF3 /* ChangPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA024AD1F14C01700F54DF3 /* ChangPasswordViewController.m */; };
@@ -521,8 +519,6 @@
 		6CD92FF81F0B28FE00D7989E /* ShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD92FF61F0B28FE00D7989E /* ShareCell.m */; };
 		6CD92FF91F0B28FE00D7989E /* ShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD92FF71F0B28FE00D7989E /* ShareCell.xib */; };
 		6CD92FFC1F0B2E1900D7989E /* ShareHealthItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD92FFB1F0B2E1900D7989E /* ShareHealthItem.m */; };
-		6CD930071F0B483B00D7989E /* TZdetaolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD930051F0B483B00D7989E /* TZdetaolViewController.m */; };
-		6CD930081F0B483B00D7989E /* TZdetaolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD930061F0B483B00D7989E /* TZdetaolViewController.xib */; };
 		6CD9300B1F0B984100D7989E /* ShareBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD9300A1F0B984100D7989E /* ShareBottomView.m */; };
 		6CD9300D1F0B984900D7989E /* ShareBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD9300C1F0B984900D7989E /* ShareBottomView.xib */; };
 		6CD930101F0B9A1700D7989E /* DidShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD9300F1F0B9A1700D7989E /* DidShareViewController.m */; };
@@ -536,10 +532,8 @@
 		6CDBC40C1F501E6A0059A15E /* FcBigImgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CDBC40A1F501E6A0059A15E /* FcBigImgViewController.xib */; };
 		6CDE37E51EF0D813001F10DE /* ResignAgumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE37E31EF0D813001F10DE /* ResignAgumentViewController.m */; };
 		6CDE37E61EF0D813001F10DE /* ResignAgumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CDE37E41EF0D813001F10DE /* ResignAgumentViewController.xib */; };
-		6CDE37ED1EF0E902001F10DE /* HealthDetailNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CDE37EA1EF0E902001F10DE /* HealthDetailNormalCell.xib */; };
 		6CDE37EE1EF0E902001F10DE /* HealthDetailSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CDE37EB1EF0E902001F10DE /* HealthDetailSliderCell.xib */; };
 		6CDE37EF1EF0E902001F10DE /* EvaluationDetailScroeDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CDE37EC1EF0E902001F10DE /* EvaluationDetailScroeDescriptionCell.xib */; };
-		6CDE37F21EF0E935001F10DE /* HealthDetailNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE37F11EF0E935001F10DE /* HealthDetailNormalCell.m */; };
 		6CDE37F51EF0E941001F10DE /* HealthDetailSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE37F41EF0E941001F10DE /* HealthDetailSliderCell.m */; };
 		6CDE37F81EF0E94D001F10DE /* EvaluationDetailScroeDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE37F71EF0E94D001F10DE /* EvaluationDetailScroeDescriptionCell.m */; };
 		6CDE37FD1EF113EE001F10DE /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDE37FC1EF113EE001F10DE /* CustomLabel.m */; };
@@ -650,16 +644,12 @@
 		6CFDEC021F8B7DE7005D3971 /* contactIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEAC81F8B7DE6005D3971 /* contactIcon.png */; };
 		6CFDEC031F8B7DE7005D3971 /* DailyCash-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEAC91F8B7DE6005D3971 /* DailyCash-icon@2x.png */; };
 		6CFDEC041F8B7DE7005D3971 /* DailyCash-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEACA1F8B7DE6005D3971 /* DailyCash-icon@3x.png */; };
-		6CFDEC051F8B7DE7005D3971 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEACB1F8B7DE6005D3971 /* default.png */; };
-		6CFDEC061F8B7DE7005D3971 /* defaultHead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEACC1F8B7DE6005D3971 /* defaultHead@2x.png */; };
-		6CFDEC071F8B7DE7005D3971 /* defaultHead@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEACD1F8B7DE6005D3971 /* defaultHead@3x.png */; };
 		6CFDEC081F8B7DE7005D3971 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEACE1F8B7DE6005D3971 /* delete@2x.png */; };
 		6CFDEC091F8B7DE7005D3971 /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEACF1F8B7DE6005D3971 /* delete@3x.png */; };
 		6CFDEC0A1F8B7DE7005D3971 /* delete2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEAD01F8B7DE6005D3971 /* delete2@2x.png */; };
 		6CFDEC0B1F8B7DE7005D3971 /* delete2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEAD11F8B7DE6005D3971 /* delete2@3x.png */; };
 		6CFDEC0C1F8B7DE7005D3971 /* demoimage_.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEAD21F8B7DE6005D3971 /* demoimage_.jpg */; };
 		6CFDEC0D1F8B7DE7005D3971 /* ding-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEAD31F8B7DE6005D3971 /* ding-bg.png */; };
-		6CFDEC0E1F8B7DE7005D3971 /* ding-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEAD41F8B7DE6005D3971 /* ding-logo.png */; };
 		6CFDEC0F1F8B7DE7005D3971 /* discuss@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEAD51F8B7DE6005D3971 /* discuss@2x.png */; };
 		6CFDEC101F8B7DE7005D3971 /* discuss@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEAD61F8B7DE6005D3971 /* discuss@3x.png */; };
 		6CFDEC111F8B7DE7005D3971 /* Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEAD71F8B7DE6005D3971 /* Email.png */; };
@@ -758,8 +748,6 @@
 		6CFDEC6E1F8B7DE8005D3971 /* jinpai@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB341F8B7DE6005D3971 /* jinpai@3x.png */; };
 		6CFDEC6F1F8B7DE8005D3971 /* last@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB351F8B7DE6005D3971 /* last@2x.png */; };
 		6CFDEC701F8B7DE8005D3971 /* last@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB361F8B7DE6005D3971 /* last@3x.png */; };
-		6CFDEC711F8B7DE8005D3971 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB371F8B7DE6005D3971 /* logo@2x.png */; };
-		6CFDEC721F8B7DE8005D3971 /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB381F8B7DE6005D3971 /* logo@3x.png */; };
 		6CFDEC751F8B7DE8005D3971 /* map-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB3B1F8B7DE6005D3971 /* map-icon.png */; };
 		6CFDEC761F8B7DE8005D3971 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB3C1F8B7DE6005D3971 /* map.png */; };
 		6CFDEC771F8B7DE8005D3971 /* me@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CFDEB3D1F8B7DE6005D3971 /* me@2x.png */; };
@@ -1483,9 +1471,6 @@
 		6C9980F21F9EDD4200FC57E8 /* TZTestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TZTestCell.xib; sourceTree = "<group>"; };
 		6C9980F51F9EDD6400FC57E8 /* LxGridViewFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LxGridViewFlowLayout.m; sourceTree = "<group>"; };
 		6C9980F61F9EDD6400FC57E8 /* LxGridViewFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LxGridViewFlowLayout.h; sourceTree = "<group>"; };
-		6CA0249C1F12544F00F54DF3 /* HealthDetailSelectedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthDetailSelectedCell.h; sourceTree = "<group>"; };
-		6CA0249D1F12544F00F54DF3 /* HealthDetailSelectedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthDetailSelectedCell.m; sourceTree = "<group>"; };
-		6CA0249E1F12544F00F54DF3 /* HealthDetailSelectedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthDetailSelectedCell.xib; sourceTree = "<group>"; };
 		6CA024A31F14B32A00F54DF3 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
 		6CA024A41F14B32A00F54DF3 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		6CA024A51F14B32A00F54DF3 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
@@ -1721,9 +1706,6 @@
 		6CD92FF71F0B28FE00D7989E /* ShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareCell.xib; sourceTree = "<group>"; };
 		6CD92FFA1F0B2E1900D7989E /* ShareHealthItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareHealthItem.h; sourceTree = "<group>"; };
 		6CD92FFB1F0B2E1900D7989E /* ShareHealthItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareHealthItem.m; sourceTree = "<group>"; };
-		6CD930041F0B483B00D7989E /* TZdetaolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZdetaolViewController.h; sourceTree = "<group>"; };
-		6CD930051F0B483B00D7989E /* TZdetaolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZdetaolViewController.m; sourceTree = "<group>"; };
-		6CD930061F0B483B00D7989E /* TZdetaolViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TZdetaolViewController.xib; sourceTree = "<group>"; };
 		6CD930091F0B984100D7989E /* ShareBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareBottomView.h; sourceTree = "<group>"; };
 		6CD9300A1F0B984100D7989E /* ShareBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareBottomView.m; sourceTree = "<group>"; };
 		6CD9300C1F0B984900D7989E /* ShareBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareBottomView.xib; sourceTree = "<group>"; };
@@ -1745,11 +1727,8 @@
 		6CDE37E21EF0D813001F10DE /* ResignAgumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResignAgumentViewController.h; sourceTree = "<group>"; };
 		6CDE37E31EF0D813001F10DE /* ResignAgumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResignAgumentViewController.m; sourceTree = "<group>"; };
 		6CDE37E41EF0D813001F10DE /* ResignAgumentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResignAgumentViewController.xib; sourceTree = "<group>"; };
-		6CDE37EA1EF0E902001F10DE /* HealthDetailNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthDetailNormalCell.xib; sourceTree = "<group>"; };
 		6CDE37EB1EF0E902001F10DE /* HealthDetailSliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthDetailSliderCell.xib; sourceTree = "<group>"; };
 		6CDE37EC1EF0E902001F10DE /* EvaluationDetailScroeDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EvaluationDetailScroeDescriptionCell.xib; sourceTree = "<group>"; };
-		6CDE37F01EF0E935001F10DE /* HealthDetailNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthDetailNormalCell.h; sourceTree = "<group>"; };
-		6CDE37F11EF0E935001F10DE /* HealthDetailNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthDetailNormalCell.m; sourceTree = "<group>"; };
 		6CDE37F31EF0E941001F10DE /* HealthDetailSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthDetailSliderCell.h; sourceTree = "<group>"; };
 		6CDE37F41EF0E941001F10DE /* HealthDetailSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthDetailSliderCell.m; sourceTree = "<group>"; };
 		6CDE37F61EF0E94D001F10DE /* EvaluationDetailScroeDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationDetailScroeDescriptionCell.h; sourceTree = "<group>"; };
@@ -1880,16 +1859,12 @@
 		6CFDEAC81F8B7DE6005D3971 /* contactIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contactIcon.png; sourceTree = "<group>"; };
 		6CFDEAC91F8B7DE6005D3971 /* DailyCash-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DailyCash-icon@2x.png"; sourceTree = "<group>"; };
 		6CFDEACA1F8B7DE6005D3971 /* DailyCash-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DailyCash-icon@3x.png"; sourceTree = "<group>"; };
-		6CFDEACB1F8B7DE6005D3971 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
-		6CFDEACC1F8B7DE6005D3971 /* defaultHead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultHead@2x.png"; sourceTree = "<group>"; };
-		6CFDEACD1F8B7DE6005D3971 /* defaultHead@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultHead@3x.png"; sourceTree = "<group>"; };
 		6CFDEACE1F8B7DE6005D3971 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		6CFDEACF1F8B7DE6005D3971 /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@3x.png"; sourceTree = "<group>"; };
 		6CFDEAD01F8B7DE6005D3971 /* delete2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete2@2x.png"; sourceTree = "<group>"; };
 		6CFDEAD11F8B7DE6005D3971 /* delete2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete2@3x.png"; sourceTree = "<group>"; };
 		6CFDEAD21F8B7DE6005D3971 /* demoimage_.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demoimage_.jpg; sourceTree = "<group>"; };
 		6CFDEAD31F8B7DE6005D3971 /* ding-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ding-bg.png"; sourceTree = "<group>"; };
-		6CFDEAD41F8B7DE6005D3971 /* ding-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ding-logo.png"; sourceTree = "<group>"; };
 		6CFDEAD51F8B7DE6005D3971 /* discuss@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "discuss@2x.png"; sourceTree = "<group>"; };
 		6CFDEAD61F8B7DE6005D3971 /* discuss@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "discuss@3x.png"; sourceTree = "<group>"; };
 		6CFDEAD71F8B7DE6005D3971 /* Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Email.png; sourceTree = "<group>"; };
@@ -1988,8 +1963,6 @@
 		6CFDEB341F8B7DE6005D3971 /* jinpai@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jinpai@3x.png"; sourceTree = "<group>"; };
 		6CFDEB351F8B7DE6005D3971 /* last@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "last@2x.png"; sourceTree = "<group>"; };
 		6CFDEB361F8B7DE6005D3971 /* last@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "last@3x.png"; sourceTree = "<group>"; };
-		6CFDEB371F8B7DE6005D3971 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
-		6CFDEB381F8B7DE6005D3971 /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
 		6CFDEB3B1F8B7DE6005D3971 /* map-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-icon.png"; sourceTree = "<group>"; };
 		6CFDEB3C1F8B7DE6005D3971 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		6CFDEB3D1F8B7DE6005D3971 /* me@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me@2x.png"; sourceTree = "<group>"; };
@@ -2416,9 +2389,6 @@
 				6C6CFE771F8F5F27005C2738 /* UserDirections(使用说明) */,
 				6C6CFE711F8F3D24005C2738 /* NewHealth */,
 				6CD92FD71F0A784C00D7989E /* share(分享) */,
-				6CD930041F0B483B00D7989E /* TZdetaolViewController.h */,
-				6CD930051F0B483B00D7989E /* TZdetaolViewController.m */,
-				6CD930061F0B483B00D7989E /* TZdetaolViewController.xib */,
 				6C36399E1EFE483800268851 /* CharViewController.h */,
 				6C36399F1EFE483800268851 /* CharViewController.m */,
 				6C3639A01EFE483800268851 /* CharViewController.xib */,
@@ -2460,12 +2430,6 @@
 				6CCEEAB11EEE3D71002E1618 /* MeasurementInfoCell.h */,
 				6CCEEAB21EEE3D71002E1618 /* MeasurementInfoCell.m */,
 				6CCEEAB31EEE3D71002E1618 /* MeasurementInfoCell.xib */,
-				6CDE37F01EF0E935001F10DE /* HealthDetailNormalCell.h */,
-				6CDE37F11EF0E935001F10DE /* HealthDetailNormalCell.m */,
-				6CDE37EA1EF0E902001F10DE /* HealthDetailNormalCell.xib */,
-				6CA0249C1F12544F00F54DF3 /* HealthDetailSelectedCell.h */,
-				6CA0249D1F12544F00F54DF3 /* HealthDetailSelectedCell.m */,
-				6CA0249E1F12544F00F54DF3 /* HealthDetailSelectedCell.xib */,
 				6CDE37F31EF0E941001F10DE /* HealthDetailSliderCell.h */,
 				6CDE37F41EF0E941001F10DE /* HealthDetailSliderCell.m */,
 				6CDE37EB1EF0E902001F10DE /* HealthDetailSliderCell.xib */,
@@ -4407,16 +4371,12 @@
 				6CFDEAC81F8B7DE6005D3971 /* contactIcon.png */,
 				6CFDEAC91F8B7DE6005D3971 /* DailyCash-icon@2x.png */,
 				6CFDEACA1F8B7DE6005D3971 /* DailyCash-icon@3x.png */,
-				6CFDEACB1F8B7DE6005D3971 /* default.png */,
-				6CFDEACC1F8B7DE6005D3971 /* defaultHead@2x.png */,
-				6CFDEACD1F8B7DE6005D3971 /* defaultHead@3x.png */,
 				6CFDEACE1F8B7DE6005D3971 /* delete@2x.png */,
 				6CFDEACF1F8B7DE6005D3971 /* delete@3x.png */,
 				6CFDEAD01F8B7DE6005D3971 /* delete2@2x.png */,
 				6CFDEAD11F8B7DE6005D3971 /* delete2@3x.png */,
 				6CFDEAD21F8B7DE6005D3971 /* demoimage_.jpg */,
 				6CFDEAD31F8B7DE6005D3971 /* ding-bg.png */,
-				6CFDEAD41F8B7DE6005D3971 /* ding-logo.png */,
 				6CFDEAD51F8B7DE6005D3971 /* discuss@2x.png */,
 				6CFDEAD61F8B7DE6005D3971 /* discuss@3x.png */,
 				6CFDEAD71F8B7DE6005D3971 /* Email.png */,
@@ -4515,8 +4475,6 @@
 				6CFDEB341F8B7DE6005D3971 /* jinpai@3x.png */,
 				6CFDEB351F8B7DE6005D3971 /* last@2x.png */,
 				6CFDEB361F8B7DE6005D3971 /* last@3x.png */,
-				6CFDEB371F8B7DE6005D3971 /* logo@2x.png */,
-				6CFDEB381F8B7DE6005D3971 /* logo@3x.png */,
 				6CFDEB3B1F8B7DE6005D3971 /* map-icon.png */,
 				6CFDEB3C1F8B7DE6005D3971 /* map.png */,
 				6CFDEB3D1F8B7DE6005D3971 /* me@2x.png */,
@@ -4898,7 +4856,6 @@
 				6CD0111D1EF82A2A00FB9419 /* SettingViewController.xib in Resources */,
 				6CFDEBC81F8B7DE7005D3971 /* argument@3x.png in Resources */,
 				6CFDEC031F8B7DE7005D3971 /* DailyCash-icon@2x.png in Resources */,
-				6CFDEC0E1F8B7DE7005D3971 /* ding-logo.png in Resources */,
 				6C803D8A1FAB128400B2E186 /* Yd3View.xib in Resources */,
 				6CFDECA01F8B7DE8005D3971 /* personal-myOder-icon@2x.png in Resources */,
 				6CFDEBD71F8B7DE7005D3971 /* bodyfat_buy_4.png in Resources */,
@@ -4913,7 +4870,6 @@
 				6CFDEC481F8B7DE8005D3971 /* help-icon10@2x.png in Resources */,
 				6CFDECC31F8B7DE8005D3971 /* record-zhichu@2x.png in Resources */,
 				6CFDEBBB1F8B7DE7005D3971 /* addressLine@2x.png in Resources */,
-				6CFDEC721F8B7DE8005D3971 /* logo@3x.png in Resources */,
 				6C3639D01F029B7200268851 /* OrderFootBtnView.xib in Resources */,
 				6CFDEC1F1F8B7DE7005D3971 /* footer-knowledge-red@3x.png in Resources */,
 				6CFDEC161F8B7DE7005D3971 /* fonter-help-red@2x.png in Resources */,
@@ -4933,7 +4889,6 @@
 				6CCEEB741EEFE558002E1618 /* Main.storyboard in Resources */,
 				6CFDEC021F8B7DE7005D3971 /* contactIcon.png in Resources */,
 				6C2AF2681F71FF8C00C00F2A /* IntegralOrderViewController.xib in Resources */,
-				6CA024A01F12544F00F54DF3 /* HealthDetailSelectedCell.xib in Resources */,
 				6C3639EA1F034BB600268851 /* TZSTeamHeaderView.xib in Resources */,
 				6CFDECC51F8B7DE8005D3971 /* Reduced@2x.png in Resources */,
 				6C1DBD961F67BA7700F5B975 /* BusinessCardViewController.xib in Resources */,
@@ -5026,12 +4981,10 @@
 				6CFDEBBA1F8B7DE7005D3971 /* aboutUs@3x.png in Resources */,
 				6C2241AA1F7CF782001BB2FD /* EditUserInfoViewController.xib in Resources */,
 				6C3639191EFD0BE600268851 /* ChangePasswordViewController.xib in Resources */,
-				6CFDEC071F8B7DE7005D3971 /* defaultHead@3x.png in Resources */,
 				6CD010FF1EF7FD6E00FB9419 /* DetailReturnGoodsCell.xib in Resources */,
 				6CFDEC811F8B7DE8005D3971 /* message_kb@3x.png in Resources */,
 				6CFDEC7C1F8B7DE8005D3971 /* message_banner2.jpg in Resources */,
 				6CFDEBFC1F8B7DE7005D3971 /* contact-us-map@2x.png in Resources */,
-				6CFDEC051F8B7DE7005D3971 /* default.png in Resources */,
 				6C1DBD8C1F67B2A600F5B975 /* SuperiorCell.xib in Resources */,
 				6C3638DF1EFCEB2A00268851 /* TZSEditViewController.xib in Resources */,
 				6CFDECE81F8B7DE8005D3971 /* write@2x.png in Resources */,
@@ -5068,7 +5021,6 @@
 				6CFDECB81F8B7DE8005D3971 /* record-chong@3x.png in Resources */,
 				6CFDEC171F8B7DE7005D3971 /* fonter-help-red@3x.png in Resources */,
 				6C13C5E11EFA747900435A27 /* UpdataAddressCell.xib in Resources */,
-				6CFDEC061F8B7DE7005D3971 /* defaultHead@2x.png in Resources */,
 				6C005FD71F983A7200C9E37C /* HistoryCell.xib in Resources */,
 				6CFDEBBC1F8B7DE7005D3971 /* addressLine@3x.png in Resources */,
 				6C6CFE661F8E3408005C2738 /* ADDChengUserViewController.xib in Resources */,
@@ -5325,16 +5277,13 @@
 				6CFDEC251F8B7DE7005D3971 /* footer-PersonalCenter@3x.png in Resources */,
 				6CBC0AC11FAC457F00FB7857 /* TailoringImageViewController.xib in Resources */,
 				6C6CFEC71F909150005C2738 /* NewHealthDetailThirdCell.xib in Resources */,
-				6CD930081F0B483B00D7989E /* TZdetaolViewController.xib in Resources */,
 				6CFDEC371F8B7DE7005D3971 /* help-icon1@3x.png in Resources */,
 				6CD010BD1EF5489800FB9419 /* FootView.xib in Resources */,
 				6C1B2BED1EED25F00092AAF0 /* LoignViewController.xib in Resources */,
 				6CFDECA61F8B7DE8005D3971 /* personal-recode.png in Resources */,
 				6CFDEBCC1F8B7DE7005D3971 /* arrows@3x.png in Resources */,
-				6CDE37ED1EF0E902001F10DE /* HealthDetailNormalCell.xib in Resources */,
 				6CFDECEC1F8B7DE8005D3971 /* wz@3x.png in Resources */,
 				6CFDEC461F8B7DE8005D3971 /* help-icon09@2x.png in Resources */,
-				6CFDEC711F8B7DE8005D3971 /* logo@2x.png in Resources */,
 				6CFDEC3F1F8B7DE7005D3971 /* help-icon05@3x.png in Resources */,
 				6CFDEC3A1F8B7DE7005D3971 /* help-icon03@2x.png in Resources */,
 				6CFDEC9E1F8B7DE8005D3971 /* personal-lianxi@2x.png in Resources */,
@@ -5499,7 +5448,6 @@
 				6CD010D61EF62BC500FB9419 /* AddressListCell.m in Sources */,
 				6C2F46511FAEE7E000E9C914 /* NewHealthCell.m in Sources */,
 				6CFDE7FA1F8B539D005D3971 /* ArtcleDetaileImageCell.m in Sources */,
-				6CA0249F1F12544F00F54DF3 /* HealthDetailSelectedCell.m in Sources */,
 				6CD011451EF8CE4400FB9419 /* OrderHeader.m in Sources */,
 				6C3639901EFE47E100268851 /* AAOptions.m in Sources */,
 				6C6635211FBC1226008763A7 /* VouchersCell.m in Sources */,
@@ -5688,7 +5636,6 @@
 				6C1B2BD81EECEAFA0092AAF0 /* JFASubNetWorkErrorView.m in Sources */,
 				6C36390E1EFD0BC500268851 /* ForgetJYpasswordViewController.m in Sources */,
 				6C6CFEB61F908C5A005C2738 /* HealthDetailViewController.m in Sources */,
-				6CD930071F0B483B00D7989E /* TZdetaolViewController.m in Sources */,
 				6C2AF26C1F71FFC200C00F2A /* IntegralOrderCell.m in Sources */,
 				6CD010C61EF5547F00FB9419 /* ShopCarCell.m in Sources */,
 				6CD010B21EF52BDD00FB9419 /* BannerItem.m in Sources */,
@@ -5762,7 +5709,6 @@
 				6CFDE8081F8B547B005D3971 /* CommentView.m in Sources */,
 				6CD9300B1F0B984100D7989E /* ShareBottomView.m in Sources */,
 				6C2241A91F7CF782001BB2FD /* EditUserInfoViewController.m in Sources */,
-				6CDE37F21EF0E935001F10DE /* HealthDetailNormalCell.m in Sources */,
 				6C3639001EFD04BE00268851 /* HeadImageCell.m in Sources */,
 				6C36398C1EFE47E100268851 /* AALabels.m in Sources */,
 				6CD930101F0B9A1700D7989E /* DidShareViewController.m in Sources */,
