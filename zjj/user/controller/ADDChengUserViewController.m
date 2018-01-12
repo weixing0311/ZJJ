@@ -308,7 +308,7 @@
     else if ([self.heighttf isFirstResponder])
     {
         [self.heighttf resignFirstResponder];
-        self.heighttf.text = [NSString stringWithFormat:@"%ld",pickRow+80];
+        self.heighttf.text = [NSString stringWithFormat:@"%ld",pickRow+120];
     }
 }
 -(void)cancelChoose
@@ -423,12 +423,12 @@
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     
-    return 200;
+    return 81;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [NSString  stringWithFormat:@"%ld",row+80];
+    return [NSString  stringWithFormat:@"%d",row+120];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {

@@ -200,7 +200,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZG-Ug-iHT">
-                            <rect key="frame" x="10" y="405" width="355" height="50"/>
+                            <rect key="frame" x="10" y="385" width="355" height="50"/>
                             <color key="backgroundColor" red="0.93333333333333335" green="0.039215686274509803" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="AtH-TW-D4Q"/>
@@ -218,7 +218,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVm-dk-hjh">
-                            <rect key="frame" x="236" y="475" width="124" height="30"/>
+                            <rect key="frame" x="236" y="445" width="124" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="124" id="4cZ-49-7KY"/>
                                 <constraint firstAttribute="height" constant="30" id="jZr-4C-Axf"/>
@@ -256,7 +256,7 @@
                         <constraint firstItem="6dN-mR-jhs" firstAttribute="leading" secondItem="CiY-Js-pHk" secondAttribute="leading" id="1NS-tq-18P"/>
                         <constraint firstItem="4IW-Ke-jwE" firstAttribute="top" secondItem="lzy-cP-Fr9" secondAttribute="bottom" constant="40" id="3Po-af-PLI"/>
                         <constraint firstItem="4IW-Ke-jwE" firstAttribute="leading" secondItem="CiY-Js-pHk" secondAttribute="leading" id="JWM-Pe-KI1"/>
-                        <constraint firstItem="PVm-dk-hjh" firstAttribute="top" secondItem="qZG-Ug-iHT" secondAttribute="bottom" constant="20" id="L4p-aq-Wtt"/>
+                        <constraint firstItem="PVm-dk-hjh" firstAttribute="top" secondItem="qZG-Ug-iHT" secondAttribute="bottom" constant="10" id="L4p-aq-Wtt"/>
                         <constraint firstAttribute="trailing" secondItem="Nki-Bq-XuP" secondAttribute="trailing" constant="20" id="ONm-IR-CzU"/>
                         <constraint firstAttribute="trailing" secondItem="PVm-dk-hjh" secondAttribute="trailing" constant="15" id="PEx-6V-A5x"/>
                         <constraint firstItem="qZG-Ug-iHT" firstAttribute="leading" secondItem="CiY-Js-pHk" secondAttribute="leading" constant="10" id="Toq-WD-ZOw"/>
@@ -271,7 +271,7 @@
                         <constraint firstAttribute="trailing" secondItem="4IW-Ke-jwE" secondAttribute="trailing" id="rKn-Wz-Y5x"/>
                         <constraint firstAttribute="trailing" secondItem="qZG-Ug-iHT" secondAttribute="trailing" constant="10" id="rSx-GV-K7J"/>
                         <constraint firstItem="lzy-cP-Fr9" firstAttribute="top" secondItem="yUA-CQ-7xU" secondAttribute="bottom" constant="45" id="saD-et-gl4"/>
-                        <constraint firstItem="qZG-Ug-iHT" firstAttribute="top" secondItem="4IW-Ke-jwE" secondAttribute="bottom" constant="40" id="xpT-zh-Z78"/>
+                        <constraint firstItem="qZG-Ug-iHT" firstAttribute="top" secondItem="4IW-Ke-jwE" secondAttribute="bottom" constant="20" id="xpT-zh-Z78"/>
                     </constraints>
                 </view>
             </subviews>

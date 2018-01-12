@@ -307,7 +307,7 @@
                         <constraint firstItem="E7u-B6-jpU" firstAttribute="top" secondItem="ZB1-bZ-BvZ" secondAttribute="bottom" id="wb3-mg-JW6"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.png" translatesAutoresizingMaskIntoConstraints="NO" id="nLU-rB-6Ea">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_default" translatesAutoresizingMaskIntoConstraints="NO" id="nLU-rB-6Ea">
                     <rect key="frame" x="137.5" y="85" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="3Z2-xh-b05"/>
@@ -362,9 +362,9 @@
         <image name="age.png" width="16" height="17"/>
         <image name="boy.png" width="41" height="42"/>
         <image name="boy1.png" width="41" height="42"/>
-        <image name="default.png" width="200" height="200"/>
         <image name="girl.png" width="41" height="41"/>
         <image name="girl1.png" width="41" height="41"/>
+        <image name="head_default" width="52" height="52"/>
         <image name="height.png" width="16" height="16"/>
         <image name="left_arrow" width="7" height="12"/>
         <image name="name.png" width="16" height="16"/>

@@ -105,7 +105,7 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
     }
     else if(self.hiddentf.tag==5)
     {
-        [self.upDataDict safeSetObject:@(pickRow+80) forKey:@"heigth"];
+        [self.upDataDict safeSetObject:@(pickRow+120) forKey:@"heigth"];
     }
     haveChangeInfo = YES;
 
@@ -680,7 +680,7 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
     }
     else if(self.hiddentf.tag==5)
     {
-        return 200;
+        return 81;
     }
     else{
         return 0;
@@ -703,7 +703,7 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
     }
     else if(self.hiddentf.tag==5)
     {
-        return [NSString  stringWithFormat:@"%ld",row+80];
+        return [NSString  stringWithFormat:@"%ld",row+120];
     }
     else{
         return nil;

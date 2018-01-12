@@ -29,7 +29,7 @@
     
     self.contentLabel.text = [dict safeObjectForKey:@"content"];
     self.contentLabel.hidden =NO;
-    self.titleLabel.text = [dict safeObjectForKey:@"operaterName"];
+    self.titleLabel.text = [dict safeObjectForKey:@"title"];
 }
 -(float)getWidthWithString:(NSString *)str
 {

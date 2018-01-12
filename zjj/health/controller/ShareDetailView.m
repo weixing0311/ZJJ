@@ -219,7 +219,7 @@
     self.status4lb.backgroundColor = [self getColorWithString:self.status4lb.text];
     self.status5lb.backgroundColor = [self getColorWithString:self.status5lb.text];
     self.status6lb.backgroundColor = [self getColorWithString:self.status6lb.text];
-    self.status7lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_BMI Level: item.bmiLevel+1];
+    self.status7lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_BMI Level: item.bmiLevel];
     self.status8lb.backgroundColor = [self getColorWithString:self.status8lb.text];
     self.status9lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_WATER Level: item.waterLevel];
 
@@ -539,7 +539,7 @@
 -(UIColor *)getColorWithString:(NSString *)string
 {
     
-    if ([string isEqualToString:@"偏低"]||[string isEqualToString:@"偏高"]||[string isEqualToString:@"超标"]) {
+    if ([string isEqualToString:@"偏低"]||[string isEqualToString:@"偏高"]||[string isEqualToString:@"超标"]||[string isEqualToString:@"低"]) {
         return warningColor;
     }
     else if ([string isEqualToString:@"正常"])
